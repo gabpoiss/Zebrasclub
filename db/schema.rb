@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170417212651) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string   "type"
+    t.string   "item_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20170417212651) do
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "item_id"
-    t.boolean  "completed"
     t.integer  "quantity"
     t.string   "shipping_status"
     t.datetime "created_at",      null: false
