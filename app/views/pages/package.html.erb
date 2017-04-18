@@ -1,5 +1,3 @@
-
-
 <div class="container">
   <div class="row card-row">
 
@@ -27,10 +25,6 @@
     <% end %>
   </div>
 
-
-
-
-
   <div id="sidebar">
   <% @categories.each do |i_t| %>
   <i class="fa fa-star">
@@ -41,5 +35,11 @@
 </div>
 </div>
 
+<hr>
 
+<%= link_to "Helmets", package_items_path(category: "helmet"), remote: true, method: :post %>
+<%= link_to "Skates", package_items_path(category: "skate"), remote: true, method: :post %>
 
+<div id="package-items-index">
+
+</div>
