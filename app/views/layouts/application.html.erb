@@ -1,9 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+
     <title>zebrasclub</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
+    <!-- <meta name="Description" content="The only complete and low cost centre for all the needs of a hockey referee. ">
+    <meta name="Keywords" content="hockey referee clothing, hockey referee gear, hockey referee store"> -->
+    <!-- <meta name="theme-color" content="#1f2f52">
+
+    <meta property="og:image" content="https://davidwalsh.name/wp-content/themes/klass/img/facebooklogo.png"/>
+    <meta property="og:title" content="Facebook Open Graph META Tags"/>
+    <meta property="og:url" content="https://davidwalsh.name/facebook-meta-tags"/>
+    <meta property="og:site_name" content="David Walsh Blog"/>
+    <meta property="og:type" content="blog"/> -->
+    <!-- <https://developers.facebook.com/docs/sharing/opengraph/> -->
+
+    <!-- <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://davidwalsh.name/twitter-cards">
+    <meta name="twitter:title" content="How to Create a Twitter Card">
+    <meta name="twitter:description" content="Twitter's new Twitter Cards API allows developers to add META tags to their website, and Twitter will build card content from links to a given site.">
+    <meta name="twitter:image" content="https://davidwalsh.name/wp-content/themes/punky/images/logo.png">
+    <meta name="twitter:site" content="@davidwalshblog">
+    <meta name="twitter:creator" content="@davidwalshblog"> -->
+    <!-- https://dev.twitter.com/cards/overview -->
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -12,6 +36,7 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+    <%#= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>

@@ -9,6 +9,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
 
+#Facebook
+gem 'omniauth-facebook'
 
 gem 'sass-rails'
 gem 'jquery-rails'
