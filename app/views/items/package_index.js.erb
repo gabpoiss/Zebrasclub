@@ -1,0 +1,19 @@
+
+$("#package-items-index").empty();
+var item_type = "<%= j Category.find(@category_id).item_type.pluralize(2)  %>";
+var filter_form = "<%= j render 'items/package_index_item_form', category: Category.find(@category_id).item_type, min: @min_price, max: @max_price, size: @size %>";
+$("#package-items-index").append($(filter_form));
+$("#package-items-index").append($("<h1>" + item_type + "</h1>"));
+
+<% @items.each do |i| %>
+  <% item_attr = {
+    item_type: Category.find(i.category_id).item_type,
+    brand: i.brand,
+    price: i.price / 100,
+    size: i.size,
+    description: i.description
+  } %>
+  var item = $("<%=  j render 'items/package_index_item', item_attr %>");
+  $("#package-items-index").append(item);
+<% end %>
+

@@ -1,0 +1,12 @@
+<%= form_tag package_items_path, method: :post, remote: true do |i| %>
+  <%= number_field_tag "min_price", 0, min: 0 %>
+  <% if max == 99999999999999 %>
+    <%= number_field_tag "max_price", min: 0 %>
+  <% else %>
+    <%= number_field_tag "max_price", max ? max / 100 : nil, min: 0 %>
+  <% end %>
+  <%= select_tag "size", raw("<option selected=\"selected\">#{size}</option><option>small</option><option>medium</option><option>large</option><option>extra large</option>") %>
+  <%= hidden_field_tag "category", category %>
+  <%= hidden_field_tag "filter", "true" %>
+  <%= submit_tag %>
+<% end %>
