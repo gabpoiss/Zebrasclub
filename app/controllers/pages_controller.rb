@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def package
-    @category = Category.all
+    @categories = Category.all
     @items = Item.all
   end
 
