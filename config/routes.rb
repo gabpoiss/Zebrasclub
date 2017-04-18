@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   get "/package", to: "pages#package", as: "package"
 
   # returns .js to choose item of a certain category
-  post "/package", to: "items#package_index", as: "package_items"
+  post "/package/index", to: "items#package_index", as: "package_items"
 
   # returns .js to view item/brand details and change size
-  post "/package", to: "items#package_show", as: "package_item"
+  post "/package/show", to: "items#package_show", as: "package_item"
 
   # list of individual items
   get "/items", to: "items#index", as: "items"
