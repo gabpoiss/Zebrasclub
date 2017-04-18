@@ -24,9 +24,9 @@ Rails.application.routes.draw do
   get "/orderitems", to: "orderitems#index", as: "orderitems"
 
   # adding an item to your cart
-  post "/orderitems", to: "orderitems#create", as: "orderitem"
+  post "/orderitems", to: "orderitems#create", as: "new_orderitem"
 
   # editting and removing items from your cart
-  patch "/orderitems/:id", to: "orderitems#update", as: "orderitem"
-  delete "/orderitems/:id", to: "orderitems#destroy", as: "orderitem"
+  patch "/orderitems/:id", to: "orderitems#update", as: "edit_orderitem"
+  delete "/orderitems/:id", to: "orderitems#destroy", as: "destroy_orderitem"
 end
