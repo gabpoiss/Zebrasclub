@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # grid with package items
   get "/package", to: "pages#package", as: "package"
 
+  post "/package/main", to: "pages#package_main", as: "package_main"
+
   # returns .js to choose item of a certain category
   post "/package/index", to: "items#package_index", as: "package_items"
 

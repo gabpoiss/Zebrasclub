@@ -9,6 +9,11 @@ class PagesController < ApplicationController
     @items = Item.all
   end
 
+  def package_main
+    @categories = Category.all
+    @items = Item.all
+  end
+
   def category_params
     params.require(:category).permit(:item_type)
   end
