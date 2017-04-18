@@ -9,8 +9,7 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-  <div class="btn btn-primary">Buy Individual Items</div>
-
+<%= link_to "Buy Individual Items", items_path, class: "btn btn-primary" %>
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
