@@ -1,0 +1,31 @@
+<% @category.each do |i_t| %>
+<%= i_t.item_type %>
+<% end %>
+
+
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12 col-sm-4">
+
+    <% @items.each do |item| %>
+    <div class="card">
+        <p><%= item.size %></p>
+
+        <div class="card-category">
+          <p><%= item.brand %></p>
+        </div>
+
+        <p><%= item.price %></p>
+
+        <p><%= item.stock %></p>
+
+        <div class="card-user">
+          <p><%= item.description %></p>
+        </div>
+      </div>
+
+    </div>
+    <% end %>
+
+  </div>
+</div>
