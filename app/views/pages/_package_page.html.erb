@@ -1,0 +1,20 @@
+<% @items.each do |item| %>
+  <div class="col-xs-12 col-sm-4">
+    <%= link_to package_item_path(item: item.id), method: :post do %>
+      <div class="card">
+        <div class="card-user">
+          <h1><%= Category.find(item.category_id).item_type %></h1>
+          <p><%= item.brand %></p>
+        </div>
+        <div class="card-category">
+          <!-- <p><%= item.size %></p> -->
+          <p><%= "#{item.price}" + "$" %></p>
+        </div>
+        <!-- <p><%= item.stock %></p> -->
+        <div class="card-description">
+          <%= item.description %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
