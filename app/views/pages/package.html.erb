@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row card-row">
 
+    <%= render 'pages/package_page', categories: @categories, items: @items %>
+
 
   <% @categories.each do |category| %>
     <% @items.each do |item| %>
@@ -38,7 +40,4 @@
 
 <%= link_to "Helmets", package_items_path(category: "helmet"), remote: true, method: :post %>
 <%= link_to "Skates", package_items_path(category: "skate"), remote: true, method: :post %>
-
-<div id="package-items-index">
-
-</div>
+<%= link_to "Main", package_main_path(categories: @categories, items: @items), remote: true, method: :post %>
