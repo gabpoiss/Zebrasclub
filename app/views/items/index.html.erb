@@ -1,0 +1,31 @@
+<form action="/items" action="get">
+  <input type="text" name="min_price" value="<%= params[:min_price] %>">
+  <input type="text" name="max_price" value="<%= params[:max_price] %>">
+  <select name="category">
+    <% @list_of_categories.each do |i| %>
+      <% x = "<option value=\"#{i}\">#{i}</option>" %>
+      <% x_selected = "<option selected=\"selected\" value=\"#{params[:category]}\">#{params[:category]}</option>" %>
+      <% if i.to_s == params[:category] %>
+        <%= x_selected.html_safe %>
+      <% else %>
+        <%= x.html_safe %>
+      <% end %>
+    <% end %>
+  </select>
+  <input type="hidden" name="filter" value="true">
+  <input type="Submit">
+</form>
+
+<% if @item_list_by_brand.any? %>
+  <% @item_list_by_brand.each do |i| %>
+    <p>Item Type: <%= Category.find(i.category_id).item_type %></p>
+    <p>Brand: <%= i.brand %></p>
+    <p>Price: <%= i.price / 100 %></p>
+    <p>Size: <%= i.size %></p>
+    <%= link_to "View", item_path(i) %>
+  <% end %>
+<% end %>
+
+
+
+
