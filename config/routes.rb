@@ -8,13 +8,16 @@ Rails.application.routes.draw do
   # grid with package items
   get "/package", to: "pages#package", as: "package"
 
-  post "/package/main", to: "pages#package_main", as: "package_main"
+  get "/package/main", to: "pages#package_main", as: "package_main"
 
   # returns .js to choose item of a certain category
   post "/package/index", to: "items#package_index", as: "package_items"
 
   # returns .js to view item/brand details and change size
   post "/package/show", to: "items#package_show", as: "package_item"
+
+  # replaces package item of same category as new package item
+  post "/replace", to: "orderitems#package_replace", as: "package_replace"
 
   # list of individual items
   get "/items", to: "items#index", as: "items"

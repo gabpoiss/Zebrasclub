@@ -1,3 +1,4 @@
+<% @items.sort! { |i, j| i.category_id <=> j.category_id } %>
 <% @items.each do |item| %>
   <div class="col-xs-12 col-sm-4">
     <%= link_to package_item_path(item: item.id), method: :post, remote: true do %>
@@ -8,7 +9,7 @@
         </div>
         <div class="card-category">
           <!-- <p><%= item.size %></p> -->
-          <p><%= "#{item.price}" + "$" %></p>
+          <p><%= "#{item.price / 100}" + "$" %></p>
         </div>
         <!-- <p><%= item.stock %></p> -->
         <div class="card-description">

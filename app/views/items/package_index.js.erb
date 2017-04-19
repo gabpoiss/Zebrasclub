@@ -1,12 +1,14 @@
 
 $(".card-row").empty();
 var item_type = "<%= j Category.find(@category_id).item_type.pluralize(2)  %>";
-var filter_form = "<%= j render 'items/package_index_item_form', category: Category.find(@category_id).item_type, min: @min_price, max: @max_price, size: @size %>";
+var filter_form = "<%= j render 'items/package_index_item_form', old_item_id: @item, category: Category.find(@category_id).item_type, min: @min_price, max: @max_price, size: @size %>";
 $(".card-row").append($(filter_form));
 $(".card-row").append($("<h1>" + item_type + "</h1>"));
 
 <% @items.each do |i| %>
   <% item_attr = {
+    old_item_id: @item,
+    new_item_id: i.id, # I.E., THIS ITEM!!!
     item_type: Category.find(i.category_id).item_type,
     brand: i.brand,
     price: i.price / 100,

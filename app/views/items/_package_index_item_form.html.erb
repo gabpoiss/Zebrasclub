@@ -1,4 +1,4 @@
-<%= form_tag package_items_path, method: :post, remote: true do |i| %>
+<%= form_tag package_items_path(item: old_item_id), method: :post, remote: true do |i| %>
   <%= number_field_tag "min_price", 0, min: 0 %>
   <% if max == 99999999999999 %>
     <%= number_field_tag "max_price", min: 0 %>

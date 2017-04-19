@@ -66,6 +66,7 @@ class ItemsController < ApplicationController
       @category_id = Category.where(item_type: params[:category])[0].id
       @items = Item.where(category_id: @category_id)
     end
+    @item = params[:item]
   end
 
   def package_show
