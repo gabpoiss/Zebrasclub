@@ -29,7 +29,7 @@ class PagesController < ApplicationController
 
     order_items = if current_user
       # find the user's order_items from pevious package selection
-      OrderItem.where(user_id: current_user.id).where(package: true)
+      User.find(current_user.id).order_items.where(package: true)
     else
       # ... unless there is no user
       []
@@ -71,14 +71,19 @@ class PagesController < ApplicationController
       # in the database
 
       if current_user
+        unless User.find(current_user.id).orders.any?
+          Order.create(user_id: current_user.id, paid_status: false)
+        end
+
         @items.each do |i|
           OrderItem.create(
-            user_id: current_user.id,
+            order_id: current_user.orders.last.id,
             item_id: i.id,
             quantity: 1,
             shipping_status: "not yet ordered",
             package: true,
-            size: false
+            size: false,
+            cart: false
           )
         end
       end
