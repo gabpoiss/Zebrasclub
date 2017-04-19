@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!
-  def index
 
+  def index
+    @categories = Category.all
+    @items = Item.all
     @item_list_by_brand = []
     @list_of_categories = []
 
