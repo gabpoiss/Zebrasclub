@@ -15,9 +15,13 @@ category_id = [1, 2, 3, 4, 5]
 Item.create(category_id: 1, size: "large", stock: 1, price: 40000, brand: "Itech", description: "Skates we recommend for experts")
 Item.create(category_id: 1, size: "small", stock: 2, price: 40000, brand: "Graph", description: "Skates we recommend for experts")
 
-Item.create(category_id: 2, size: "large", stock: 2, price: 20000, brand: "CCM", description: "A helmet we recommend for beginners")
-Item.create(category_id: 2, size: "small", stock: 1, price: 15000, brand: "CCM", description: "A helmet we recommend for beginners")
-Item.create(category_id: 2, size: "large", stock: 1, price: 25000, brand: "Bauer", description: "A helmet we recommend for experts")
+Item.create(category_id: 2, size: "large", stock: 2, price: 20000, brand: "CCM", description: "A helmet we recommend for beginners", picture: "../../assets/ccm-hockey-helmet-resistance-inset3.jpg")
+Item.create(category_id: 2, size: "small", stock: 1, price: 15000, brand: "CCM", description: "A helmet we recommend for beginners", picture: "../../assets/ccm-hockey-helmet-resistance-inset4.jpg")
+Item.create(category_id: 2, size: "large", stock: 1, price: 25000, brand: "Bauer", description: "A helmet we recommend for experts", picture: "../../assets/ccm-hockey-helmet-resistance-inset5.jpg")
+
+
+Item.create(category_id: 1, size: "9", stock: 1, price: 40000, brand: "Itech", description: "Skates we recommend for experts", picture: "../../assets/ccm-hockey-helmet-resistance-inset5.jpg")
+Item.create(category_id: 1, size: "10", stock: 2, price: 40000, brand: "Graph", description: "Skates we recommend for experts", picture: "../../assets/ccm-hockey-helmet-resistance-inset5.jpg")
 
 Item.create(category_id: 3, size: "large", stock: 2, price: 8000, brand: "Brand A", description: "A Jersey")
 Item.create(category_id: 3, size: "small", stock: 1, price: 7000, brand: "Brand A", description: "A Jersey")

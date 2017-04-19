@@ -3,6 +3,27 @@
 
     <%= render 'pages/package_page', categories: @categories, items: @items %>
 
+
+  <% @categories.each do |category| %>
+    <% @items.each do |item| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: url(<%= item.picture %>);">
+      <div class="card-user">
+      <h1><%= category.item_type %></h1>
+        <p><%= item.brand %></p>
+      </div>
+        <div class="card-category">
+        <!-- <p><%#= item.size %></p> -->
+        <p><%= "#{item.price}" + "$" %></p>
+</div>
+        <!-- <p><%#= item.stock %></p> -->
+        <div class="card-description">
+        <%= item.description %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
   </div>
 
   <div id="sidebar">
