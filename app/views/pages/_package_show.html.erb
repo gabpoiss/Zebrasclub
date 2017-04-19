@@ -1,0 +1,21 @@
+<div class="package-item-container">
+  <div class="package-item-photo">
+    <p>PHOTO</p>
+  </div>
+  <div class="package-item-details">
+    <h2><%= link_to Category.find(@item.category_id).item_type, package_items_path(category: Category.find(@item.category_id).item_type), remote: true, method: :post %></h2>
+    <div class="package-item-brand-name">
+      <p><%= @item.brand %></p>
+    </div>
+    <div class="package-item-price">
+      <p><%= @item.price / 100 %></p>
+    </div>
+    <div class="package-item-size-select">
+      <p><%= @item.size %></p>
+    </div>
+    <div class="package-item-description">
+      <p><%= @item.description %></p>
+    </div>
+  </div>
+  <%= link_to "Main", package_main_path(categories: @categories, items: @items), remote: true, method: :post %>
+</div>

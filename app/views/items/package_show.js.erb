@@ -1,0 +1,3 @@
+$(".card-row").empty();
+var container = "<%= j render 'pages/package_show', item: @item %>";
+$(".card-row").append($(container));
