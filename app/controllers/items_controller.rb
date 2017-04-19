@@ -36,7 +36,6 @@ class ItemsController < ApplicationController
   end
 
   def package_index
-
     if params[:filter]
       @category_id = Category.where(item_type: params[:category])[0].id
       @min_price = if params[:min_price] == ""
@@ -65,10 +64,9 @@ class ItemsController < ApplicationController
       @category_id = Category.where(item_type: params[:category])[0].id
       @items = Item.where(category_id: @category_id)
     end
-
-    respond_to { |i| i.js }
   end
 
   def package_show
+    @item = Item.find(params[:item])
   end
 end
