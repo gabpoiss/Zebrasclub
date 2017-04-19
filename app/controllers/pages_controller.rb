@@ -1,5 +1,18 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :package ]
+  skip_before_action :authenticate_user!, only: [ :home, :package, :package_main ]
+
+  require 'ostruct'
+  module HashToOpenstruct
+    def to_ostruct
+      o = OpenStruct.new(self)
+      each.with_object(o) do |(k,v), o|
+        o.send(:"#{k}=", v.to_ostruct) if v.respond_to? :to_ostruct
+      end
+      o
+    end
+  end
+
+  Hash.send(:include, HashToOpenstruct)
 
   def home
     @items = Item.all
@@ -32,7 +45,7 @@ class PagesController < ApplicationController
       User.find(current_user.id).order_items.where(package: true)
     else
       # ... unless there is no user
-      []
+      session[:package_items] ? session[:package_items] : []
     end
 
     # Does the user have any previous order_items from a package
@@ -43,8 +56,11 @@ class PagesController < ApplicationController
       # OF ITEMS THE USER HAS PREVIOUSLY MANIPULATED
 
       # fill @items with all the old items
-      order_items.each { |i| @items << Item.find(i.item_id) }
-
+      if current_user
+        order_items.each { |i| @items << Item.find(i.item_id) }
+      else
+        order_items.each { |i| @items << i.to_ostruct }
+      end
     else
 
       # USING THE ALGORITHM TO MAKE A NEW LIST OF ITEMS TO SHOW
@@ -86,12 +102,24 @@ class PagesController < ApplicationController
             cart: false
           )
         end
+      else
+        session[:package_items] = []
+        @items.each do |i|
+            session[:package_items] << {
+              category_id: i.category_id,
+              item_id: i.id,
+              id: i.id,
+              price: i.price,
+              description: i.description,
+              brand: i.brand,
+              quantity: 1,
+              shipping_status: "not yet ordered",
+              package: true,
+              size: false,
+              cart: false
+            }
+        end
       end
-
-      # TODO:
-      # otherwise, with no logged in user, the items will be stored
-      # in the browser session
-
     end
   end
 
