@@ -4,21 +4,21 @@
     <%= render 'pages/package_page', categories: @categories, items: @items %>
 
 
-  <% @categories.each do |category| %>
+    <% @categories.each do |category| %>
     <% @items.each do |item| %>
     <div class="col-xs-12 col-sm-4">
       <div class="card" style="background-image: url(<%= item.picture %>);">
-      <div class="card-user">
-      <h1><%= category.item_type %></h1>
-        <p><%= item.brand %></p>
-      </div>
+        <div class="card-user">
+          <h1><%= category.item_type %></h1>
+          <p><%= item.brand %></p>
+        </div>
         <div class="card-category">
-        <!-- <p><%#= item.size %></p> -->
-        <p><%= "#{item.price}" + "$" %></p>
-</div>
+          <!-- <p><%#= item.size %></p> -->
+          <p><%= "#{item.price}" + "$" %></p>
+        </div>
         <!-- <p><%#= item.stock %></p> -->
         <div class="card-description">
-        <%= item.description %>
+          <%= item.description %>
         </div>
       </div>
     </div>
@@ -27,13 +27,13 @@
   </div>
 
   <div id="sidebar">
-  <% @categories.each do |i_t| %>
-  <i class="fa fa-star">
-<%= i_t.item_type%>
-  </i>
-  <% end %>
-  <%= link_to "Order", orders_path %>
-</div>
+    <% @categories.each do |i_t| %>
+    <i class="fa fa-star">
+      <%= i_t.item_type%>
+    </i>
+    <% end %>
+    <%= link_to "Order", orders_path %>
+  </div>
 </div>
 
 <hr>

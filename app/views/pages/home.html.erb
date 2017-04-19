@@ -1,15 +1,21 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://unsplash.it/200/300/?random');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(42, 245, 152, 0.3) 0%, rgba(0, 158, 253, 0.35) 50%), url('../../assets/banner-image.jpg');">
   <div class="banner-content">
-  <%#= form_tag package_path, method: :post, remote: true do |i| %>
-    <%#= number_field_tag "min_price", 0, min: 0 %>
-      <%# if max == 99999999999999 %>
-        <%#= number_field_tag "max_price", min: 0 %>
-      <%# else %>
-        <%#= number_field_tag "max_price", max ? max / 100 : nil, min: 0 %>
-      <%# end %>
+    <%# simple_form_for @items do |form| %>
+    <%#= form.input "min_price" %>
+    <%#= form.input "max_price" %>
+    <%#= form.submit "Find Your Package", package_path %>
     <%# end %>
-  </div>
+
+
+    <%= simple_form_for :search,  url: package_path , :method => :get, html: {class: 'form-inline'} do |f| %>
+
+      <%= f.input :price_lower, as: :integer, required: false, placeholder: "Min" %>
+      <%= f.input :price_upper, as: :integer, required: false, placeholder: "Max" %>
+      <%= f.submit "Submit", class: "btn base-button" %>
+  <% end %>
+
+
+
+  <!-- </div> -->
 </div>
-
-
-<%= link_to "See packages", package_path %>
+<!-- background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%); -->

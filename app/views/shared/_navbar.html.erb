@@ -2,14 +2,14 @@
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
 
-
-    <%= image_tag "https://unsplash.it/50" %>
+  <p>Logo</p>
+  <%#= image_tag "https://unsplash.it/50" %>
 
   <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-<%= link_to "Buy Individual Items", items_path, class: "btn btn-primary" %>
+    <%= link_to "Buy Individual Items", items_path, class: "btn base-button" %>
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
