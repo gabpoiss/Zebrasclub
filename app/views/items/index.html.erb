@@ -18,7 +18,6 @@
       <input type="Submit">
     </form>
     <% if @item_list_by_brand.length == 0 %>
-<%# raise %>
     <% @items.each do |item| %>
     <div class="col-xs-12 col-sm-4">
       <%= link_to package_item_path(item: item.id), method: :post, remote: true do %>
@@ -59,12 +58,6 @@
         </div>
     <% end %>
     <% end %>
-
-
-
-
-
-
   </div>
 </div>
 
