@@ -39,5 +39,5 @@ User.create(first_name: "Martin", last_name: "Giannakopoulos", email: "martingia
 
 Order.create(user_id: 1, shipping_address: "123 Fake Street", paid_status: false)
 
-OrderItem.create(order_id: 1, item_id: 2, shipping_status: "not yet ordered", quantity: 1)
-OrderItem.create(order_id: 1, item_id: 4, shipping_status: "not yet ordered", quantity: 1)
+OrderItem.create(order_id: 1, item_id: 2, shipping_status: "not yet ordered", quantity: 1, cart: true)
+OrderItem.create(order_id: 1, item_id: 4, shipping_status: "not yet ordered", quantity: 1, cart: false)

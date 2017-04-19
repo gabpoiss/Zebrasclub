@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
 
   has_many :orders
+  has_many :order_items, through: :orders
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
