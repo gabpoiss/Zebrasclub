@@ -35,15 +35,16 @@
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
+  color:white;
 }
 
 /* Navbar standard link */
 .navbar-wagon-link {
-  color: #616668;
+  color: $base-button-color;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: $base-button-color;
   text-decoration: none;
 }
 

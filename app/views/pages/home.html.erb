@@ -5,7 +5,8 @@
     <%#= form.input "max_price" %>
     <%#= form.submit "Find Your Package", package_path %>
     <%# end %>
-
+    <h1>Get Your Package!</h1>
+    <br>
 
     <%= simple_form_for :search,  url: package_path , :method => :get, html: {class: 'form-inline'} do |f| %>
 
