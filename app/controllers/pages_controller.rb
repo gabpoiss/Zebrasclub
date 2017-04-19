@@ -2,6 +2,17 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :package ]
 
   def home
+    # @min_price = []
+    # @max_price = []
+    # @items = Item.all
+
+        @items = Item.all
+
+    if params[:search]
+      if params[:search][:price_lower].present? && params[:search][:price_upper].present?
+        @items = @items.where("price > ?", params[:search][:price_lower]).where("price < ?", params[:search][:price_upper])
+      end
+    end
   end
 
   def package
