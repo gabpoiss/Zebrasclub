@@ -1,16 +1,18 @@
 .the-footer {
-  margin-top: 20px;
+  margin-top: 0px;
+  padding-top: 0px;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(40, 40, 40);
   position: absolute;
   bottom: 0px;
   width: 100%;
+  background-color: $base-button-color;
 }
 
 .social-media-footer-box {
+
   padding-left: 50px;
   ul {
     margin: 0;
@@ -21,7 +23,7 @@
         color: white;
         &:hover {
           text-decoration: none;
-          color: $brand-color;
+          color: $base-button-color-hover;
         }
       }
     }
