@@ -22,7 +22,9 @@
     <% end %>
   </div>
   <div class="package-item-details">
+  <div class="package-item-type">
     <h2><%= Category.find(@item.category_id).item_type %></h2>
+    </div>
     <div class="package-item-brand-name">
       <p><%= @item.brand %></p>
     </div>
@@ -37,7 +39,7 @@
     </div>
   </div>
   <div>
-    <%= link_to "Main", package_main_path, remote: true %>
+    <%= link_to "Main", package_main_path, remote: true, class:"btn package-item-main-button" %>
   </div>
   <% unless (current_user && order_item[0].cart) || (!current_user && in_session_cart) %>
     <div>
@@ -47,7 +49,7 @@
       <% if current_user %>
         <%= link_to "Add to cart", edit_orderitem_path(@item.id, {user: current_user.id}), remote: true, method: :patch %>
       <% else %>
-        <%= link_to "Add to cart", edit_orderitem_path(@item.id), remote: true, method: :patch %>
+        <%= link_to "Add to cart", edit_orderitem_path(@item.id), remote: true, method: :patch, class:"btn package-item-main-button-two" %>
       <% end %>
     </div>
   <% end %>
