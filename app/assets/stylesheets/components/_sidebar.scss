@@ -1,29 +1,37 @@
 #sidebar {
   background-color:transparent;
-  position: absolute;
+  position: fixed;
   right: 0px;
-  top: 40px;
+  top: 80px;
   bottom: 0px;
-  width: 100px;
-  text-align: center;
+  width: 130px;
+  // text-align: center;
+  // border: solid black;
+  font-family: $base-font;
+  font-size: 20px;
 }
 
 #sidebar ul {
   list-style: none;
-  padding-left: 0px;
+  padding-left: 10px;
 }
 
 #sidebar li {
-  margin-top:50px;
-  margin-bottom: 50px;
+  margin-top:0px;
+  margin-bottom: 0px;
 }
-
-#sidebar a {
-  text-decoration: none;
-  font-size: 25px;
-  color:#788188;
-}
-
-#sidebar a:hover {
-  color: #1C50FE;
+.sidebar-order-button{
+  font-family: $base-font;
+  position: absolute;
+  bottom: 10px;
+  background-color: $base-button-color;
+  color: white;
+  border-radius: 7px;
+  width: 100px;
+  text-align: center;
+  justify-content:center;
+  .hover{
+    background-color: $base-button-color-hover;
+    color: white;
+  }
 }
