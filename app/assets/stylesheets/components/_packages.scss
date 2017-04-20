@@ -1,11 +1,108 @@
 .package-item-container{
   border: black;
   background-color: grey;
-  height: 300px;
-  width: 300px;
+  height: 400px;
+  position: relative;
+  font-family: $base-font;
 }
 
 
 .package-item-photo{
-
+  border: solid black;
+  height: 300px;
+  width: 50%;
+  background-image: cover !important;
 }
+.package-item-type{
+  position:absolute;
+  top: 10px;
+  right: 10px;
+}
+.package-item-brand-name{
+  position: absolute;
+  top: 150px;
+  left: 620px;
+}
+.package-item-price{
+  position: absolute;
+  top: 10px;
+  left: 600px;
+}
+.package-item-size-select{
+  position: absolute;
+  top: 190px;
+  left: 620px;
+}
+.package-item-description{
+  position: absolute;
+  top: 230px;
+  left: 620px;
+  border: solid black;
+}
+.package-item-main-button{
+  font-family: $base-font;
+  position: absolute;
+  bottom: 10px;
+  left: 620px;
+  background-color: $base-button-color;
+  color: white;
+  border-radius: 7px;
+  width: 200px;
+  text-align: center;
+  .hover{
+    background-color: $base-button-color-hover;
+    color: white;
+  }
+}
+
+
+
+.package-item-main-button-two{
+  position: absolute;
+  bottom: 10px;
+  left: 840px;
+  background-color: $base-button-color;
+  color: white;
+  border-radius: 7px;
+  width: 200px;
+  text-align: center;
+  .hover{
+    background-color: $base-button-color-hover;
+    color: white;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
