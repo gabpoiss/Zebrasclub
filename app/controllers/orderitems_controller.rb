@@ -48,11 +48,13 @@ class OrderitemsController < ApplicationController
     if current_user
       order_item = OrderItem.find(params[:id])
       order_item.cart = false
+      order_item.quantity = 1
       order_item.save
     else
       session[:package_items].each do |i|
         if i["id"] == params[:id].to_i
           i["cart"] = false
+          i["quantity"] = 1
         end
       end
     end
