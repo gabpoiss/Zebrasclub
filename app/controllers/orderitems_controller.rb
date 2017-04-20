@@ -8,6 +8,20 @@ class OrderitemsController < ApplicationController
   end
 
   def update
+    if current_user
+      order_item = OrderItem.joins(:order).where(item_id: params[:id], package: true).where("orders.user_id = ?", current_user.id)
+      order_item[0].cart = true
+      order_item[0].save
+    else
+      session[:package_items].each do |i|
+        if i["id"] == params[:id].to_i
+          i["cart"] = true
+        end
+      end
+    end
+    @item = Item.find(params[:id])
+    @category = @item.category_id
+    render "items/package_show"
   end
 
   def destroy
@@ -17,7 +31,7 @@ class OrderitemsController < ApplicationController
     old_item_id = params[:old_item_id]
     new_item_id = params[:new_item_id]
     if current_user
-      order_item = OrderItem.where(item_id: old_item_id).where(package: true)[0]
+      order_item = OrderItem.joins(:order).where(item_id: params[:id], package: true).where("orders.user_id = ?", current_user.id)
       order_item.item_id = new_item_id
       order_item.save
       @item = Item.find(new_item_id)
