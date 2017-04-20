@@ -2,6 +2,10 @@ class OrderitemsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
+    if current_user
+      @order_items = OrderItem.joins(:order).where(cart: true).where("orders.user_id = ?", current_user.id)
+    else
+    end
   end
 
   def create

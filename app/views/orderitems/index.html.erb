@@ -1,0 +1,28 @@
+<h1>Items in your cart</h1>
+
+<% if current_user %>
+  <% @order_items.each do |i| %>
+    <div>
+      <p><%= i.item.category.item_type %></p>
+      <p>Brand: <%= i.item.brand %></p>
+      <p>Price: $<%= i.item.price / 100 %>.00</p>
+      <p>Size: <%= i.item.size %></p>
+      <p>quantity: <%= i.quantity %></p>
+      <br>
+    </div>
+  <% end %>
+<% else %>
+  <% session[:package_items].each do |i| %>
+    <% if i["cart"] %>
+      <% item = Item.find(i["id"]) %>
+      <div>
+        <p><%= item.category.item_type %></p>
+        <p>Brand: <%= item.brand %></p>
+        <p>Price: $<%= item.price / 100 %>.00</p>
+        <p>Size: <%= item.size %></p>
+        <p>quantity: <%= i["quantity"] %></p>
+        <br>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
