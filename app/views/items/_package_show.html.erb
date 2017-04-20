@@ -1,0 +1,56 @@
+<div class="package-item-container">
+  <div class="package-item-photo">
+    <p>PHOTO</p>
+  </div>
+  <div>
+    <% if current_user %>
+      <% in_session_cart = false %>
+      <% order_item_list = OrderItem.where(item_id: @item.id).where(package: true) %>
+      <% order_item = order_item_list.select do |i| %>
+        <% i.user == current_user %>
+      <% end %>
+      <% if order_item[0].cart %>
+        <h2>IN CART</h2>
+      <% end %>
+    <% else %>
+      <% session[:package_items].each do |i| %>
+        <% if i["id"] == @item.id && i["cart"] == true %>
+          <% in_session_cart = true %>
+          <h2>IN CART</h2>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="package-item-details">
+  <div class="package-item-type">
+    <h2><%= Category.find(@item.category_id).item_type %></h2>
+    </div>
+    <div class="package-item-brand-name">
+      <p><%= @item.brand %></p>
+    </div>
+    <div class="package-item-price">
+      <p><%= @item.price / 100 %></p>
+    </div>
+    <div class="package-item-size-select">
+      <p><%= @item.size %></p>
+    </div>
+    <div class="package-item-description">
+      <p><%= @item.description %></p>
+    </div>
+  </div>
+  <div>
+    <%= link_to "Main", package_main_path, remote: true, class:"btn package-item-main-button" %>
+  </div>
+  <% unless (current_user && order_item[0].cart) || (!current_user && in_session_cart) %>
+    <div>
+      <%= link_to "Other #{Category.find(@item.category_id).item_type.pluralize}", package_items_path(category: Category.find(@item.category_id).item_type, item: @item.id), remote: true, method: :post %>
+    </div>
+    <div>
+      <% if current_user %>
+        <%= link_to "Add to cart", edit_orderitem_path(@item.id, {user: current_user.id}), remote: true, method: :patch %>
+      <% else %>
+        <%= link_to "Add to cart", edit_orderitem_path(@item.id), remote: true, method: :patch, class:"btn package-item-main-button-two" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
