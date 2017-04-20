@@ -1,6 +1,7 @@
 <h1>Items in your cart</h1>
 
 <% if current_user %>
+  <% @order_items = @order_items.sort { |i, j| i.item.category_id <=> j.item.category_id } %>
   <% @order_items.each do |i| %>
     <div>
       <p><%= i.item.category.item_type %></p>
@@ -8,6 +9,12 @@
       <p>Price: $<%= i.item.price / 100 %>.00</p>
       <p>Size: <%= i.item.size %></p>
       <p>quantity: <%= i.quantity %></p>
+      <%= form_tag edit_orderitem_path(i), method: :patch do |j| %>
+        <%= hidden_field_tag "quantity_update", "true" %>
+        <%= number_field_tag "quantity", i.quantity, min: 0 %>
+        <%= submit_tag %>
+      <% end %>
+      <%= link_to "Remove from cart", destroy_orderitem_path(i), method: :delete %>
       <br>
     </div>
   <% end %>
@@ -21,6 +28,13 @@
         <p>Price: $<%= item.price / 100 %>.00</p>
         <p>Size: <%= item.size %></p>
         <p>quantity: <%= i["quantity"] %></p>
+        <%= form_tag edit_orderitem_path(item), method: :patch do |j| %>
+          <%= hidden_field_tag "quantity_update", "true" %>
+          <%= hidden_field_tag "item_id", i["id"] %>
+          <%= number_field_tag "quantity", i["quantity"], min: 0 %>
+          <%= submit_tag %>
+        <% end %>
+        <%= link_to "Remove from cart", destroy_orderitem_path(i["id"]), method: :delete %>
         <br>
       </div>
     <% end %>
