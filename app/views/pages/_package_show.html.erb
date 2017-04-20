@@ -3,7 +3,7 @@
     <p>PHOTO</p>
   </div>
   <div class="package-item-details">
-    <h2><%= link_to Category.find(@item.category_id).item_type, package_items_path(category: Category.find(@item.category_id).item_type, item: @item.id), remote: true, method: :post %></h2>
+    <h2><%= Category.find(@item.category_id).item_type %></h2>
     <div class="package-item-brand-name">
       <p><%= @item.brand %></p>
     </div>
@@ -17,5 +17,10 @@
       <p><%= @item.description %></p>
     </div>
   </div>
-  <%= link_to "Main", package_main_path, remote: true %>
+  <div>
+    <%= link_to "Main", package_main_path, remote: true %>
+  </div>
+  <div>
+    <%= link_to "Other #{Category.find(@item.category_id).item_type.pluralize}", package_items_path(category: Category.find(@item.category_id).item_type, item: @item.id), remote: true, method: :post %>
+  </div>
 </div>
