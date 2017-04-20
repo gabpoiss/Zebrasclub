@@ -20,6 +20,9 @@ class OrderitemsController < ApplicationController
       order_item = OrderItem.where(item_id: old_item_id).where(package: true)[0]
       order_item.item_id = new_item_id
       order_item.save
+      @item = Item.find(new_item_id)
+      @category = Item.find(new_item_id).category_id
+      render "items/package_show"
     else
       new_item = Item.find(new_item_id)
       # binding.pry
@@ -39,7 +42,9 @@ class OrderitemsController < ApplicationController
         size: true,
         cart: false
       }
+      @item = new_item
+      @category = new_item.category_id
+      render "items/package_show"
     end
-    redirect_to package_main_path
   end
 end
