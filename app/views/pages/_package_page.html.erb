@@ -11,7 +11,14 @@
                 <%# if item.cart %>
                   <!-- <div class="card green-card"> -->
                 <%# else %>
-                <div class="card">
+                <% not_cart = "<div class=\"card\">" %>
+                <% cart = "<div class=\"card in-cart\">" %>
+                <% order_item = OrderItem.joins(:order).where(item_id: item.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
+                <% if order_item.cart %>
+                  <%= cart.html_safe %>
+                <% else %>
+                  <%= not_cart.html_safe %>
+                <% end %>
                   <div class="card-user">
                     <h1><%= Category.find(item.category_id).item_type %></h1>
                     <p><%= item.brand %></p>
