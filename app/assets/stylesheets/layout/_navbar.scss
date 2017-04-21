@@ -9,6 +9,11 @@
   justify-content: space-between;
   font-family: $base-font;
 }
+// logo
+.logo{
+  width: 40px;
+  height: 40px;
+}
 /* Optional class to fix the navbar on top */
 .navbar-wagon-fixed {
   position: fixed;
@@ -20,7 +25,8 @@
 
 /* Navbar logo */
 .navbar-wagon-brand img {
-  width: 50px;
+  width: 250px;
+  height: 100px;
 }
 
 /* Navbar right section (with form, links, button) */
