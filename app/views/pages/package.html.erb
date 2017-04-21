@@ -12,20 +12,18 @@
             <div class="package-items">
               <% @items.each do |i| %>
                 <% if current_user %>
-                  <% not_cart = "<div class=\"package-item\">" %>
-                  <% cart = "<div class=\"package-item sidebar-in-cart\">" %>
                   <% order_item = OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
                   <% if order_item.cart %>
-                    <!-- CHANGE THIS TO "<%= cart.html_safe %>" WHEN FUNCTIONALITY IS FULLY BUILT -->
-                    <%= cart.html_safe %>
+                    <% x = "<div id=\"sidebar-#{i.category.item_type}\" class=\"package-item package-item-in-cart\">" %>
                   <% else %>
-                    <%= not_cart.html_safe %>
+                    <% x = "<div id=\"sidebar-#{i.category.item_type}\" class=\"package-item \">" %>
                   <% end %>
+                  <%= x.html_safe %>
                     <h3><%= i.category.item_type%></h3>
                     <i class="fa fa-star"></i>
                   </div>
                 <% else %>
-                  <div>
+                  <div class="package-item">
                     <h3><%= i.category.item_type%></h3>
                     <i class="fa fa-star"></i>
                   </div>

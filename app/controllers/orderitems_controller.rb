@@ -19,7 +19,7 @@ class OrderitemsController < ApplicationController
         @order_items = OrderItem.joins(:order).where(cart: true).where("orders.user_id = ?", current_user.id)
       else
         session[:package_items].each do |i|
-          if i["id"] == params[:item_id].to_i
+          if i["item_id"] == params[:item_id].to_i
             i["quantity"] = params[:quantity]
           end
         end
@@ -42,13 +42,13 @@ class OrderitemsController < ApplicationController
         order_item[0].save
       else
         session[:package_items].each do |i|
-          if i["id"] == params[:id].to_i
+          if i["item_id"] == params[:id].to_i
             i["cart"] = true
           end
         end
       end
       @item = Item.find(params[:id])
-      @category = @item.category_id
+      @category = @item.category.item_type
       render "items/package_show"
     end
   end
@@ -62,7 +62,7 @@ class OrderitemsController < ApplicationController
       order_item.save
     else
       session[:package_items].each do |i|
-        if i["id"] == params[:id].to_i
+        if i["item_id"] == params[:id].to_i
           i["cart"] = false
           i["quantity"] = 1
         end
@@ -83,17 +83,11 @@ class OrderitemsController < ApplicationController
       render "items/package_show"
     else
       new_item = Item.find(new_item_id)
-      # binding.pry
       session[:package_items].delete_if do |i|
-        i["id"] == old_item_id.to_i
+        i["item_id"] == old_item_id.to_i
       end
       session[:package_items] << {
-        category_id: new_item.category_id,
         item_id: new_item.id,
-        id: new_item.id,
-        price: new_item.price,
-        description: new_item.description,
-        brand: new_item.brand,
         quantity: 1,
         shipping_status: "not yet ordered",
         package: true,
