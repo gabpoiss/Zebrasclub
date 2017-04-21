@@ -9,6 +9,10 @@
   margin: 10px 0px;
 }
 
+.green-card {
+  border: solid green !important;
+}
+
 .card-user {
   position: absolute;
   right: 10px;
@@ -57,6 +61,6 @@
   h2,h5{
     font-family: $base-font;
   }
-  overflow: scroll;
+  overflow-y: auto;
 }
 
