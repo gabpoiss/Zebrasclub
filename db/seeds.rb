@@ -18,11 +18,11 @@ category_id = [1, 2, 3, 4, 5]
   sto = stock.sample
   pri = price.sample
   bra = brand.sample
-  Item.create(category_id: cat, size: "extra small", stock: sto, price: pri, brand: bra, description: description)
-  Item.create(category_id: cat, size: "small", stock: sto, price: pri, brand: bra, description: description)
-  Item.create(category_id: cat, size: "medium", stock: sto, price: pri, brand: bra, description: description)
-  Item.create(category_id: cat, size: "large", stock: sto, price: pri, brand: bra, description: description)
-  Item.create(category_id: cat, size: "extra large", stock: sto, price: pri, brand: bra, description: description)
+  Item.create(category_id: cat, size: "extra small", stock: sto, price: pri, brand: bra, description: description, picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
+  Item.create(category_id: cat, size: "small", stock: sto, price: pri, brand: bra, description: description, picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
+  Item.create(category_id: cat, size: "medium", stock: sto, price: pri, brand: bra, description: description, picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
+  Item.create(category_id: cat, size: "large", stock: sto, price: pri, brand: bra, description: description, picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
+  Item.create(category_id: cat, size: "extra large", stock: sto, price: pri, brand: bra, description: description, picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
 end
 
 User.create(first_name: "Martin", last_name: "Giannakopoulos", email: "martingianna@gmail.com", password: "123456")

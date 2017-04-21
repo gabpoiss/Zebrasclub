@@ -11,12 +11,13 @@
 }
 
 .main-photo {
-  height: 80%;
-  background-size: cover!important;
-  border-top: 2px solid black;
-  border-right: 2px solid black;
-  border-left: 2px solid black;
-  border-bottom: 1px solid black;
+  width: 340px;
+  // height: 80%;
+  // background-size: cover!important;
+  // border-top: 2px solid black;
+  // border-right: 2px solid black;
+  // border-left: 2px solid black;
+  // border-bottom: 1px solid black;
 }
 
 .bottom-photo-container {
@@ -26,17 +27,19 @@
 
 .bottom-photo {
   flex: 1 0;
-  background-size: cover !important;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-  border-bottom: 2px solid black;
-  &:first-child {
-    border-left: 2px solid black;
-  }
-  &:last-child {
-    border-right: 2px solid black;
-  }
+  width: 110px;
+  padding: 10px 0;
+  // background-size: cover !important;
+  // border-top: 1px solid black;
+  // border-right: 1px solid black;
+  // border-left: 1px solid black;
+  // border-bottom: 2px solid black;
+  // &:first-child {
+  //   border-left: 2px solid black;
+  // }
+  // &:last-child {
+  //   border-right: 2px solid black;
+  // }
 }
 
 .package-item-details {

@@ -60,11 +60,12 @@
   // margin-top: 20px;
   // box-shadow: 0 2px 3px rgba(0,0,0,0.6);
   // height: 1000px !important;
+  // position: fixed;
   padding: 20px;
   background-color: rgb(245, 245, 245);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   height: 80vh;
-  h2,h5{
+  h1,h2,h3,h5,p{
     font-family: $base-font;
   }
   overflow-y: auto;
