@@ -1,30 +1,28 @@
 <% in_session_cart = false %>
 <% order_item_list = OrderItem.where(item_id: @item.id).where(package: true) %>
 <% order_item = order_item_list.select do |i| %>
-  <% i.user == current_user %>
+<% i.user == current_user %>
 <% end %>
 <% unless current_user %>
-  <% session[:package_items].each do |i| %>
-    <% if i["id"] == @item.id && i["cart"] == true %>
-      <% in_session_cart = true %>
-    <% end %>
-  <% end %>
+<% session[:package_items].each do |i| %>
+<% if i["id"] == @item.id && i["cart"] == true %>
+<% in_session_cart = true %>
+<% end %>
+<% end %>
 <% end %>
 
-<div class="package-item-container">
-  <div class="package-item-photo">
-    <div class="main-photo" style="background-image: url(<%= @item.picture %>);">
-    </div>
-    <div class="bottom-photo-container">
-      <div class="bottom-photo", style="background-image: url(../../assets/bauer-hockey-helmet-9900-inset3.jpg);"></div>
-      <div class="bottom-photo", style="background-image: url(../../assets/bauer-hockey-helmet-9900-inset3.jpg);"></div>
-      <div class="bottom-photo", style="background-image: url(../../assets/bauer-hockey-helmet-9900-inset3.jpg);"></div>
+<div class="row">
+  <div class="col-sm-5">
+    <%= image_tag @item.picture, class:"main-photo" %>
+    <div>
+      <%= image_tag @item.picture, class:"bottom-photo" %>
+      <%= image_tag @item.picture, class:"bottom-photo" %>
+      <%= image_tag @item.picture, class:"bottom-photo" %>
     </div>
   </div>
-  <div class="package-item-details-container">
-    <div class="package-item-details">
-      <div class="package-item-main-header">
-        <h1><%= Category.find(@item.category_id).item_type.upcase %></12>
+  <div class="col-sm-7">
+    <div class="package-item-main-header">
+      <h1><%= Category.find(@item.category_id).item_type.upcase %></12>
         <h3>$<%= @item.price / 100 %>.00</h3>
       </div>
       <div class="package-item-sub-header">
@@ -32,57 +30,70 @@
       </div>
       <div class="package-item-sizes">
         <% if current_user %>
-          <% order_item = OrderItem.joins(:order).where(item_id: @item.id, package: true).where("orders.user_id = ?", current_user.id) %>
-          <%= link_to "xs", edit_orderitem_path(order_item[0], { size_update: true, size: "extra small" }), remote: true, method: :patch, class: "size-circle xs" %>
-          <%= link_to "sm", edit_orderitem_path(order_item[0], { size_update: true, size: "small" }), remote: true, method: :patch, class: "size-circle sm" %>
-          <%= link_to "md", edit_orderitem_path(order_item[0], { size_update: true, size: "medium" }), remote: true, method: :patch, class: "size-circle md" %>
-          <%= link_to "lg", edit_orderitem_path(order_item[0], { size_update: true, size: "large" }), remote: true, method: :patch, class: "size-circle lg" %>
-          <%= link_to "xl", edit_orderitem_path(order_item[0], { size_update: true, size: "extra large" }), remote: true, method: :patch, class: "size-circle xl" %>
-          <% if order_item[0].size %>
-            <script>
-              <% case item.size %>
-                <% when "extra small" %>
-                  $(".size-circle").removeClass("size-circle-on");
-                  $(".xs").addClass("size-circle-on");
-                <% when "small" %>
-                  $(".size-circle").removeClass("size-circle-on");
-                  $(".sm").addClass("size-circle-on");
-                <% when "medium" %>
-                  $(".size-circle").removeClass("size-circle-on");
-                  $(".md").addClass("size-circle-on");
-                <% when "large" %>
-                  $(".size-circle").removeClass("size-circle-on");
-                  $(".lg").addClass("size-circle-on");
-                <% when "extra large" %>
-                  $(".size-circle").removeClass("size-circle-on");
-                  $(".xl").addClass("size-circle-on");
-              <% end %>
-            </script>
+        <% order_item = OrderItem.joins(:order).where(item_id: @item.id, package: true).where("orders.user_id = ?", current_user.id) %>
+        <%= link_to "xs", edit_orderitem_path(order_item[0], { size_update: true, size: "extra small" }), remote: true, method: :patch, class: "size-circle xs" %>
+        <%= link_to "sm", edit_orderitem_path(order_item[0], { size_update: true, size: "small" }), remote: true, method: :patch, class: "size-circle sm" %>
+        <%= link_to "md", edit_orderitem_path(order_item[0], { size_update: true, size: "medium" }), remote: true, method: :patch, class: "size-circle md" %>
+        <%= link_to "lg", edit_orderitem_path(order_item[0], { size_update: true, size: "large" }), remote: true, method: :patch, class: "size-circle lg" %>
+        <%= link_to "xl", edit_orderitem_path(order_item[0], { size_update: true, size: "extra large" }), remote: true, method: :patch, class: "size-circle xl" %>
+        <% if order_item[0].size %>
+        <script>
+          <% case item.size %>
+          <% when "extra small" %>
+          $(".size-circle").removeClass("size-circle-on");
+          $(".xs").addClass("size-circle-on");
+          <% when "small" %>
+          $(".size-circle").removeClass("size-circle-on");
+          $(".sm").addClass("size-circle-on");
+          <% when "medium" %>
+          $(".size-circle").removeClass("size-circle-on");
+          $(".md").addClass("size-circle-on");
+          <% when "large" %>
+          $(".size-circle").removeClass("size-circle-on");
+          $(".lg").addClass("size-circle-on");
+          <% when "extra large" %>
+          $(".size-circle").removeClass("size-circle-on");
+          $(".xl").addClass("size-circle-on");
           <% end %>
+        </script>
+        <% end %>
         <% end %>
       </div>
       <div class="package-item-description">
         <p><%= @item.description %></p>
       </div>
-    </div>
-    <div class="package-item-buttons">
-      <% if !((current_user && order_item[0].cart) || (!current_user && in_session_cart)) %>
+      <div class="package-item-buttons">
+        <% if !((current_user && order_item[0].cart) || (!current_user && in_session_cart)) %>
         <div class="other-items-button">
           <%= link_to "Other #{Category.find(@item.category_id).item_type.pluralize}", package_items_path(category: Category.find(@item.category_id).item_type, item: @item.id), remote: true, method: :post, class: "btn base-button other-items" %>
         </div>
         <div class="add-to-cart-button">
           <% if current_user %>
-            <%= link_to "Add to cart", edit_orderitem_path(@item.id, {user: current_user.id}), remote: true, method: :patch, class: "btn cart-button add-to-cart" %>
+          <%= link_to "Add to cart", edit_orderitem_path(@item.id, {user: current_user.id}), remote: true, method: :patch, class: "btn cart-button add-to-cart" %>
           <% else %>
-            <%= link_to "Add to cart", edit_orderitem_path(@item.id), remote: true, method: :patch, class: "btn cart-button add-to-cart" %>
+          <%= link_to "Add to cart", edit_orderitem_path(@item.id), remote: true, method: :patch, class: "btn cart-button add-to-cart" %>
           <% end %>
         </div>
-      <% else %>
+        <% else %>
         <%= link_to "Main", package_main_path, remote: true, class: "btn base-button back-to-main" %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
