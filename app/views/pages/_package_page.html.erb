@@ -12,16 +12,19 @@
                 <% else %>
                   <div class="card">
                 <% end %>
+
                     <div class="card-user">
                       <h1><%= Category.find(item.category_id).item_type %></h1>
                       <p><%= item.brand %></p>
+                      <%# item.picture %>
                     </div>
                     <div class="card-category">
                       <p><%= "#{item.price / 100}" + "$" %></p>
                     </div>
-                    <div class="card-description">
-                      <%= item.description %>
-                    </div>
+                    <!-- Wont display the description in the package index -->
+<!--                     <div class="card-description">
+                      <%#= item.description %>
+                    </div> -->
                   </div>
               <% end %>
             <% end %>
