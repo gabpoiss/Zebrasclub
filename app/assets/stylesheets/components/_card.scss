@@ -1,11 +1,12 @@
 .card {
   height: 175px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  // text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
-  color: green;
+  color: black;
   position: relative;
   border: solid black;
   font-family: $base-font;
+  margin: 10px 0px;
 }
 
 .card-user {
@@ -42,15 +43,20 @@
   opacity: 0;
 }
 .card-row{
-  padding-top: 30px;
-  padding-right: 30px;
-  padding-left: 30px;
-  padding-bottom: 30px;
-  margin-top: 20px;
-  box-shadow: 0 2px 3px rgba(0,0,0,0.6);
-  background-color: white;
+  // padding-top: 30px;
+  // padding-right: 30px;
+  // padding-left: 30px;
+  // padding-bottom: 30px;
+  // margin-top: 20px;
+  // box-shadow: 0 2px 3px rgba(0,0,0,0.6);
+  // height: 1000px !important;
+  padding: 20px;
+  background-color: rgb(245, 245, 245);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  height: 80vh;
   h2,h5{
-  font-family: $base-font;
+    font-family: $base-font;
   }
+  overflow: scroll;
 }
 

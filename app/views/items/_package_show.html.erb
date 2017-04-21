@@ -1,56 +1,74 @@
+<% in_session_cart = false %>
+<% order_item_list = OrderItem.where(item_id: @item.id).where(package: true) %>
+<% order_item = order_item_list.select do |i| %>
+  <% i.user == current_user %>
+<% end %>
+
 <div class="package-item-container">
   <div class="package-item-photo">
-    <p>PHOTO</p>
-  </div>
-  <div>
-    <% if current_user %>
-      <% in_session_cart = false %>
-      <% order_item_list = OrderItem.where(item_id: @item.id).where(package: true) %>
-      <% order_item = order_item_list.select do |i| %>
-        <% i.user == current_user %>
-      <% end %>
-      <% if order_item[0].cart %>
-        <h2>IN CART</h2>
-      <% end %>
-    <% else %>
-      <% session[:package_items].each do |i| %>
-        <% if i["id"] == @item.id && i["cart"] == true %>
-          <% in_session_cart = true %>
-          <h2>IN CART</h2>
-        <% end %>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="package-item-details">
-  <div class="package-item-type">
-    <h2><%= Category.find(@item.category_id).item_type %></h2>
+    <div class="main-photo">
     </div>
-    <div class="package-item-brand-name">
-      <p><%= @item.brand %></p>
-    </div>
-    <div class="package-item-price">
-      <p><%= @item.price / 100 %></p>
-    </div>
-    <div class="package-item-size-select">
-      <p><%= @item.size %></p>
-    </div>
-    <div class="package-item-description">
-      <p><%= @item.description %></p>
+    <div class="bottom-photo-container">
+      <div class="bottom-photo"></div>
+      <div class="bottom-photo"></div>
+      <div class="bottom-photo"></div>
     </div>
   </div>
-  <div>
-    <%= link_to "Main", package_main_path, remote: true, class:"btn package-item-main-button" %>
-  </div>
-  <% unless (current_user && order_item[0].cart) || (!current_user && in_session_cart) %>
-    <div>
-      <%= link_to "Other #{Category.find(@item.category_id).item_type.pluralize}", package_items_path(category: Category.find(@item.category_id).item_type, item: @item.id), remote: true, method: :post %>
+  <div class="package-item-details-container">
+    <div class="package-item-details">
+      <div class="package-item-main-header">
+        <h1><%= Category.find(@item.category_id).item_type.upcase %></12>
+        <h3>$<%= @item.price / 100 %>.00</h3>
+      </div>
+      <div class="package-item-sub-header">
+        <h3><%= @item.brand %></h3>
+      </div>
+      <div class="package-item-sizes">
+        <a href="#"><div class="size-circle"><h3>xs</h3></div></a>
+        <a href="#"><div class="size-circle"><h3>sm</h3></div></a>
+        <a href="#"><div class="size-circle"><h3>md</h3></div></a>
+        <a href="#"><div class="size-circle"><h3>lg</h3></div></a>
+        <a href="#"><div class="size-circle"><h3>xl</h3></div></a>
+      </div>
+      <div class="package-item-description">
+        <p><%= @item.description %></p>
+      </div>
     </div>
-    <div>
-      <% if current_user %>
-        <%= link_to "Add to cart", edit_orderitem_path(@item.id, {user: current_user.id}), remote: true, method: :patch %>
-      <% else %>
-        <%= link_to "Add to cart", edit_orderitem_path(@item.id), remote: true, method: :patch, class:"btn package-item-main-button-two" %>
+    <div class="package-item-buttons">
+      <% unless (current_user && order_item[0].cart) || (!current_user && in_session_cart) %>
+        <div class="other-items-button">
+          <button class="btn btn-primary other-items">
+            <%= link_to "Other #{Category.find(@item.category_id).item_type.pluralize}", package_items_path(category: Category.find(@item.category_id).item_type, item: @item.id), remote: true, method: :post %>
+          </button>
+
+        </div>
+        <div class="add-to-cart-button">
+          <button class="btn btn-success add-to-cart">
+            <% if current_user %>
+              <%= link_to "Add to cart", edit_orderitem_path(@item.id, {user: current_user.id}), remote: true, method: :patch %>
+            <% else %>
+              <%= link_to "Add to cart", edit_orderitem_path(@item.id), remote: true, method: :patch, class:"btn package-item-main-button-two" %>
+            <% end %>
+          </button>
+        </div>
       <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
+
+
+          <%# link_to "Main", package_main_path, remote: true, class:"btn package-item-main-button" %>
+<!--    <div class="in-cart">
+          <% if current_user %>
+            <% if order_item[0].cart %>
+              <p>In Cart</p>
+            <% end %>
+          <% else %>
+            <% session[:package_items].each do |i| %>
+              <% if i["id"] == @item.id && i["cart"] == true %>
+                <% in_session_cart = true %>
+                <p>In Cart</p>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div> -->

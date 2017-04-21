@@ -1,16 +1,32 @@
-<div class="container">
-  <div class="row card-row">
-
-    <%= render 'pages/package_page', categories: @categories, items: @items %>
-
-  </div>
-
-  <div id="sidebar">
-    <% @categories.each do |i_t| %>
-    <i class="fa fa-star">
-      <%= i_t.item_type%>
-    </i>
-    <% end %>
-    <%= link_to "Order", orders_path %>
+<div id="package-main-index">
+  <div class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-9">
+            <div class="card-row">
+              <%= render 'pages/package_page', categories: @categories, items: @items %>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-3">
+          <div class="sidebar">
+            <div class="package-items">
+              <% @categories.each do |i_t| %>
+                <div class="package-item">
+                  <h3><%= i_t.item_type%></h3>
+                  <i class="fa fa-star"></i>
+                </div>
+              <% end %>
+            </div>
+            <button class="btn btn-success place-package-order">
+              <%= link_to "Order", orders_path %>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+
