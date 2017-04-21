@@ -8,31 +8,20 @@ size = ["small", "medium", "large", "extra large"]
 stock = (1..10).to_a
 price = []
 (1000..100000).step(1000) { |i| price << i }
-brand = ["Itech", "Graph", "CCM", "Bauer", "Brand A", "Brand C", "Brand H"]
-description = "Generic Description"
+brand = ["Itech", "Graph", "CCM", "Bauer"]
+description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius orci id tellus ornare, vitae faucibus ipsum ultrices. Fusce tincidunt justo vel consequat tempor. Nam justo nisi, eleifend vitae imperdiet in, tincidunt quis massa. Etiam condimentum finibus diam sed venenatis. Aenean pharetra lacus eu ligula euismod, quis fringilla orci scelerisque. Sed at pellentesque tellus. Sed lacus est, sollicitudin vitae scelerisque id, accumsan nec ligula. In dignissim leo nec lacus facilisis, sed convallis neque placerat. Fusce eros tellus, facilisis vitae semper sit amet, posuere at felis."
 category_id = [1, 2, 3, 4, 5]
 
-Item.create(category_id: 1, size: "large", stock: 1, price: 40000, brand: "Itech", description: "Skates we recommend for experts")
-Item.create(category_id: 1, size: "small", stock: 2, price: 40000, brand: "Graph", description: "Skates we recommend for experts")
-
-Item.create(category_id: 2, size: "large", stock: 2, price: 20000, brand: "CCM", description: "A helmet we recommend for beginners", picture: "../../assets/ccm-hockey-helmet-resistance-inset3.jpg")
-Item.create(category_id: 2, size: "small", stock: 1, price: 15000, brand: "CCM", description: "A helmet we recommend for beginners", picture: "../../assets/ccm-hockey-helmet-resistance-inset4.jpg")
-Item.create(category_id: 2, size: "large", stock: 1, price: 25000, brand: "Bauer", description: "A helmet we recommend for experts", picture: "../../assets/ccm-hockey-helmet-resistance-inset5.jpg")
-
-
-Item.create(category_id: 1, size: "9", stock: 1, price: 40000, brand: "Itech", description: "Skates we recommend for experts", picture: "../../assets/ccm-hockey-helmet-resistance-inset5.jpg")
-Item.create(category_id: 1, size: "10", stock: 2, price: 40000, brand: "Graph", description: "Skates we recommend for experts", picture: "../../assets/ccm-hockey-helmet-resistance-inset5.jpg")
-
-Item.create(category_id: 3, size: "large", stock: 2, price: 8000, brand: "Brand A", description: "A Jersey")
-Item.create(category_id: 3, size: "small", stock: 1, price: 7000, brand: "Brand A", description: "A Jersey")
-
-Item.create(category_id: 4, size: "small", stock: 1, price: 8500, brand: "Brand C", description: "A pair of pants")
-Item.create(category_id: 4, size: "small", stock: 1, price: 10000, brand: "Brand B", description: "A pair of pants")
-
-Item.create(category_id: 5, size: "medium", stock: 4, price: 500, brand: "Brand H", description: "An armband")
-
-100.times do
-  Item.create(category_id: category_id.sample, size: size.sample, stock: stock.sample, price: price.sample, brand: brand.sample, description: description)
+25.times do
+  cat = category_id.sample
+  sto = stock.sample
+  pri = price.sample
+  bra = brand.sample
+  Item.create(category_id: cat, size: "extra small", stock: sto, price: pri, brand: bra, description: description)
+  Item.create(category_id: cat, size: "small", stock: sto, price: pri, brand: bra, description: description)
+  Item.create(category_id: cat, size: "medium", stock: sto, price: pri, brand: bra, description: description)
+  Item.create(category_id: cat, size: "large", stock: sto, price: pri, brand: bra, description: description)
+  Item.create(category_id: cat, size: "extra large", stock: sto, price: pri, brand: bra, description: description)
 end
 
 User.create(first_name: "Martin", last_name: "Giannakopoulos", email: "martingianna@gmail.com", password: "123456")
