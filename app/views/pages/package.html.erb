@@ -11,18 +11,25 @@
           <div class="sidebar">
             <div class="package-items">
               <% @items.each do |i| %>
-                <% not_cart = "<div class=\"package-item\">" %>
-                <% cart = "<div class=\"package-item sidebar-in-cart\">" %>
-                <% order_item = OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
-                <% if order_item.cart %>
-                  <!-- CHANGE THIS TO "<%= cart.html_safe %>" WHEN FUNCTIONALITY IS FULLY BUILT -->
-                  <%= cart.html_safe %>
+                <% if current_user %>
+                  <% not_cart = "<div class=\"package-item\">" %>
+                  <% cart = "<div class=\"package-item sidebar-in-cart\">" %>
+                  <% order_item = OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
+                  <% if order_item.cart %>
+                    <!-- CHANGE THIS TO "<%= cart.html_safe %>" WHEN FUNCTIONALITY IS FULLY BUILT -->
+                    <%= cart.html_safe %>
+                  <% else %>
+                    <%= not_cart.html_safe %>
+                  <% end %>
+                    <h3><%= i.category.item_type%></h3>
+                    <i class="fa fa-star"></i>
+                  </div>
                 <% else %>
-                  <%= not_cart.html_safe %>
+                  <div>
+                    <h3><%= i.category.item_type%></h3>
+                    <i class="fa fa-star"></i>
+                  </div>
                 <% end %>
-                  <h3><%= i.category.item_type%></h3>
-                  <i class="fa fa-star"></i>
-                </div>
               <% end %>
             </div>
             <%= link_to "Proceed to Checkout", orderitems_path, class: "btn cart-button place-package-order" %>

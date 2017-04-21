@@ -1,5 +1,4 @@
 class OrderitemsController < ApplicationController
-  skip_before_action :authenticate_user!
 
   def index
     if current_user
@@ -58,6 +57,7 @@ class OrderitemsController < ApplicationController
     if current_user
       order_item = OrderItem.find(params[:id])
       order_item.cart = false
+      order_item.size = false
       order_item.quantity = 1
       order_item.save
     else

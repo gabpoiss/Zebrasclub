@@ -7,34 +7,35 @@
             <% item = @items[j] %>
             <% unless item.nil? %>
               <%= link_to package_item_path(item: item.id), method: :post, remote: true do %>
-                <!-- BUG!!! -->
-                <%# if item.cart %>
-                  <!-- <div class="card green-card"> -->
-                <%# else %>
-                <% not_cart = "<div class=\"card\">" %>
-                <% cart = "<div class=\"card in-cart\">" %>
-                <% order_item = OrderItem.joins(:order).where(item_id: item.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
-                <% if order_item.cart %>
-                  <%= cart.html_safe %>
+                <% if current_user %>
+                  <% not_cart = "<div class=\"card\">" %>
+                  <% cart = "<div class=\"card in-cart\">" %>
+                    <% order_item = OrderItem.joins(:order).where(item_id: item.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
+                    <% if order_item.cart %>
+                      <%= cart.html_safe %>
+                    <% else %>
+                      <%= not_cart.html_safe %>
+                    <% end %>
+                    <div class="card-user">
+                      <h1><%= Category.find(item.category_id).item_type %></h1>
+                      <p><%= item.brand %></p>
+                    </div>
+                    <div class="card-category">
+                      <p><%= "#{item.price / 100}" + "$" %></p>
+                    </div>
+                  </div>
                 <% else %>
-                  <%= not_cart.html_safe %>
+                  <div class="card">
+                    <div class="card-user">
+                      <h1><%= Category.find(item.category_id).item_type %></h1>
+                      <p><%= item.brand %></p>
+                    </div>
+                    <div class="card-category">
+                      <p><%= "#{item.price / 100}" + "$" %></p>
+                    </div>
+                  </div>
                 <% end %>
-                  <div class="card-user">
-                    <h1><%= Category.find(item.category_id).item_type %></h1>
-                    <p><%= item.brand %></p>
-                    <%# item.picture %>
-                  </div>
-                  <div class="card-category">
-                    <p><%= "#{item.price / 100}" + "$" %></p>
-                  </div>
-                </div>
               <% end %>
-                <%# end %>
-                    <!-- Wont display the description in the package index -->
-<!--                     <div class="card-description">
-                      <%#= item.description %>
-
-                    </div> -->
             <% end %>
           </div>
         <% end %>

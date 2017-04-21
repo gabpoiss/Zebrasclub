@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :package, :package_main ]
+  skip_before_action :authenticate_user!, only: [ :home ]
 
   require 'ostruct'
   module HashToOpenstruct
