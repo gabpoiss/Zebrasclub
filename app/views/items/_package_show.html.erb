@@ -3,9 +3,11 @@
 <% order_item = order_item_list.select do |i| %>
   <% i.user == current_user %>
 <% end %>
-<% session[:package_items].each do |i| %>
-  <% if i["id"] == @item.id && i["cart"] == true %>
-    <% in_session_cart = true %>
+<% unless current_user %>
+  <% session[:package_items].each do |i| %>
+    <% if i["id"] == @item.id && i["cart"] == true %>
+      <% in_session_cart = true %>
+    <% end %>
   <% end %>
 <% end %>
 

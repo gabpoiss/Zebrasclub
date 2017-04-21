@@ -10,9 +10,17 @@
         <div class="col-xs-12 col-md-3">
           <div class="sidebar">
             <div class="package-items">
-              <% @categories.each do |i_t| %>
-                <div class="package-item">
-                  <h3><%= i_t.item_type%></h3>
+              <% @items.each do |i| %>
+                <% not_cart = "<div class=\"package-item\">" %>
+                <% cart = "<div class=\"package-item sidebar-in-cart\">" %>
+                <% order_item = OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
+                <% if order_item.cart %>
+                  <!-- CHANGE THIS TO "<%= cart.html_safe %>" WHEN FUNCTIONALITY IS FULLY BUILT -->
+                  <%= not_cart.html_safe %>
+                <% else %>
+                  <%= not_cart.html_safe %>
+                <% end %>
+                  <h3><%= i.category.item_type%></h3>
                   <i class="fa fa-star"></i>
                 </div>
               <% end %>
