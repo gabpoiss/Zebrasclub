@@ -21,10 +21,13 @@
     </div>
   </div>
   <div class="col-sm-7">
+    <div class="back-button">
+      <%= link_to "X", package_main_path, remote: true %>
+    </div>
     <div class="package-item-main-header">
       <h1><%= Category.find(@item.category_id).item_type.upcase %></h1>
       <h3>$<%= @item.price / 100 %>.00</h3>
-      </div>
+    </div>
     <div class="package-item-sub-header">
       <h3><%= @item.brand %></h3>
     </div>

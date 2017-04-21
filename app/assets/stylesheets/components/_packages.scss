@@ -149,7 +149,19 @@
   margin-bottom: -16px;
 }
 
-
+.back-button {
+  position: absolute;
+  top: -8px;
+  right: 11px;
+  a {
+    font-size: 20px;
+    color: rgb(100, 100, 100);
+    font-weight: thick;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
 
 html {
   @media (min-width: 1200px) {
