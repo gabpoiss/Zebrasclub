@@ -7,11 +7,14 @@
             <% item = @items[j] %>
             <% unless item.nil? %>
               <%= link_to package_item_path(item: item.id), method: :post, remote: true do %>
-                <% if item.cart %>
-                  <div class="card green-card">
-                <% else %>
+
+                <!-- BUG!!! -->
+
+                <%# if item.cart %>
+                  <!-- <div class="card green-card"> -->
+                <%# else %>
                   <div class="card">
-                <% end %>
+                <%# end %>
                     <div class="card-user">
                       <h1><%= Category.find(item.category_id).item_type %></h1>
                       <p><%= item.brand %></p>
