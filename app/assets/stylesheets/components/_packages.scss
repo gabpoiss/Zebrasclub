@@ -76,7 +76,7 @@
   padding: 15px 20px;
   display: flex;
   a {
-    color: white !important;
+    color: white;
     &:hover {
       text-decoration: none;
     }
@@ -99,6 +99,11 @@
   }
 }
 
+.size-circle-on {
+  background-color: pink;
+  color: black !important;
+}
+
 .package-item-buttons {
   display: flex;
   justify-content: space-around;
@@ -107,7 +112,7 @@
 .other-items {
   padding: 10px 40px;
   a {
-    color: white !important;
+    color: white;
     &:hover {
       text-decoration: none;
     }
@@ -117,7 +122,7 @@
 .add-to-cart {
   padding: 10px 40px;
   a {
-    color: white !important;
+    color: white;
     &:hover {
       text-decoration: none;
     }
@@ -126,7 +131,7 @@
 
 .back-to-main {
   padding: 10px 40px;
-  color: white !important;
+  color: white;
   &:hover {
     text-decoration: none;
   }
