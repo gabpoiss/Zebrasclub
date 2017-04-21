@@ -26,6 +26,16 @@ class OrderitemsController < ApplicationController
         end
       end
       redirect_to orderitems_path
+    elsif params[:size_update]
+      order_item = OrderItem.find(params[:id])
+      item = order_item.item
+      new_item = Item.where(price: item.price, brand: item.brand, category_id: item.category_id, size: params[:size])[0]
+      order_item.item = new_item
+      order_item.size = true
+      order_item.save
+      @item = new_item
+      @category = @item.category_id
+      render "items/package_show"
     else
       if current_user
         order_item = OrderItem.joins(:order).where(item_id: params[:id], package: true).where("orders.user_id = ?", current_user.id)

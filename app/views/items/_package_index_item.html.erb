@@ -1,7 +1,8 @@
 <div>
     <div>Brand: <%= brand %></div>
     <div>Price: $<%= price %>.00</div>
-    <div>Size: <%= size %></div>
     <div><%= description %></div>
-    <%= link_to "Select", package_replace_path(old_item_id: old_item_id, new_item_id: new_item_id), remote: true, method: :post %>
+    <%= link_to "Choose this one instead", package_replace_path(old_item_id: old_item_id, new_item_id: new_item_id), remote: true, method: :post, class: "btn btn-primary"%>
+    <br>
+    <br>
 </div>
