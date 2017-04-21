@@ -1,3 +1,5 @@
+var category = "<%= @category %>";
+$("#sidebar-" + category).addClass("package-item-in-cart");
 $(".card-row").empty();
 var container = "<%= j render 'items/package_show', item: @item %>";
 $(".card-row").append($(container));
