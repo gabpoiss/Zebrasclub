@@ -16,7 +16,7 @@
                 <% order_item = OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
                 <% if order_item.cart %>
                   <!-- CHANGE THIS TO "<%= cart.html_safe %>" WHEN FUNCTIONALITY IS FULLY BUILT -->
-                  <%= not_cart.html_safe %>
+                  <%= cart.html_safe %>
                 <% else %>
                   <%= not_cart.html_safe %>
                 <% end %>
