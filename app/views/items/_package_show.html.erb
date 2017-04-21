@@ -11,12 +11,12 @@
 
 <div class="package-item-container">
   <div class="package-item-photo">
-    <div class="main-photo">
+    <div class="main-photo" style="background-image: url(<%= @item.picture %>);">
     </div>
     <div class="bottom-photo-container">
-      <div class="bottom-photo"></div>
-      <div class="bottom-photo"></div>
-      <div class="bottom-photo"></div>
+      <div class="bottom-photo", style="background-image: url(../../assets/bauer-hockey-helmet-9900-inset3.jpg);"></div>
+      <div class="bottom-photo", style="background-image: url(../../assets/bauer-hockey-helmet-9900-inset3.jpg);"></div>
+      <div class="bottom-photo", style="background-image: url(../../assets/bauer-hockey-helmet-9900-inset3.jpg);"></div>
     </div>
   </div>
   <div class="package-item-details-container">
@@ -42,17 +42,17 @@
     <div class="package-item-buttons">
       <% if !((current_user && order_item[0].cart) || (!current_user && in_session_cart)) %>
         <div class="other-items-button">
-          <%= link_to "Other #{Category.find(@item.category_id).item_type.pluralize}", package_items_path(category: Category.find(@item.category_id).item_type, item: @item.id), remote: true, method: :post, class: "btn btn-primary other-items" %>
+          <%= link_to "Other #{Category.find(@item.category_id).item_type.pluralize}", package_items_path(category: Category.find(@item.category_id).item_type, item: @item.id), remote: true, method: :post, class: "btn base-button other-items" %>
         </div>
         <div class="add-to-cart-button">
           <% if current_user %>
-            <%= link_to "Add to cart", edit_orderitem_path(@item.id, {user: current_user.id}), remote: true, method: :patch, class: "btn btn-success add-to-cart" %>
+            <%= link_to "Add to cart", edit_orderitem_path(@item.id, {user: current_user.id}), remote: true, method: :patch, class: "btn cart-button add-to-cart" %>
           <% else %>
-            <%= link_to "Add to cart", edit_orderitem_path(@item.id), remote: true, method: :patch, class: "btn btn-success add-to-cart" %>
+            <%= link_to "Add to cart", edit_orderitem_path(@item.id), remote: true, method: :patch, class: "btn cart-button add-to-cart" %>
           <% end %>
         </div>
       <% else %>
-        <%= link_to "Main", package_main_path, remote: true, class: "btn btn-primary back-to-main" %>
+        <%= link_to "Main", package_main_path, remote: true, class: "btn base-button back-to-main" %>
       <% end %>
     </div>
   </div>

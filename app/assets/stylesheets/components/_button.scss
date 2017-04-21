@@ -9,3 +9,13 @@
   background-color:$base-button-color-hover;
   color:white;
   }
+
+.cart-button{
+  background-color: $cart-button;
+  border-radius: 7px;
+  color: white;
+  &:hover{
+    background-color: $cart-button-hover;
+    color:white;
+  }
+}

@@ -12,6 +12,7 @@ brand = ["Itech", "Graph", "CCM", "Bauer"]
 description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius orci id tellus ornare, vitae faucibus ipsum ultrices. Fusce tincidunt justo vel consequat tempor. Nam justo nisi, eleifend vitae imperdiet in, tincidunt quis massa. Etiam condimentum finibus diam sed venenatis. Aenean pharetra lacus eu ligula euismod, quis fringilla orci scelerisque. Sed at pellentesque tellus. Sed lacus est, sollicitudin vitae scelerisque id, accumsan nec ligula. In dignissim leo nec lacus facilisis, sed convallis neque placerat. Fusce eros tellus, facilisis vitae semper sit amet, posuere at felis."
 category_id = [1, 2, 3, 4, 5]
 
+
 25.times do
   cat = category_id.sample
   sto = stock.sample
