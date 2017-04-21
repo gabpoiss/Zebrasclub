@@ -37,4 +37,6 @@ Rails.application.routes.draw do
   # editting and removing items from your cart
   patch "/orderitems/:id", to: "orderitems#update", as: "edit_orderitem"
   delete "/orderitems/:id", to: "orderitems#destroy", as: "destroy_orderitem"
+
+  get "/done", to: "pages#done", as: "done"
 end

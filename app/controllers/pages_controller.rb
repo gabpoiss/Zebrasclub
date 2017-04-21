@@ -85,6 +85,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def done
+
+  end
+
   def category_params
     params.require(:category).permit(:item_type)
   end
