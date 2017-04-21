@@ -67,6 +67,17 @@ class ItemsController < ApplicationController
       @items = Item.where(category_id: @category_id)
     end
     @item = params[:item]
+
+    # yeah, I know this is really dumb, but I'm in a rush
+    size_tracker = []
+    output = []
+    @items.each do |i|
+      if !size_tracker.include?([i.brand, i.price, i.category_id])
+        size_tracker << [i.brand, i.price, i.category_id]
+        output << i
+      end
+    end
+    @items = output
   end
 
   def package_show
