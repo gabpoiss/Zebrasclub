@@ -9,9 +9,11 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <div><%= link_to "Package", "/package" %></div>
-    <div><%= link_to "Cart", orderitems_path %></div>
-    <%= link_to "Buy Individual Items", items_path, class: "btn base-button" %>
+    <div><%#= link_to "Package", "/package" %></div>
+    <!-- <div class="spaces"> -->
+      <%= link_to "Buy Individual Items", items_path, class: "btn base-button" %>
+      <div><%= link_to "", orderitems_path, class: "btn base-button fa fa-shopping-cart"%></div>
+    <!-- </div> -->
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
