@@ -1,23 +1,32 @@
 <% @items.sort! { |i, j| i.category_id <=> j.category_id } %>
-<% @items.each do |item| %>
-<div class="col-xs-12 col-sm-4">
-  <%= link_to package_item_path(item: item.id), method: :post, remote: true do %>
-  <div class="card">
-    <div class="card-user">
-      <h1><%= Category.find(item.category_id).item_type %></h1>
-      <p><%= item.brand %></p>
-    </div>
-    <div class="card-category">
-      <!-- <p><%= item.size %></p> -->
-      <p><%= "#{item.price / 100}" + "$" %></p>
-    </div>
-    <!-- <p><%= item.stock %></p> -->
-    <div class="card-description">
-      <%= item.description %>
-    </div>
-  </div>
+<% for i in 0...@items.length do %>
+  <% if i % 3 == 0 %>
+      <div class="row">
+        <% for j in i..(i + 2) do %>
+          <div class="col-xs-12 col-md-4">
+            <% item = @items[j] %>
+            <% unless item.nil? %>
+              <%= link_to package_item_path(item: item.id), method: :post, remote: true do %>
+                <% if item.cart %>
+                  <div class="card green-card">
+                <% else %>
+                  <div class="card">
+                <% end %>
+                    <div class="card-user">
+                      <h1><%= Category.find(item.category_id).item_type %></h1>
+                      <p><%= item.brand %></p>
+                    </div>
+                    <div class="card-category">
+                      <p><%= "#{item.price / 100}" + "$" %></p>
+                    </div>
+                    <div class="card-description">
+                      <%= item.description %>
+                    </div>
+                  </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
   <% end %>
-</div>
 <% end %>
-
-
