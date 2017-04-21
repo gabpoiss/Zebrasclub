@@ -36,25 +36,27 @@
           <%= link_to "md", edit_orderitem_path(order_item[0], { size_update: true, size: "medium" }), remote: true, method: :patch, class: "size-circle md" %>
           <%= link_to "lg", edit_orderitem_path(order_item[0], { size_update: true, size: "large" }), remote: true, method: :patch, class: "size-circle lg" %>
           <%= link_to "xl", edit_orderitem_path(order_item[0], { size_update: true, size: "extra large" }), remote: true, method: :patch, class: "size-circle xl" %>
-          <script>
-            <% case item.size %>
-              <% when "extra small" %>
-                $(".size-circle").removeClass("size-circle-on");
-                $(".xs").addClass("size-circle-on");
-              <% when "small" %>
-                $(".size-circle").removeClass("size-circle-on");
-                $(".sm").addClass("size-circle-on");
-              <% when "medium" %>
-                $(".size-circle").removeClass("size-circle-on");
-                $(".md").addClass("size-circle-on");
-              <% when "large" %>
-                $(".size-circle").removeClass("size-circle-on");
-                $(".lg").addClass("size-circle-on");
-              <% when "extra large" %>
-                $(".size-circle").removeClass("size-circle-on");
-                $(".xl").addClass("size-circle-on");
-            <% end %>
-          </script>
+          <% if order_item[0].size %>
+            <script>
+              <% case item.size %>
+                <% when "extra small" %>
+                  $(".size-circle").removeClass("size-circle-on");
+                  $(".xs").addClass("size-circle-on");
+                <% when "small" %>
+                  $(".size-circle").removeClass("size-circle-on");
+                  $(".sm").addClass("size-circle-on");
+                <% when "medium" %>
+                  $(".size-circle").removeClass("size-circle-on");
+                  $(".md").addClass("size-circle-on");
+                <% when "large" %>
+                  $(".size-circle").removeClass("size-circle-on");
+                  $(".lg").addClass("size-circle-on");
+                <% when "extra large" %>
+                  $(".size-circle").removeClass("size-circle-on");
+                  $(".xl").addClass("size-circle-on");
+              <% end %>
+            </script>
+          <% end %>
         <% end %>
       </div>
       <div class="package-item-description">
