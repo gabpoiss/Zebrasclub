@@ -1,5 +1,14 @@
 var category = "<%= @category %>";
-$("#sidebar-" + category).addClass("package-item-in-cart");
+<% if @in_cart %>
+  $("#sidebar-" + category).addClass("package-item-in-cart");
+<% end %>
+<% if @ready_to_order_package %>
+  $(".place-package-order").attr("href", "/orderitems");
+  $(".place-package-order").text("Proceed to Checkout");
+<% else %>
+  $(".place-package-order").attr("href", "#");
+  $(".place-package-order").text("Please Confirm All Items");
+<% end %>
 $(".card-row").empty();
 var container = "<%= j render 'items/package_show', item: @item %>";
 $(".card-row").append($(container));

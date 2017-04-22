@@ -81,5 +81,18 @@ class ItemsController < ApplicationController
 
   def package_show
     @item = Item.find(params[:item])
+    @category = @item.category.item_type
+    if current_user
+      order_item = OrderItem.joins(:order).where(item_id: @item.id, package: true).where("orders.user_id = ?", current_user.id)[0]
+      @in_cart = order_item.cart
+      @has_size = order_item.size
+    else
+      session[:package_items].each do |i|
+        @in_cart = i["cart"] if i["item_id"] == params[:item].to_i
+      end
+      session[:package_items].each do |i|
+        @has_size = i["size"] if i["item_id"] == params[:item].to_i
+      end
+    end
   end
 end

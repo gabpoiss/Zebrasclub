@@ -1,3 +1,14 @@
+<% if @criteria_for_extermination %>
+  var category = "<%= @criteria_for_extermination %>";
+  $("#sidebar-" + category).css({"display" : "none"});
+<% end %>
+<% if @ready_to_order_package %>
+  $(".place-package-order").attr("href", "/orderitems");
+  $(".place-package-order").text("Proceed to Checkout");
+<% else %>
+  $(".place-package-order").attr("href", "#");
+  $(".place-package-order").text("Please Confirm All Items");
+<% end %>
 $(".card-row").empty();
 var container = "<%= j render 'pages/package_page', categories: @categories, items: @items %>";
 $(".card-row").append($(container));
