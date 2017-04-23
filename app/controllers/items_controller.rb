@@ -94,5 +94,14 @@ class ItemsController < ApplicationController
         @has_size = i["size"] if i["item_id"] == params[:item].to_i
       end
     end
+
+    @ready_to_order_package = false
+
+    if current_user
+      order_items = current_user.order_items.where(package: true)
+      @ready_to_order_package = order_items.all? { |i| i.cart }
+    else
+      @ready_to_order_package = session[:package_items].all? { |i| i["cart"]}
+    end
   end
 end

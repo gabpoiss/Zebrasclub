@@ -1,3 +1,7 @@
+<% if @criteria_for_elimination %>
+  var category = "<%= @criteria_for_elimination %>";
+  $("#sidebar-" + category).css({"display" : "none"});
+<% end %>
 var category = "<%= @category %>";
 <% if @in_cart %>
   $("#sidebar-" + category).addClass("package-item-in-cart");
