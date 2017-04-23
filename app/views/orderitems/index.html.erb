@@ -21,7 +21,7 @@
 <% else %>
   <% session[:package_items].each do |i| %>
     <% if i["cart"] %>
-      <% item = Item.find(i["id"]) %>
+      <% item = Item.find(i["item_id"]) %>
       <div>
         <p><%= item.category.item_type %></p>
         <p>Brand: <%= item.brand %></p>
@@ -34,7 +34,7 @@
           <%= number_field_tag "quantity", i["quantity"], min: 0 %>
           <%= submit_tag %>
         <% end %>
-        <%= link_to "Remove from cart", destroy_orderitem_path(i["id"]), method: :delete %>
+        <%= link_to "Remove from cart", destroy_orderitem_path(i["item_id"]), method: :delete %>
         <br>
       </div>
     <% end %>

@@ -10,27 +10,38 @@
         <div class="col-xs-12 col-md-3">
           <div class="sidebar">
             <div class="package-items">
-              <% @items.each do |i| %>
+              <% @items.sort { |i, j| i.category_id <=> j.category_id }.each do |i| %>
                 <% if current_user %>
                   <% order_item = OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
-                  <% if order_item.cart %>
-                    <% x = "<div id=\"sidebar-#{i.category.item_type}\" class=\"package-item package-item-in-cart\">" %>
-                  <% else %>
-                    <% x = "<div id=\"sidebar-#{i.category.item_type}\" class=\"package-item \">" %>
-                  <% end %>
-                  <%= x.html_safe %>
-                    <h3><%= i.category.item_type%></h3>
-                    <i class="fa fa-star"></i>
-                  </div>
+                  <% in_cart = order_item.cart %>
                 <% else %>
-                  <div class="package-item">
-                    <h3><%= i.category.item_type%></h3>
-                    <i class="fa fa-star"></i>
-                  </div>
+                  <% session[:package_items].each { |j| in_cart = j["cart"] if j["item_id"] == i.id } %>
                 <% end %>
+                <% if in_cart %>
+                  <% x = "<div id=\"sidebar-#{i.category.item_type}\" class=\"package-item package-item-in-cart\">" %>
+                <% else %>
+                  <% x = "<div id=\"sidebar-#{i.category.item_type}\" class=\"package-item \">" %>
+                <% end %>
+                <%= x.html_safe %>
+                  <h3><%= i.category.item_type%></h3>
+                  <i class="fa fa-star"></i>
+                </div>
               <% end %>
             </div>
-            <%= link_to "Proceed to Checkout", orderitems_path, class: "btn cart-button place-package-order" %>
+              <% if current_user %>
+                <% order_items = current_user.order_items.where(package: true) %>
+                <% if order_items.all? { |i| i.cart } %>
+                  <%= link_to "Proceed to Checkout", orderitems_path, class: "btn cart-button place-package-order" %>
+                <% else %>
+                  <%= link_to "Please Confirm All Items", "#", class: "btn cart-button place-package-order" %>
+                <% end %>
+              <% else %>
+                <% if session[:package_items].all? { |i| i["cart"] } %>
+                  <%= link_to "Proceed to Checkout", orderitems_path, class: "btn cart-button place-package-order" %>
+                <% else %>
+                  <%= link_to "Please Confirm All Items", "#", class: "btn cart-button place-package-order" %>
+                <% end %>
+              <% end %>
           </div>
         </div>
       </div>
