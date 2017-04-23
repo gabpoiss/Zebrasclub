@@ -11,21 +11,12 @@ class PagesController < ApplicationController
   end
 
   def package
-    generate_package()
+    generate_package
   end
 
   def package_main
-    generate_package()
-
-    @ready_to_order_package = false
-
-    if current_user
-      order_items = current_user.order_items.where(package: true)
-      @ready_to_order_package = order_items.all? { |i| i.cart }
-    else
-      @ready_to_order_package = session[:package_items].all? { |i| i["cart"]}
-    end
-
+    generate_package
+    @ready_to_order_package = ready_to_order_package
   end
 
   def generate_package

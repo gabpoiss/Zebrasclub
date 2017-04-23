@@ -69,25 +69,11 @@ class OrderitemsController < ApplicationController
     else
       session[:package_items].delete_if { |i| i["item_id"] == params[:id].to_i }
     end
-    @items = []
     @categories = Category.all
 
-    order_items = if current_user
-      User.find(current_user.id).order_items.where(package: true)
-    else
-      session[:package_items] ? session[:package_items] : []
-    end
+    @items = all_items_in_package
 
-    @items = Item.where(id: order_items.map { |order_item| order_item["item_id"] })
-
-    @ready_to_order_package = false
-
-    if current_user
-      order_items = current_user.order_items.where(package: true)
-      @ready_to_order_package = order_items.all? { |i| i.cart }
-    else
-      @ready_to_order_package = session[:package_items].all? { |i| i["cart"]}
-    end
+    @ready_to_order_package = ready_to_order_package
 
     render "pages/package_main"
   end
@@ -109,14 +95,8 @@ class OrderitemsController < ApplicationController
     @item = Item.find(params[:id])
     @category = @item.category.item_type
 
-    @ready_to_order_package = false
+    @ready_to_order_package = ready_to_order_package
 
-    if current_user
-      order_items = current_user.order_items.where(package: true)
-      @ready_to_order_package = order_items.all? { |i| i.cart }
-    else
-      @ready_to_order_package = session[:package_items].all? { |i| i["cart"]}
-    end
     render "items/package_show"
   end
 
