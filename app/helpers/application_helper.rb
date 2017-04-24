@@ -19,4 +19,12 @@ module ApplicationHelper
     end
   end
 
+  ITEM_PRICE_WEIGTHS = {
+    skate: 0.3,
+    helmet: 0.2,
+    jersey: 0.2,
+    armband: 0.1,
+    pants: 0.2
+  }
+
 end

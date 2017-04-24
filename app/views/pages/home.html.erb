@@ -11,8 +11,9 @@
 
     <%= simple_form_for :search,  url: package_path , :method => :get, html: {class: 'form-inline'} do |f| %>
 
-      <%= f.input :price_lower, as: :integer, required: false, placeholder: "Min", label: false %>
+      <%# f.input :price_lower, as: :integer, required: false, placeholder: "Min", label: false %>
       <%= f.input :price_upper, as: :integer, required: false, placeholder: "Max", label: false %>
+      <%= f.input :new_package, as: :hidden, value: "true" %>
       <%= f.submit "Submit", class: "btn base-button" %>
   <% end %>
 
