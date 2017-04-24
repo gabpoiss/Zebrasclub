@@ -41,9 +41,9 @@ class PagesController < ApplicationController
       @categories.each do |i|
 
         max_item_price = ITEM_PRICE_WEIGTHS[i.item_type.to_sym] * params[:search][:price_upper].to_i
-        selected_item = Item.where("category_id = ? AND price < ?", i.id, max_item_price * 100).order("price DESC").first
+        selected_item = Item.where("category_id = ? AND price_cents < ?", i.id, max_item_price * 100).order("price_cents DESC").first
         if selected_item.nil?
-          selected_item = Item.where(category_id: i.id).order("price ASC").first
+          selected_item = Item.where(category_id: i.id).order("price_cents ASC").first
         end
         @items << selected_item
 

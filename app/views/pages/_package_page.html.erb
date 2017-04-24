@@ -15,7 +15,7 @@
             <p><%= item.brand %></p>
           </div>
           <div class="card-category">
-            <p><%= humanized_money_with_symbol(item.price / 100) %></p>
+            <p><%= humanized_money_with_symbol(item.price_cents / 100) %></p>
           </div>
         </div>
       <% end %>
