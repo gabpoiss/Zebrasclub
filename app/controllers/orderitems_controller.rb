@@ -1,7 +1,7 @@
 class OrderitemsController < ApplicationController
 
   def index
-    @order = current_user.cart
+    @order = current_user.order_status
     @order_items = if current_user
        User.find(current_user.id).order_items.where(cart: true)
     else

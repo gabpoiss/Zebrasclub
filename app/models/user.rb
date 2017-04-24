@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :order_items, through: :orders
 
-  def cart
+  def order_status
     self.orders.where(paid_status: false).first
   end
 
