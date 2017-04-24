@@ -13,7 +13,7 @@
     </div>
     <div class="package-item-main-header">
       <h1><%= @category.upcase %></h1>
-      <h3>$<%= @item.price / 100 %>.00</h3>
+      <h3><%= humanized_money_with_symbol(@item.price / 100) %></h3>
     </div>
     <div class="package-item-sub-header">
       <h3><%= @item.brand %></h3>

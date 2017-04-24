@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :orders
   has_many :order_items, through: :orders
 
+  def cart
+    self.orders.where(paid_status: false).first
+  end
+
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
