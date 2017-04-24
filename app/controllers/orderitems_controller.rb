@@ -1,6 +1,7 @@
 class OrderitemsController < ApplicationController
 
   def index
+    @order = current_user.cart
     @order_items = if current_user
        User.find(current_user.id).order_items.where(cart: true)
     else
@@ -8,8 +9,12 @@ class OrderitemsController < ApplicationController
     end
   end
 
-  def create
-  end
+  # def create
+  #   @item = Item.find(params[:item_id])
+  #   order  = Order.create!(item_id: @item.id, amount: @item.price_cents, paid_status: 'pending')
+
+  #   redirect_to new_order_payment_path(order)
+  # end
 
   def update
     if params[:quantity_update]
@@ -43,13 +48,15 @@ class OrderitemsController < ApplicationController
     # binding.pry
     @default_item = Item.find(params[:id])
     @category = @default_item.category.item_type
-    @item = Item.where(size: params[:size], brand: @default_item.brand, category: @default_item.category, price: @default_item.price)[0]
+    @item = Item.where(size: params[:size], brand: @default_item.brand, category_id: @default_item.category_id, price_cents: (@default_item.price.to_i * 100))[0]
+    # binding.pry
     @has_size = true
     @in_cart = false
     if current_user
       order_item = OrderItem.joins(:order).where(item_id: params[:id], package: true).where("orders.user_id = ?", current_user.id)[0]
       order_item.update(item_id: @item.id, size: true)
       order_item.save
+
     else
       session[:package_items].each do |i|
         if i["item_id"] == @default_item.id && i["package"] == true
@@ -149,5 +156,9 @@ class OrderitemsController < ApplicationController
       @category = new_item.category.item_type
       render "items/package_show"
     end
+  end
+
+  def show
+    @order = Order.where(paid_status: 'paid').find(params[:id])
   end
 end

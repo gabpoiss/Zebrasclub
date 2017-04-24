@@ -21,7 +21,7 @@
               <% z = "<i class=\"fa fa-check\" aria-hidden=\"true\"></i>" %>
               <%= y.html_safe %>
                 <%= z.html_safe if in_cart %>
-                <p>$<%=item.price / 100%>.00</p>
+                <p><%= humanized_money_with_symbol(item.price_cents / 100) %></p>
               </div>
             </div>
           </div>

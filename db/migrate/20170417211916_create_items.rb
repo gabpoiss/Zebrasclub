@@ -3,12 +3,12 @@ class CreateItems < ActiveRecord::Migration[5.0]
     create_table :items do |t|
       t.string :size
       t.integer :stock
-      t.integer :price
       t.string :brand
       t.references :category, foreign_key: true
       t.string :description
 
       t.timestamps
     end
+
   end
 end

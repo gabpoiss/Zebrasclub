@@ -4,7 +4,7 @@ Item.destroy_all
 Order.destroy_all
 
 puts "Creating categories..."
-# New seed........
+# # New seed........
 Category.create(id: 1, item_type: "skate")
 Category.create(id: 2, item_type: "helmet")
 Category.create(id: 3, item_type: "jersey")
@@ -13,6 +13,7 @@ Category.create(id: 5, item_type: "armband")
 # Skates
 category_id = [1, 2, 3, 4, 5]
 stock = (1..10).to_a
+
 size = ["extra small", "small", "medium", "large", "extra large"]
 # 1
 
@@ -95,60 +96,41 @@ end
 #   description: "Bauer Supreme Impact Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
 #   picture: "../../assets/Bauer_Supreme_impact.png")
 
-# Item.create(category_id: 1,
-#   size: skates_size[0],
-#   stock: stock.sample,
-#   price: 119.99,
-#   brand: "Bauer Supreme Impact",
-#   description: "Bauer Supreme Impact Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-#   picture: "../../assets/Bauer_Supreme_impact.png")
 
-# Item.create(category_id: 1,
+# Jersey
+# Item.create(category_id: 3,
 #   size: skates_size[0],
 #   stock: stock.sample,
-#   price: 119.99,
-#   brand: "Bauer Supreme Impact",
-#   description: "Bauer Supreme Impact Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-#   picture: "../../assets/Bauer_Supreme_impact.png")
+#   price: 74,
+#   brand: "Bauer Vapor X200",
+#   description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
+#   picture: "../../assets/Bauer_Vapor_X200.png")
+#   # pants
+#   Item.create(category_id: 4,
+#   size: skates_size[0],
+#   stock: stock.sample,
+#   price: 74,
+#   brand: "Bauer Vapor X200",
+#   description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
+#   picture: "../../assets/Bauer_Vapor_X200.png")
 
-# Item.create(category_id: 1,
+#   # armbands
+#   Item.create(category_id: 5,
 #   size: skates_size[0],
 #   stock: stock.sample,
-#   price: 119.99,
-#   brand: "Bauer Supreme Impact",
-#   description: "Bauer Supreme Impact Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-#   picture: "../../assets/Bauer_Supreme_impact.png")
-
-# Item.create(category_id: 1,
-#   size: skates_size[0],
-#   stock: stock.sample,
-#   price: 119.99,
-#   brand: "Bauer Supreme Impact",
-#   description: "Bauer Supreme Impact Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-#   picture: "../../assets/Bauer_Supreme_impact.png")
-
-# Item.create(category_id: 1,
-#   size: skates_size[0],
-#   stock: stock.sample,
-#   price: 119.99,
-#   brand: "Bauer Supreme Impact",
-#   description: "Bauer Supreme Impact Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-#   picture: "../../assets/Bauer_Supreme_impact.png")
-
-# Item.create(category_id: 1,
-#   size: skates_size[0],
-#   stock: stock.sample,
-#   price: 119.99,
-#   brand: "Bauer Supreme Impact",
-#   description: "Bauer Supreme Impact Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-#   picture: "../../assets/Bauer_Supreme_impact.png")
+#   price: 74,
+#   brand: "Bauer Vapor X200",
+#   description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
+#   picture: "../../assets/Bauer_Vapor_X200.png")
 
 
 User.create(first_name: "Martin", last_name: "Giannakopoulos", email: "martingianna@gmail.com", password: "123456")
 Order.create(user_id: 1, shipping_address: "123 Fake Street", paid_status: false)
 OrderItem.create(order_id: 1, item_id: 1, shipping_status: "not yet ordered", quantity: 1, cart: true)
-# OrderItem.create(order_id: 1, item_id: 4, shipping_status: "not yet ordered", quantity: 1, cart: false)
-
+# OrderItem.create(order_id: 1, item_id: 2, shipping_status: "not yet ordered", quantity: 1, cart: true)
+# OrderItem.create(order_id: 1, item_id: 3, shipping_status: "not yet ordered", quantity: 1, cart: true)
+# OrderItem.create(order_id: 1, item_id: 4, shipping_status: "not yet ordered", quantity: 1, cart: true)
+# OrderItem.create(order_id: 1, item_id: 5, shipping_status: "not yet ordered", quantity: 1, cart: true)
 
 
 # Old seed...........
