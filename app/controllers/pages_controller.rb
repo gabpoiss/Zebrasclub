@@ -29,7 +29,7 @@ class PagesController < ApplicationController
     else
       session[:package_items] ? session[:package_items] : []
     end
-
+    #raise
     if order_items.any? && params[:new_package].nil?
       @items = Item.where(id: order_items.map { |order_item| order_item["item_id"] })
     else

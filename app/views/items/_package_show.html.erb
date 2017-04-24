@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-sm-5">
-    <%= image_tag @item.picture, class:"main-photo" %>
+    <%= image_tag image_path(@item.picture), class:"main-photo" %>
     <div>
-      <%= image_tag @item.picture, class:"bottom-photo" %>
-      <%= image_tag @item.picture, class:"bottom-photo" %>
-      <%= image_tag @item.picture, class:"bottom-photo" %>
+      <%= image_tag image_path(@item.picture), class:"bottom-photo" %>
+      <%= image_tag image_path(@item.picture), class:"bottom-photo" %>
+      <%= image_tag image_path(@item.picture), class:"bottom-photo" %>
     </div>
   </div>
   <div class="col-sm-7">
