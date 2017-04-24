@@ -31,7 +31,10 @@ class PagesController < ApplicationController
       session[:package_items] ? session[:package_items] : []
     end
 
+
+
     if order_items.any? && params[:search].nil?
+
       @items = Item.where(id: order_items.map { |order_item| order_item["item_id"] })
     else
 

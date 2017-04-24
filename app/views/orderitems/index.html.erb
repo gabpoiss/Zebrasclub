@@ -42,4 +42,36 @@
 <% end %>
 <br>
 <br>
+<%= form_tag order_payments_path(@order) do %>
+  <article>
+    <label class="amount">
+      <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-name="..."
+    data-email="<%= current_user.email %>"
+    data-description="Your cart."
+    data-amount="<%= @order.amount_cents %>"
+    data-currency="<%= @order.amount.currency %>"></script>
+
+<% end %>
+
+<%#= simple_form_for done_path do |t|%>
+  <%#= t.hidden_field @order_items %>
+  <%#= t.submit 'Place Order', class: 'btn btn-primary' %>
+<%# end %>
 <%= link_to "Place Order", done_path, class: "btn btn-danger" %>
+
+
+
+
+
+
+<!-- Stripe form -->
+
+
+
+
