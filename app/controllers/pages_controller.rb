@@ -12,6 +12,7 @@ class PagesController < ApplicationController
 
   def package
     generate_package
+    redirect_to "/package" if params[:search]
   end
 
   def package_main
@@ -30,16 +31,19 @@ class PagesController < ApplicationController
       session[:package_items] ? session[:package_items] : []
     end
 
-    if order_items.any? && params[:new_package].nil?
+    if order_items.any? && params[:search].nil?
       @items = Item.where(id: order_items.map { |order_item| order_item["item_id"] })
     else
 
-      params[:new_package] = nil
-
       @categories.each do |i|
-        if Item.where(category_id: i.id).any?
-          @items << Item.where(category_id: i.id).sample
+
+        max_item_price = ITEM_PRICE_WEIGTHS[i.item_type.to_sym] * params[:search][:price_upper].to_i
+        selected_item = Item.where("category_id = ? AND price < ?", i.id, max_item_price * 100).order("price DESC").first
+        if selected_item.nil?
+          selected_item = Item.where(category_id: i.id).order("price ASC").first
         end
+        @items << selected_item
+
       end
 
       if current_user
