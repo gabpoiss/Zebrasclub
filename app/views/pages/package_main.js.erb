@@ -2,6 +2,10 @@
   var category = "<%= @criteria_for_elimination %>";
   $("#sidebar-" + category).css({"display" : "none"});
 <% end %>
+var added = "<%= @category %>"
+<% if @in_cart %>
+  $("#sidebar-" + category).addClass("package-item-in-cart");
+<% end %>
 <% if @ready_to_order_package %>
   $(".place-package-order").attr("href", "/orderitems");
   $(".place-package-order").text("Proceed to Checkout");

@@ -13,63 +13,70 @@ Category.create(id: 5, item_type: "armband")
 # Skates
 category_id = [1, 2, 3, 4, 5]
 stock = (1..10).to_a
-skates_size = [1,2,3,4,5,6]
+size = ["extra small", "small", "medium", "large", "extra large"]
 # 1
-Item.create(category_id: 1,
-  size: skates_size[0],
-  stock: stock.sample,
-  price: 119.99,
-  brand: "Bauer Supreme Impact",
-  description: "Bauer Supreme Impact Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-  picture: "../../assets/Bauer_Supreme_impact.png")
-Item.create(category_id: 1,
-  size: skates_size[1],
-  stock: stock.sample,
-  price: 119.99,
-  brand: "Bauer Supreme Impact",
-  description: "Bauer Supreme Impact Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-  picture: "../../assets/Bauer_Supreme_impact.png")
-# 2
-Item.create(category_id: 1,
-  size: skates_size[0],
-  stock: stock.sample,
-  price: 74.99,
-  brand: "Bauer Vapor X200",
-  description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-  picture: "../../assets/Bauer_Vapor_X200.png")
-#Helmet
-Item.create(category_id: 2,
-  size: skates_size[0],
-  stock: stock.sample,
-  price: 74.99,
-  brand: "Bauer Vapor X200",
-  description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-  picture: "../../assets/Bauer_Vapor_X200.png")
-# Jersey
-Item.create(category_id: 3,
-  size: skates_size[0],
-  stock: stock.sample,
-  price: 74.99,
-  brand: "Bauer Vapor X200",
-  description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-  picture: "../../assets/Bauer_Vapor_X200.png")
-  # pants
-  Item.create(category_id: 4,
-  size: skates_size[0],
-  stock: stock.sample,
-  price: 74.99,
-  brand: "Bauer Vapor X200",
-  description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-  picture: "../../assets/Bauer_Vapor_X200.png")
-  # armbands
-  Item.create(category_id: 5,
-  size: skates_size[0],
-  stock: stock.sample,
-  price: 74.99,
-  brand: "Bauer Vapor X200",
-  description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-  picture: "../../assets/Bauer_Vapor_X200.png")
 
+
+size.each do |i|
+  Item.create(category_id: 1,
+    size: i,
+    stock: stock.sample,
+    price: 11999,
+    brand: "Bauer Supreme Impact",
+    description: "Bauer Supreme Impact Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
+    picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
+end
+
+size.each do |i|
+Item.create(category_id: 1,
+  size: i,
+  stock: stock.sample,
+  price: 7499,
+  brand: "Bauer Vapor X200",
+  description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
+  picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
+end
+
+#Helmet
+size.each do |i|
+  Item.create(category_id: 2,
+    size: i,
+    stock: stock.sample,
+    price: 7499,
+    brand: "Bauer Vapor X200",
+    description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
+    picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
+end
+# Jersey
+size.each do |i|
+  Item.create(category_id: 3,
+    size: i,
+    stock: stock.sample,
+    price: 7499,
+    brand: "Bauer Vapor X200",
+    description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
+    picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
+end
+  # pants
+size.each do |i|
+  Item.create(category_id: 4,
+  size: i,
+  stock: stock.sample,
+  price: 7499,
+  brand: "Bauer Vapor X200",
+  description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
+  picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
+end
+  # armbands
+size.each do |i|
+  Item.create(category_id: 5,
+  size: i,
+  stock: stock.sample,
+  price: 7499,
+  brand: "Bauer Vapor X200",
+  description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
+  picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
+end
 
 # 3
 # Item.create(category_id: 1,
