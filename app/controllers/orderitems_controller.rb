@@ -45,6 +45,7 @@ class OrderitemsController < ApplicationController
   end
 
   def size_update
+    # binding.pry
     @default_item = Item.find(params[:id])
     @category = @default_item.category.item_type
     @item = Item.where(size: params[:size], brand: @default_item.brand, category_id: @default_item.category_id, price_cents: (@default_item.price.to_i * 100))[0]
@@ -102,9 +103,11 @@ class OrderitemsController < ApplicationController
     @item = Item.find(params[:id])
     @category = @item.category.item_type
 
+    @items = all_items_in_package
+
     @ready_to_order_package = ready_to_order_package
 
-    render "items/package_show"
+    render "pages/package_main"
   end
 
   def destroy

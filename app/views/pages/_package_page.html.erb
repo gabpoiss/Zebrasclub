@@ -1,21 +1,29 @@
 <div class="row">
   <% @items.sort { |i, j| i.category_id <=> j.category_id }.each_with_index do |item, i| %>
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-sm-6 col-md-4">
       <%= link_to package_item_path(item: item.id), method: :post, remote: true do %>
-        <% if current_user %>
-          <% order_item = OrderItem.joins(:order).where(item_id: item.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
-          <% in_cart = order_item.cart %>
-        <% else %>
-          <% session[:package_items].each { |j| in_cart = j["cart"] if j["item_id"] == item.id } %>
-        <% end %>
-        <% y = in_cart ? "<div class=\"card in-cart\">" : "<div class=\"card\">"%>
-        <%= y.html_safe %>
-          <div class="card-user">
-            <h1><%= Category.find(item.category_id).item_type %></h1>
-            <p><%= item.brand %></p>
-          </div>
-          <div class="card-category">
-            <p><%= humanized_money_with_symbol(item.price_cents / 100) %></p>
+        <div class="card">
+          <div class="card-content-container">
+            <div class="card-title">
+              <h2><%= item.brand.upcase %></h2>
+            </div>
+            <div class="card-picture">
+              <%= image_tag item.picture %>
+            </div>
+            <div class="card-lower">
+              <% if current_user %>
+                <% order_item = OrderItem.joins(:order).where(item_id: item.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
+                <% in_cart = order_item.cart %>
+              <% else %>
+                <% session[:package_items].each { |j| in_cart = j["cart"] if j["item_id"] == item.id } %>
+              <% end %>
+              <% y = in_cart ? "<div class=\"price in-cart\">" : "<div class=\"price\">"%>
+              <% z = "<i class=\"fa fa-check\" aria-hidden=\"true\"></i>" %>
+              <%= y.html_safe %>
+                <%= z.html_safe if in_cart %>
+                <p><%= humanized_money_with_symbol(item.price_cents / 100) %></p>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>

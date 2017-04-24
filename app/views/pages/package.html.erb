@@ -17,15 +17,26 @@
                 <% else %>
                   <% session[:package_items].each { |j| in_cart = j["cart"] if j["item_id"] == i.id } %>
                 <% end %>
-                <% if in_cart %>
-                  <% x = "<div id=\"sidebar-#{i.category.item_type}\" class=\"package-item package-item-in-cart\">" %>
-                <% else %>
-                  <% x = "<div id=\"sidebar-#{i.category.item_type}\" class=\"package-item \">" %>
-                <% end %>
-                <%= x.html_safe %>
-                  <h3><%= i.category.item_type%></h3>
-                  <i class="fa fa-star"></i>
-                </div>
+                  <div class="package-item">
+                    <div class="package-item-picture">
+                      <%= image_tag i.picture %>
+                    </div>
+                    <div class="package-item-middle">
+                      <p class="package-item-category"><%= i.category.item_type.upcase %></p>
+                      <p class="package-item-brand"><%= i.brand %></p>
+                    </div>
+                    <div class="package-item-right">
+                      <% if in_cart %>
+                        <p class="package-item-in-cart-status package-item-in-cart">IN CART</p>
+                      <% else %>
+                        <p class="package-item-in-cart-status">WAITING</p>
+                      <% end %>
+                        <p class="package-item-price">$<%= i.price / 100 %></p>
+                    </div>
+                  </div>
+                  <div class="package-item">
+
+                  </div>
               <% end %>
             </div>
               <% if current_user %>
