@@ -9,8 +9,11 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <%= link_to package_path, class: "btn base-button my-nav-button" do %>
-      <i class="fa fa-cube"></i><p>My Package</p>
+    <%# raise %>
+    <% unless (current_user && current_user.orders.first.order_items.where(package: true).length.zero?) || (!current_user && session[:package_items].nil?) %>
+      <%= link_to package_path, class: "btn base-button my-nav-button" do %>
+        <i class="fa fa-cube"></i><p>My Package</p>
+      <% end %>
     <% end %>
     <%= link_to orderitems_path, class: "btn base-button my-nav-button" do %>
       <i class="fa fa-shopping-cart"></i><p>My Cart</p>
