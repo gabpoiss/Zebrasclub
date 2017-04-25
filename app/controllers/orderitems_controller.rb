@@ -45,11 +45,9 @@ class OrderitemsController < ApplicationController
   end
 
   def size_update
-    # binding.pry
     @default_item = Item.find(params[:id])
     @category = @default_item.category.item_type
-    @item = Item.where(size: params[:size], brand: @default_item.brand, category_id: @default_item.category_id, price_cents: (@default_item.price.to_i * 100))[0]
-    # binding.pry
+    @item = Item.where(size: params[:size], brand: @default_item.brand, category_id: @default_item.category_id)[0]
     @has_size = true
     @in_cart = false
     if current_user
