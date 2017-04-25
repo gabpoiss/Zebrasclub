@@ -81,8 +81,8 @@
 }
 
 .package-item-in-cart {
-  color: black;
-  background-color: lightgreen;
+  color: white;
+  background-color: $cart-button;
 }
 
 .package-items {
@@ -92,9 +92,9 @@
 }
 
 .place-package-order {
-  color: black !important;
+  color: white !important;
   a {
-    color: black !important;
+    color: white !important;
     &:hover {
       text-decoration: none;
     }
