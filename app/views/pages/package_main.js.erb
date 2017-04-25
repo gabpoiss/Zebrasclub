@@ -6,6 +6,7 @@ var added = "<%= @category %>"
 <% if @in_cart %>
   $("#sidebar-" + category + " > .package-item-right > .package-item-in-cart-status").addClass("package-item-in-cart");
   $("#sidebar-" + category).removeClass("not-booked");
+  $("#sidebar-" + category + " > .package-item-right > .package-item-in-cart-status").text("IN CART");
 <% end %>
 <% if @ready_to_order_package %>
   $(".place-package-order").attr("href", "/orderitems");
@@ -17,3 +18,24 @@ var added = "<%= @category %>"
 $(".card-row").empty();
 var container = "<%= j render 'pages/package_page', categories: @categories, items: @items %>";
 $(".card-row").append($(container));
+
+// sidebar sort by in-cart status
+<% @items = @items.sort { |i, j| OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id).first.cart ? 1 : 0<=> OrderItem.joins(:order).where(item_id: j.id, package: true).where("orders.user_id = ?", current_user.id).first.cart ? 1 : 0} %>
+var sidebarItems = [];
+  $(".package-items > .package-item").each(function() {
+    sidebarItems.push($(this));
+  });
+  $(".package-items").empty();
+  <% @items.reverse.each do |i| %>
+    var itemCategory = "<%= j i.category.item_type %>";
+    sidebarItems.forEach(function(i){
+      if (i.attr("id").replace("sidebar-", "") == itemCategory) {
+        i.appendTo($(".package-items"));
+      }
+    });
+<% end %>
+
+
+
+
+

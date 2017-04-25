@@ -78,16 +78,24 @@
   </div>
   <div class="package-item-nav-bar">
     <div class="nav-button-container">
-      <div class="nav-button previous">
-        <i class="fa fa-arrow-left"></i>
-      </div>
-      <p>PREV</p>
+      <% if @prev %>
+        <%= link_to package_item_path(item: @prev, items: @item_ids), method: :post, remote: true do %>
+          <div class="nav-button previous">
+            <i class="fa fa-arrow-left"></i>
+          </div>
+          <p>PREV</p>
+        <% end %>
+      <% end %>
     </div>
     <div class="nav-button-container">
-      <div class="nav-button next">
-        <i class="fa fa-arrow-right"></i>
-      </div>
-      <p>NEXT</p>
+      <% if @next %>
+        <%= link_to package_item_path(item: @next, items: @item_ids), method: :post, remote: true do %>
+          <div class="nav-button next">
+            <i class="fa fa-arrow-right"></i>
+          </div>
+          <p>NEXT</p>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -82,6 +82,11 @@ class ItemsController < ApplicationController
   def package_show
     @item = Item.find(params[:item])
     @category = @item.category.item_type
+    @item_ids = params[:items]
+    item_index = @item_ids.find_index(@item.id.to_s)
+    @prev = item_index.zero? ? nil : @item_ids[item_index - 1]
+    @next = @item_ids[item_index + 1]
+
     if current_user
       order_item = OrderItem.joins(:order).where(item_id: @item.id, package: true).where("orders.user_id = ?", current_user.id)[0]
       @in_cart = order_item.cart

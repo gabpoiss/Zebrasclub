@@ -8,7 +8,10 @@
 
 <div class="sidebar">
   <div class="package-items">
-    <% @items.sort { |i, j| i.category_id <=> j.category_id }.each do |i| %>
+    <% if current_user %>
+      <% @items = @items.sort { |i, j| OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id).first.cart ? 1 : 0<=> OrderItem.joins(:order).where(item_id: j.id, package: true).where("orders.user_id = ?", current_user.id).first.cart ? 1 : 0} %>
+    <% end %>
+    <% @items.reverse.each do |i| %>
     <% if current_user %>
     <% order_item = OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
     <% in_cart = order_item.cart %>
