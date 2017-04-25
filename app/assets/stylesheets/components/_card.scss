@@ -4,7 +4,7 @@
   text-decoration: none;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
   font-family: $base-font;
-  margin: 10px 0px;
+  margin: 15px 0px;
   padding: 20px;
   position: relative;
   &:hover{
@@ -24,10 +24,11 @@
   right: 0px;
   bottom: 0px;
   margin-top: 15px;
-  color: grey;
-  font-weight: bold;
   border-radius: 2px;
   padding: 15px 20px;
+  font-size: 20px;
+  color: #333333;
+  background-color: #f7f7f7;
   p {
     margin: 0;
   }
@@ -36,7 +37,7 @@
 .in-cart {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   background-color: $cart-button;
-  color: black;
+  color: #bef5ea;
 }
 
 .card-picture {
@@ -88,9 +89,10 @@
   opacity: 0;
 }
 .card-row{
-  padding: 90px;
-  padding-top: 20px;
-  padding-bottom: 0;
+
+  padding: 0 50px;
+
+
   // background-color: rgb(245, 245, 245);
   // box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   // height: 85vh;

@@ -6,7 +6,9 @@
     <div class="col-xs-12 col-sm-7 package-item-right-div">
       <div class="package-item-details">
         <div class="back-button">
-          <%= link_to "X", package_main_path, remote: true %>
+          <%= link_to package_main_path, remote: true do %>
+            <i class="fa fa-close"></i>
+          <% end %>
         </div>
         <div class="package-item-main-header">
           <h1><%= @item.brand.upcase %></h1>
