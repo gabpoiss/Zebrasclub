@@ -16,11 +16,11 @@
         </div>
         <div class="package-item-sizes">
           <% if !@in_cart %>
-            <%= link_to "xs", edit_orderitem_path(@item, { size_update: true, size: "extra small" }), remote: true, method: :patch, class: "size-circle xs" %>
-            <%= link_to "sm", edit_orderitem_path(@item, { size_update: true, size: "small" }), remote: true, method: :patch, class: "size-circle sm" %>
-            <%= link_to "md", edit_orderitem_path(@item, { size_update: true, size: "medium" }), remote: true, method: :patch, class: "size-circle md" %>
-            <%= link_to "lg", edit_orderitem_path(@item, { size_update: true, size: "large" }), remote: true, method: :patch, class: "size-circle lg" %>
-            <%= link_to "xl", edit_orderitem_path(@item, { size_update: true, size: "extra large" }), remote: true, method: :patch, class: "size-circle xl" %>
+            <%= link_to "xs", edit_orderitem_path(@item, { size_update: true, size: "extra small", items: @item_ids }), remote: true, method: :patch, class: "size-circle xs" %>
+            <%= link_to "sm", edit_orderitem_path(@item, { size_update: true, size: "small", items: @item_ids }), remote: true, method: :patch, class: "size-circle sm" %>
+            <%= link_to "md", edit_orderitem_path(@item, { size_update: true, size: "medium", items: @item_ids }), remote: true, method: :patch, class: "size-circle md" %>
+            <%= link_to "lg", edit_orderitem_path(@item, { size_update: true, size: "large", items: @item_ids }), remote: true, method: :patch, class: "size-circle lg" %>
+            <%= link_to "xl", edit_orderitem_path(@item, { size_update: true, size: "extra large", items: @item_ids }), remote: true, method: :patch, class: "size-circle xl" %>
             <% if @has_size %>
               <script>
                 <% case @item.size %>
