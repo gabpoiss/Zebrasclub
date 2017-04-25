@@ -2,11 +2,17 @@
   background-color: white;
   color: black;
   text-decoration: none;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
   font-family: $base-font;
   margin: 10px 0px;
   padding: 20px;
   position: relative;
+  &:hover{
+    .card-title{
+
+      opacity: 1;
+    }
+  }
 }
 
 .sidebar-in-cart {
@@ -15,8 +21,8 @@
 
 .price {
   position: absolute;
-  right: 20px;
-  bottom: 10px;
+  right: 0px;
+  bottom: 0px;
   margin-top: 15px;
   color: grey;
   font-weight: bold;
@@ -28,6 +34,7 @@
 }
 
 .in-cart {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   background-color: lightgreen;
   color: black;
 }
@@ -47,13 +54,26 @@
 }
 
 .card-title {
-  margin-bottom: 10px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  display: flex;
+  align-items:center;
+  justify-content:space-around;
+  text-align: center;
+  padding: 20px;
+  opacity: 0;
+  background-color: rgba(255,255,255, 0.8);
+  transition: all 0.2s ease-in;
   h2 {
     margin: 0;
     display: inline-block;
     font-weight: bolder;
     font-size: 20px;
     letter-spacing: 2px;
+    transition: all 0.2s ease-in;
   }
 }
 
@@ -68,10 +88,10 @@
   opacity: 0;
 }
 .card-row{
-  padding: 20px;
+  padding: 90px;
   // background-color: rgb(245, 245, 245);
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  height: 85vh;
+  // box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  // height: 85vh;
   h1,h2,h3,h5,p{
     font-family: $base-font;
   }
