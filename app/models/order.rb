@@ -4,7 +4,8 @@ class Order < ApplicationRecord
   monetize :amount_cents
 
   def compute_price
-    order_items.each do |order_item|
+    self.amount_cents = 0
+    order_items.where(order_id: self.id).each do |order_item|
       self.amount_cents += order_item.item.price_cents * order_item.quantity
     end
     self.save
