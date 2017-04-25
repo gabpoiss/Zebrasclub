@@ -6,7 +6,7 @@
     <div>
       <p><%= i.item.category.item_type %></p>
       <p>Brand: <%= i.item.brand %></p>
-      <p>Price:<%= humanized_money_with_symbol(item.price) %></p>
+      <p>Price:<%= humanized_money_with_symbol(i.price) %></p>
       <p>Size: <%= i.item.size %></p>
       <p>quantity: <%= i.quantity %></p>
       <%= form_tag edit_orderitem_path(i), method: :patch do |j| %>
