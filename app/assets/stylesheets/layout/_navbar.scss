@@ -51,6 +51,7 @@
 
 /* Main class */
 .navbar-wagon {
+  position: fixed;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   transition: all 0.3s ease;
   display: flex;
@@ -59,6 +60,15 @@
   align-items: center;
   justify-content: space-between;
   font-family: $base-font;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 200;
+  background-color: #F8F9F9;
+}
+.navbar-button{
+  padding: 10px;
+  color: #8A8888;
 }
 // logo
 .logo{
@@ -77,8 +87,9 @@
 /* Navbar logo */
 .navbar-wagon-brand img {
   width: 270px;
-  height: 100px;
+  height: 90px;
   margin-left: -40px;
+  top: 5px;
 }
 
 /* Navbar right section (with form, links, button) */

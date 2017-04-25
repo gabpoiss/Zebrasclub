@@ -1,71 +1,70 @@
 <div id="package-main-index">
-  <div class="wrapper">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-md-9">
-            <div class="card-row">
-              <%= render 'pages/package_page', categories: @categories, items: @items %>
-            </div>
-        </div>
-        <div class="col-xs-12 col-md-3">
-          <div class="sidebar">
-            <div class="package-items">
-              <% @items.sort { |i, j| i.category_id <=> j.category_id }.each do |i| %>
-                <% if current_user %>
-                  <% order_item = OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
-                  <% in_cart = order_item.cart %>
-                <% else %>
-                  <% session[:package_items].each { |j| in_cart = j["cart"] if j["item_id"] == i.id } %>
-                <% end %>
-                  <% y = "<div class=\"package-item\" id=\"sidebar-#{i.category.item_type}\">" %>
-                  <%= y.html_safe %>
-                    <div class="package-item-picture">
-                      <%= image_tag i.picture %>
-                    </div>
-                    <div class="package-item-middle">
-                      <p class="package-item-category"><%= i.category.item_type.upcase %></p>
-                      <p class="package-item-brand"><%= i.brand %></p>
-                    </div>
-                    <div class="package-item-right">
-                      <% if in_cart %>
-                        <% x = "<p class=\"package-item-in-cart-status package-item-in-cart\" id=\"sidebar-#{i.category.item_type}\">" %>
-                        <% x.html_safe %>
-                        <p class="package-item-in-cart-status package-item-in-cart">
-                          IN CART
-                        </p>
-                      <% else %>
-                        <% x = "<p class=\"package-item-in-cart-status\" id=\"sidebar-#{i.category.item_type}\">" %>
-                        <%  x.html_safe %>
-                        <p class="package-item-in-cart-status">
-                          WAITING
-                        </p>
-                      <% end %>
-                        <p class="package-item-price">$<%= i.price %></p>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
-              <% if current_user %>
-                <% order_items = current_user.order_items.where(package: true) %>
-                <% if order_items.all? { |i| i.cart } %>
-                  <%= link_to "Proceed to Checkout", orderitems_path, class: "btn cart-button place-package-order" %>
-                <% else %>
-                  <%= link_to "Please Confirm All Items", "#", class: "btn cart-button place-package-order" %>
-                <% end %>
-              <% else %>
-                <% if session[:package_items].all? { |i| i["cart"] } %>
-                  <%= link_to "Proceed to Checkout", orderitems_path, class: "btn cart-button place-package-order" %>
-                <% else %>
-                  <%= link_to "Please Confirm All Items", "#", class: "btn cart-button place-package-order" %>
-                <% end %>
-              <% end %>
+           <div class="card-row">
+            <%= render 'pages/package_page', categories: @categories, items: @items %>
           </div>
         </div>
-      </div>
+
+
+
+<div class="sidebar">
+  <div class="package-items">
+    <% @items.sort { |i, j| i.category_id <=> j.category_id }.each do |i| %>
+    <% if current_user %>
+    <% order_item = OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
+    <% in_cart = order_item.cart %>
+    <% else %>
+    <% session[:package_items].each { |j| in_cart = j["cart"] if j["item_id"] == i.id } %>
+    <% end %>
+    <% if in_cart %>
+    <% y = "<div class=\"package-item\" id=\"sidebar-#{i.category.item_type}\">" %>
+    <%= y.html_safe %>
+    <% else %>
+    <% y = "<div class=\"package-item not-booked\" id=\"sidebar-#{i.category.item_type}\">" %>
+    <%= y.html_safe %>
+    <% end %>
+    <div class="package-item-picture">
+      <%= image_tag i.picture %>
+    </div>
+    <div class="package-item-middle">
+      <p class="package-item-category"><%= i.category.item_type.upcase %></p>
+      <p class="package-item-brand"><%= i.brand %></p>
+    </div>
+    <div class="package-item-right">
+      <% if in_cart %>
+      <% x = "<p class=\"package-item-in-cart-status package-item-in-cart\" id=\"sidebar-#{i.category.item_type}\">" %>
+      <% x.html_safe %>
+      <p class="package-item-in-cart-status package-item-in-cart">
+        IN CART
+      </p>
+      <% else %>
+      <% x = "<p class=\"package-item-in-cart-status\" id=\"sidebar-#{i.category.item_type}\">" %>
+      <%  x.html_safe %>
+
+      <p class="package-item-in-cart-status">
+
+        WAITING
+      </p>
+      <% end %>
+      <p class="package-item-price">$<%= i.price %></p>
     </div>
   </div>
+  <% end %>
 </div>
-
+<% if current_user %>
+<% order_items = current_user.order_items.where(package: true) %>
+<% if order_items.all? { |i| i.cart } %>
+<%= link_to "Proceed to Checkout", orderitems_path, class: "btn cart-button place-package-order" %>
+<% else %>
+<%= link_to "Please Confirm All Items", "#", class: "btn cart-button place-package-order" %>
+<% end %>
+<% else %>
+<% if session[:package_items].all? { |i| i["cart"] } %>
+<%= link_to "Proceed to Checkout", orderitems_path, class: "btn cart-button place-package-order" %>
+<% else %>
+<%= link_to "Please Confirm All Items", "#", class: "btn cart-button place-package-order" %>
+<% end %>
+<% end %>
+</div>
 
 
 

@@ -3,21 +3,25 @@
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
 <!-- <div class="logo"> -->
   <%= image_tag "logo_complet_2.png" %>
+  <%#= image_tag "logo_zebrasclub_2.svg" %>
+
   <%#= image_tag "https://unsplash.it/50" %>
 <!-- </div> -->
   <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <%# raise %>
+
+    
     <% unless (current_user && current_user.orders.first.order_items.where(package: true).length.zero?) || (!current_user && session[:package_items].nil?) %>
-      <%= link_to package_path, class: "btn base-button my-nav-button" do %>
+      <%= link_to package_path, class: "btn navbar-button" do %>
         <i class="fa fa-cube"></i><p>My Package</p>
       <% end %>
     <% end %>
-    <%= link_to orderitems_path, class: "btn base-button my-nav-button" do %>
+    <%= link_to orderitems_path, class: "btn navbar-button" do %>
       <i class="fa fa-shopping-cart"></i><p>My Cart</p>
     <% end %>
+    
     <% if user_signed_in? %>
       <div class="navbar-wagon-item">
         <%= link_to destroy_user_session_path, method: :delete, class: "my-log-out" do %>

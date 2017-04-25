@@ -17,7 +17,7 @@
               <% else %>
                 <% session[:package_items].each { |j| in_cart = j["cart"] if j["item_id"] == item.id } %>
               <% end %>
-              <% y = in_cart ? "<div class=\"price in-cart\">" : "<div class=\"price\">"%>
+               <% y = in_cart ? "<div class=\"price in-cart\">" : "<div class=\"price\">"%>
               <% z = "<i class=\"fa fa-check\" aria-hidden=\"true\"></i>" %>
               <%= y.html_safe %>
                 <%= z.html_safe if in_cart %>
