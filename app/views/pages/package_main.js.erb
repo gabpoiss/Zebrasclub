@@ -4,7 +4,7 @@
 <% end %>
 var added = "<%= @category %>"
 <% if @in_cart %>
-  $("#sidebar-" + category).addClass("package-item-in-cart");
+  $("#sidebar-" + category + " > .package-item-right > .package-item-in-cart-status").addClass("package-item-in-cart");
 <% end %>
 <% if @ready_to_order_package %>
   $(".place-package-order").attr("href", "/orderitems");

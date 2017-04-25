@@ -25,18 +25,30 @@ class PagesController < ApplicationController
     @items = []
     @categories = Category.all
 
+    # binding.pry
+
     order_items = if current_user
       User.find(current_user.id).order_items.where(package: true)
     else
       session[:package_items] ? session[:package_items] : []
     end
 
-
-
-    if order_items.any? && params[:search].nil?
-
-      @items = Item.where(id: order_items.map { |order_item| order_item["item_id"] })
+    if params[:search].nil?
+      if order_items.any?
+        @items = Item.where(id: order_items.map { |order_item| order_item["item_id"] })
+      else
+        redirect_to "/"
+      end
     else
+
+      # MAKE SURE TO WIPE ANY ORDERITEMS IF THEY HAVE ANY
+      if order_items.any?
+        if current_user
+          current_user.orders.first.order_items.destroy_all
+        else
+          session[:package_items] = []
+        end
+      end
 
       @categories.each do |i|
 

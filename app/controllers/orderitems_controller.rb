@@ -77,6 +77,7 @@ class OrderitemsController < ApplicationController
     else
       session[:package_items].delete_if { |i| i["item_id"] == params[:id].to_i }
     end
+    # binding.pry
     @categories = Category.all
 
     @items = all_items_in_package
