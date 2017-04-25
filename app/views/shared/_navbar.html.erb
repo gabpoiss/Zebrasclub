@@ -1,8 +1,12 @@
-<div class="navbar-wagon">
+<div class="navbar-wagon <%= controller_name == "pages" && action_name == "home" ? "nav-bg-transparent nav-btn-white" : "nav-bg-white nav-btn-grey " %>">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
 <!-- <div class="logo"> -->
-  <%= image_tag "logo_complet_2.png" %>
+<div class="nav-logo-font">
+  <h1>Zebrasclub</h1>
+</div>
+
+  <%#= image_tag "logo_complet_2.png" %>
   <%#= image_tag "logo_zebrasclub_2.svg" %>
 
   <%#= image_tag "https://unsplash.it/50" %>
@@ -14,13 +18,19 @@
 
 
     <% unless (current_user && current_user.orders.first.order_items.where(package: true).length.zero?) || (!current_user && session[:package_items].nil?) %>
-      <%= link_to " My Package", package_path, class: "btn navbar-button fa fa-cube" %>
+      <%= link_to package_path, class: "btn navbar-button" do %>
+      <i class="fa fa-cube"></i> My Package
+      <% end %>
     <% end %>
-    <%= link_to " My Cart", orderitems_path, class: "btn navbar-button fa fa-shopping-cart" %>
+      <%= link_to orderitems_path, class: "btn navbar-button" do %>
+        <i class="fa fa-shopping-cart"></i> My Cart
+      <% end %>
 
     <% if user_signed_in? %>
       <div>
-        <%= link_to " Sign Out", destroy_user_session_path, method: :delete, class: "btn navbar-button fa fa-sign-out" %>
+       <%= link_to destroy_user_session_path, method: :delete, class: "btn navbar-button" do %>
+           <i class="fa fa-sign-out"></i> Sign Out
+        <% end %>
       </div>
     <% else %>
       <%= link_to "Login", new_user_session_path, class: "btn navbar-button navbar-wagon-item" %>
@@ -55,6 +65,5 @@
     </div>
   </div>
 </div>
-
 <!-- Dropdown list appearing on mobile only -->
 
