@@ -9,62 +9,51 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <div><%#= link_to "Package", "/package" %></div>
-
-      <%= link_to "Buy Individual Items", items_path, class: "btn base-button" %>
-      <div><%= link_to "", orderitems_path, class: "btn base-button fa fa-shopping-cart"%></div>
-
-    <!-- Different navigation if login or not -->
+    <%= link_to package_path, class: "btn base-button my-nav-button" do %>
+      <i class="fa fa-cube"></i><p>My Package</p>
+    <% end %>
+    <%= link_to orderitems_path, class: "btn base-button my-nav-button" do %>
+      <i class="fa fa-shopping-cart"></i><p>My Cart</p>
+    <% end %>
     <% if user_signed_in? %>
-
-    <!-- Notification -->
-    <!-- Profile picture and dropdown -->
-    <div class="navbar-wagon-item">
-      <div class="dropdown">
-       <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-       <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li>
-          <%= link_to "#" do %>
-          <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to "#" do %>
-          <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-          <% end %>
-        </li>
+      <div class="navbar-wagon-item">
+        <%= link_to destroy_user_session_path, method: :delete, class: "my-log-out" do %>
+          <i class="fa fa-sign-out"></i><p>Sign Out</p>
+        <% end %>
+      </div>
+    <% else %>
+      <%= link_to "Login", new_user_session_path, class: "my-log-out navbar-wagon-item" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "my-log-out navbar-wagon-item" %>
+    <% end %>
+  </div>
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li><a href="/package"><i class="fa fa-cube"></i>My Package</a></li>
+        <li><a href="/orderitems"><i class="fa fa-shopping-cart"></i>My Cart</a></li>
+        <% if current_user %>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-logout" do %>
+              <i class="fa fa-sign-out"></i>Sign Out
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to new_user_session_path, class: "dropdown-logout" do %>
+              <i class="fa fa-sign-in"></i>Sign In
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path, class: "dropdown-logout" do %>
+              <i class="fa fa-user-plus"></i>Sign Up
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
-
-  <% else %>
-
-  <!-- Login text link -->
-  <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-  <%= link_to t(".sign_up", default: "Sign Up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
-  <% end %>
-
-  <!-- Button (call-to-action) -->
-  <%#= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
 </div>
 
 <!-- Dropdown list appearing on mobile only -->
-<div class="navbar-wagon-item hidden-md hidden-lg">
-  <div class="dropdown">
-    <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-    <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-      <li><a href="#">Some mobile link</a></li>
-      <li><a href="#">Other one</a></li>
-      <li><a href="#">Other one</a></li>
-    </ul>
-  </div>
-</div>
-</div>
 
