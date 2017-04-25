@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170424172258) do
   create_table "items", force: :cascade do |t|
     t.string   "size"
     t.integer  "stock"
+    t.integer  "price"
     t.string   "brand"
     t.integer  "category_id"
     t.string   "description"
@@ -52,10 +53,8 @@ ActiveRecord::Schema.define(version: 20170424172258) do
     t.integer  "user_id"
     t.string   "shipping_address"
     t.boolean  "paid_status"
-    t.integer  "amount_cents",     default: 0, null: false
-    t.json     "payment"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
