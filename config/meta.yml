@@ -1,0 +1,5 @@
+meta_product_name: "Zebrasclub"
+meta_title: "Zebrasclub - The worlds number one referee store"
+meta_description: "Get a hockey referee package at the lowest price!"
+meta_image: "banner-image.jpg"                       # should exist in `app/assets/images/`
+twitter_account: "@zebrasclub"   # required for Twitter Cards
