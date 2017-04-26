@@ -1,8 +1,12 @@
-<div>
-    <div>Brand: <%= brand %></div>
-    <div>Price: $<%= price %>.00</div>
-    <div><%= description %></div>
-    <%= link_to "Choose this one instead", package_replace_path(old_item_id: old_item_id, new_item_id: new_item_id, item_ids: item_ids), remote: true, method: :post, class: "btn btn-primary"%>
-    <br>
-    <br>
-</div>
+<%= link_to package_replace_path(old_item_id: old_item_id, new_item_id: new_item_id, item_ids: item_ids), remote: true, method: :post do %>
+  <div class="package-index-item-brand">
+    <h2><%= brand %></h2>
+  </div>
+  <div class="package-index-item-price">
+    <%= humanized_money_with_symbol(price) %>
+  </div>
+  <div class="package-index-item-description">
+    <p><%= description %></p>
+  </div>
+<% end %>
+
