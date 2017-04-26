@@ -17,7 +17,7 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
 
-    <% unless (current_user && current_user.orders && current_user.orders.first.order_items.where(package: true).length.zero?) || (!current_user && session[:package_items].nil?) %>
+    <% unless (current_user && !current_user.orders.empty? && current_user.orders.first.order_items.where(package: true).length.zero?) || (!current_user && session[:package_items].nil?) %>
     <%= link_to package_path, class: "btn navbar-button" do %>
     <i class="fa fa-cube"></i> My Package
     <% end %>
