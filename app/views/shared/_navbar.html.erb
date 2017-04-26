@@ -18,12 +18,12 @@
 
 
     <% unless (current_user && (current_user.orders.empty? || current_user.orders.first.order_items.where(package: true).length.zero?)) || (!current_user && session[:package_items].nil?) %>
-    <%= link_to package_path, class: "btn navbar-button" do %>
-    <i class="fa fa-cube"></i> My Package
-    <% end %>
-    <% end %>
-    <%= link_to orderitems_path, class: "btn navbar-button" do %>
-    <i class="fa fa-shopping-cart"></i> My Cart
+      <%= link_to package_path, class: "btn navbar-button" do %>
+        <i class="fa fa-cube"></i> My Package
+      <% end %>
+      <%= link_to orderitems_path, class: "btn navbar-button" do %>
+        <i class="fa fa-shopping-cart"></i> My Cart
+      <% end %>
     <% end %>
 
     <% if user_signed_in? %>
