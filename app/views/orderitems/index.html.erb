@@ -54,8 +54,8 @@
             <%= number_field_tag "quantity", i["quantity"], min: 0 %>
             <%= submit_tag %>
             <% end %>
-            <%= link_to "Remove from cart", destroy_orderitem_path(i["item_id"]), method: :delete do %>
-            <div class="fa fa-trash-o btn cart-button"></div>
+            <%= link_to destroy_orderitem_path(i["item_id"]), method: :delete do %>
+            <div class="fa fa-trash-o btn cart-button">Remove from cart</div>
             <% end %>
             <br>
           </div>

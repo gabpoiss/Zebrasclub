@@ -1,4 +1,67 @@
-<div class="text-center">
-  <h1>Thank you for shopping with us</h1>
+<div class="container">
+  <div class="done-wrapper">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="done-container">
+          <div class="done-top">
+            <div><h1>Thank you for shopping with us</h1></div>
+            <div><p><strong>Your order number is <%= current_user.orders.first.id %></strong></p></div>
+            <div><p>You will recieve an email confirmation shortly at <strong><%= current_user.email %></strong></p></div>
+          </div>
+          <div class="done-middle">
+            <div><h3>Order Details</h3></div>
+            <div>*SHIPPING ADDRESS DETAILS HERE*</div>
+          </div>
+          <div class="order-recap">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="what-you-ordered">
+      <div class="row">
+        <% @orderitems.each do |i| %>
+          <div class="col-xs-12 col-sm-6">
+            <div class="ordered-item-card">
+              <div class="ordered-item-photo">
+                <div><%= image_tag i.item.picture %></div>
+              </div>
+              <div class="ordered-item-details">
+                <div><h3><%= i.item.brand %></h3></div>
+                <div><p><%= i.item.size %><p></div>
+                <div><p><%= humanized_money_with_symbol(i.item.price * i.quantity) %></p></div>
+                <div><p>Quantity: <%= i.quantity %></p></div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="done-pricing">
+          <div class="total-price">
+            <div><h3>Total: <%= humanized_money_with_symbol @order.amount %></h3></div>
+          </div>
+          <div class="price-breakdown">
+            <div class="price-breakdown-item">
+              <p>Item total:</p>
+              <p><%= humanized_money_with_symbol (@order.amount * 1.09975) %></p>
+            </div>
+            <div class="price-breakdown-item">
+              <p>Shipping:</p>
+              <p>$0</p>
+            </div>
+            <div class="price-breakdown-item">
+              <p>Taxes:</p>
+              <p><%= humanized_money_with_symbol (@order.amount * 0.09975) %></p>
+            </div>
+            <div class="price-breakdown-item order-total">
+              <p>Order Total:</p>
+              <p><%= humanized_money_with_symbol (@order.amount * 1.09975) %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-

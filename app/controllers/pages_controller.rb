@@ -93,7 +93,9 @@ class PagesController < ApplicationController
   end
 
   def done
-
+    @orderitems = OrderItem.where(cart: true, order_id: current_user.orders.last.id)
+    @order = current_user.orders.last
+    Order.create(user_id: current_user.id)
   end
 
   def category_params
