@@ -49,29 +49,33 @@
             <h3><%= @item.size.capitalize %></h3>
           <% end %>
         </div>
-        <div class="package-item-buttons">
-          <% if !@in_cart %>
-            <div class="edit-delete">
-              <%= link_to "I don't want this...", edit_orderitem_path(@item, { remove_from_package: true }), remote: true, method: :patch %>
-            </div>
-            <div class="edit-delete">
-              <%= link_to "Other #{@category.pluralize}", package_items_path(category: @category, item: @item, item_ids: @item_ids), remote: true, method: :post %>
-            </div>
-          <% end %>
-        </div>
         <div class="package-item-description">
           <p><%= @item.description %></p>
         </div>
       </div>
-      <div class="add-to-cart-container">
+      <div class="text-center">
         <% if !@in_cart %>
-          <% if @has_size %>
-            <%= link_to edit_orderitem_path(@item), remote: true, method: :patch do %>
-              <button class="btn cart-button add-to-cart"><i class="fa fa-shopping-cart" style="margin-right: 10px;"></i> Add to Cart</button>
+            <% if !@in_cart %>
+              <div class="edit-delete">
+                <%= link_to edit_orderitem_path(@item, { remove_from_package: true }), remote: true, method: :patch do %>
+                  <button class="clear-btn">Remove from package</button>
+                <% end %>
+              </div>
+              <div class="edit-delete" style="margin-left: 20px;">
+                <%= link_to package_items_path(category: @category, item: @item, item_ids: @item_ids), remote: true, method: :post do %>
+                  <button class="clear-btn">Other <%= "#{@category.pluralize}" %></button>
+                <% end %>
+              </div>
             <% end %>
-          <% else %>
-            <button class="btn cart-button add-to-cart">Select a size</button>
-          <% end %>
+          <div class="add-to-cart-container text-center">
+            <% if @has_size %>
+              <%= link_to edit_orderitem_path(@item), remote: true, method: :patch do %>
+                <button class="btn add-to-cart"><i class="fa fa-shopping-cart" style="margin-right: 10px;"></i> Add to Cart</button>
+              <% end %>
+            <% else %>
+              <button class="btn select-a-size">Please select a size</button>
+            <% end %>
+          </div>
         <% else %>
           <h3>In Cart</h3>
         <% end %>
@@ -85,7 +89,6 @@
           <div class="nav-button previous">
             <i class="fa fa-arrow-left"></i>
           </div>
-          <p>PREV</p>
         <% end %>
       <% end %>
     </div>
@@ -95,7 +98,6 @@
           <div class="nav-button next">
             <i class="fa fa-arrow-right"></i>
           </div>
-          <p>NEXT</p>
         <% end %>
       <% end %>
     </div>
