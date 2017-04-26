@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   # skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    store_current_location
     @items = Item.all
     if params[:search]
       if params[:search][:price_lower].present? && params[:search][:price_upper].present?
@@ -11,6 +12,7 @@ class PagesController < ApplicationController
   end
 
   def package
+    store_current_location
     generate_package
     redirect_to "/package" if params[:search]
   end

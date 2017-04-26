@@ -1,6 +1,7 @@
 class OrderitemsController < ApplicationController
 
   def index
+    store_current_location
     @order = current_user.cart if current_user
     @order_items = if current_user
        User.find(current_user.id).order_items.where(cart: true)
