@@ -24,3 +24,18 @@
     color:white;
   }
 }
+
+.clear-btn {
+  display: inline-block;
+  background-color: transparent;
+  border-color: black;
+  color: black;
+  border: solid;
+  border-width: thin;
+  border-radius: 30px;
+  padding: 6px 30px;
+  &:hover {
+    color: grey;
+    border-color: grey;
+  }
+}

@@ -1,5 +1,5 @@
 .package-item-show-container {
-  height: 100%;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,6 +16,7 @@
 
 .main-photo {
   width: 100%;
+  margin-top: 40px;
   // height: 80%;
   // background-size: cover!important;
   // border-top: 2px solid black;
@@ -53,6 +54,7 @@
 }
 
 .package-item-right-div {
+  min-height: 65vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -99,6 +101,10 @@
       text-decoration: none;
     }
   }
+  h3 {
+    margin: 0;
+    margin-left: 10px;
+  }
 }
 
 .size-circle {
@@ -132,7 +138,7 @@
 
 .edit-delete {
   display: inline-block;
-  margin-right: 30px;
+  // margin-right: 30px;
 }
 
 .other-items {
@@ -146,16 +152,30 @@
 }
 
 .add-to-cart-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  // display: flex;
+  // justify-content: space-around;
+  // align-items: center;
   padding: 20px;
 }
 
 .add-to-cart {
+  background-color: $cart-button;
+  border-radius: 7px;
+  color: white;
   padding: 10px 40px;
   a {
     color: white;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.select-a-size {
+  background-color: lightgrey;
+  border-radius: 7px;
+  padding: 10px 40px;
+  a {
     &:hover {
       text-decoration: none;
     }
@@ -203,6 +223,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 20px;
   a {
     color: black;
     text-align: center;
