@@ -55,9 +55,9 @@ class OrderitemsController < ApplicationController
         end
       end
     end
-
     @item_ids = params[:items]
     item_index = @item_ids.find_index(@default_item.id.to_s)
+    @item_ids[item_index] = @item.id.to_s
     @prev = item_index.zero? ? nil : @item_ids[item_index - 1]
     @next = @item_ids[item_index + 1]
 
