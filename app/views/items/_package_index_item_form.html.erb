@@ -1,15 +1,16 @@
 <%= form_tag package_items_path(item: old_item_id), method: :post, remote: true do |i| %>
-  <%= number_field_tag "min_price", 0, min: 0 %>
-  <% if max == 99999999999999 %>
-    <%= number_field_tag "max_price", min: 0 %>
-  <% else %>
-    <%= number_field_tag "max_price", max ? max / 100 : nil, min: 0 %>
-  <% end %>
-  <%= select_tag "size", raw("<option selected=\"selected\">#{size}</option><option>small</option><option>medium</option><option>large</option><option>extra large</option>") %>
+  <%#= number_field_tag "min_price", 0, min: 0 %>
+  <%# if max == 99999999999999 %>
+    <%#= number_field_tag "max_price", min: 0 %>
+  <%# else %>
+    <%#= number_field_tag "max_price", max ? max / 100 : nil, min: 0 %>
+  <%# end %>
+  <strong id="index-min">$10</strong><input id="ex2" type="text" class="span2" name="min_max" value="" data-slider-min="10" data-slider-max="500" data-slider-step="5" data-slider-value="[0,200]"/><strong id="index-max">$500</strong>
   <%= hidden_field_tag "category", category %>
   <%= hidden_field_tag "filter", "true" %>
   <%= submit_tag %>
 <% end %>
 
-<%= link_to "Main", package_main_path, remote: true, class: "btn base-button back-to-main index-back-button" %>
-
+<script>
+  $("#ex2").slider({});
+</script>

@@ -15,6 +15,7 @@ $(".card-row").append($("<h1>" + item_type + "</h1>"));
     size: i.size,
     description: i.description
   } %>
+  <% item_attr[:item_ids] = @item_ids %>
   var item = $("<%=  j render 'items/package_index_item', item_attr %>");
   $(".card-row").append(item);
 <% end %>
