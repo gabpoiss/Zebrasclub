@@ -9,7 +9,6 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
-    binding.pry
     if session[:package_items] && current_user && session[:package_items].any? { |i| i["cart"] }
       OrderItem.joins(:order).where("orders.user_id = ?", current_user.id).destroy_all
       session[:package_items].each do |i|
@@ -23,6 +22,7 @@ class Users::SessionsController < Devise::SessionsController
         )
       end
     end
+    current_user.orders.last.compute_price
   end
 
   # DELETE /resource/sign_out

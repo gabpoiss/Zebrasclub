@@ -20,7 +20,11 @@ var container = "<%= j render 'pages/package_page', categories: @categories, ite
 $(".card-row").append($(container));
 
 // sidebar sort by in-cart status
-<% @items = @items.sort { |i, j| OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id).first.cart ? 1 : 0<=> OrderItem.joins(:order).where(item_id: j.id, package: true).where("orders.user_id = ?", current_user.id).first.cart ? 1 : 0} %>
+<% if current_user %>
+  <% @items = @items.sort { |i, j| OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id).first.cart ? 1 : 0<=> OrderItem.joins(:order).where(item_id: j.id, package: true).where("orders.user_id = ?", current_user.id).first.cart ? 1 : 0} %>
+<% else %>
+  <% @items = @items.sort { |i, j| session[:package_items].find { |k| k["item_id"] == i.id }["cart"] ? 1 : 0 <=> session[:package_items].find { |k| k["item_id"] == j.id }["cart"] ? 1 : 0 } %>
+<% end %>
 var sidebarItems = [];
   $(".package-items > .package-item").each(function() {
     sidebarItems.push($(this));
