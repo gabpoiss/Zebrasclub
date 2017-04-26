@@ -1,93 +1,109 @@
 <div class="container">
   <div class="row">
-  <div class="col-sm-12 col-md-10 col-md-offset-1">
-    <div class="package-checkout">
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <div class="package-checkout">
 
-      <div class="package-main-checkout">
+        <div class="package-main-checkout">
 
-        <div class="package-items checkout-items">
-          <% if current_user %>
-          <% @order_items = @order_items.sort { |i, j| i.item.category_id <=> j.item.category_id } %>
-          <% @order_items.each do |i| %>
-          <div class="package-item">
-            <div class="package-item-picture">
-              <%= image_tag i.item.picture %>
-            </div>
-            <div class="package-item-middle">
-              <p class="package-item-category"><%= i.item.category.item_type.capitalize %></p>
-              <p class="package-item-brand"><%= i.item.brand %></p>
-              <p><%= i.item.size.capitalize %></p>
-            </div>
-            <div class="package-item-right">
-              <p class="package-item-price"><%= humanized_money_with_symbol(i.item.price) %></p>
-            </div>
-            <div class="package-item-quantity">
-              <%= form_tag edit_orderitem_path(i), class: "form-inline", method: :patch do |j| %>
-              <%= hidden_field_tag "quantity_update", "true" %>
-              <div class="form-group">
-                <%= label_tag "quantity", "Qty:" %>
-                <%= number_field_tag "quantity", i.quantity, min: 0, class: "form-control" %>
-              </div>
-              <%#= submit_tag %>
+          <div class="package-items checkout-items">
+            <% if current_user %>
+              <% @order_items = @order_items.sort { |i, j| i.item.category_id <=> j.item.category_id } %>
+              <% @order_items.each do |i| %>
+                <div class="package-item">
+                  <div class="package-item-picture">
+                    <%= image_tag i.item.picture %>
+                  </div>
+                  <div class="package-item-middle">
+                    <p class="package-item-category"><%= i.item.category.item_type.capitalize %></p>
+                    <p class="package-item-brand"><%= i.item.brand %></p>
+                    <p><%= i.item.size.capitalize %></p>
+                  </div>
+                  <div class="package-item-right">
+                    <p class="package-item-price"><%= humanized_money_with_symbol(i.item.price) %></p>
+                  </div>
+                  <div class="package-item-quantity">
+                    <%= form_tag edit_orderitem_path(i), class: "form-inline", method: :patch do |j| %>
+                      <%= hidden_field_tag "quantity_update", "true" %>
+                      <div class="form-group">
+                        <%= label_tag "quantity", "Qty:" %>
+                        <%= number_field_tag "quantity", i.quantity, min: 0, class: "form-control" %>
+                      </div>
+                      <%#= submit_tag %>
+                    <% end %>
+                  </div>
+                  <div class="package-item-remove">
+                    <%= link_to destroy_orderitem_path(i), method: :delete, class: "btn cart-button" do %>
+                      <i class="fa fa-trash-o"></i> Remove
+                    <% end %>
+                  </div>
+                </div>
               <% end %>
-            </div>
-            <div class="package-item-remove">
-              <%= link_to destroy_orderitem_path(i), method: :delete, class: "btn cart-button" do %>
-              <i class="fa fa-trash-o"></i> Remove
+
+            <% else %>
+
+              <% session[:package_items].each do |i| %>
+                <% if i["cart"] %>
+                <% item = Item.find(i["item_id"]) %>
+                <div class="package-item">
+                  <div class="package-item-picture">
+                    <%= image_tag item.picture %>
+                  </div>
+                  <div class="package-item-middle">
+                    <p class="package-item-category"><%= item.category.item_type.capitalize %></p>
+                    <p class="package-item-brand"><%= item.brand %></p>
+                    <p><%= item.size.capitalize %></p>
+                  </div>
+                  <div class="package-item-right">
+                    <p class="package-item-price"><%= humanized_money_with_symbol(item.price) %></p>
+                  </div>
+                  <div class="package-item-quantity">
+                    <%= form_tag edit_orderitem_path(item), class: "form-inline", method: :patch do |j| %>
+                    <%= hidden_field_tag "quantity_update", "true" %>
+                    <div class="form-group">
+                      <%= label_tag "quantity", "Qty:" %>
+                      <%= number_field_tag "quantity", i["quantity"], min: 0, class: "form-control" %>
+                    </div>
+                    <%#= submit_tag %>
+                    <% end %>
+                  </div>
+                  <div class="package-item-remove">
+                    <%= link_to destroy_orderitem_path(item), method: :delete, class: "btn cart-button" do %>
+                    <i class="fa fa-trash-o"></i> Remove
+                    <% end %>
+                  </div>
+                </div>
+                  <% end %>
+                <% end %>
               <% end %>
-            </div>
           </div>
-          <% end %>
-          <% else %>
-          <% session[:package_items].each do |i| %>
-          <% if i["cart"] %>
-          <% item = Item.find(i["item_id"]) %>
-          <div>
-            <p><%= item.category.item_type %></p>
-            <p>Brand: <%= item.brand %></p>
-            <p>Price:<%= humanized_money_with_symbol(item.price) %></p>
-            <p>Size: <%= item.size %></p>
-            <p>quantity: <%= i["quantity"] %></p>
-            <%= form_tag edit_orderitem_path(item), method: :patch do |j| %>
-            <%= hidden_field_tag "quantity_update", "true" %>
-            <%= hidden_field_tag "item_id", i["id"] %>
-            <%= number_field_tag "quantity", i["quantity"], min: 0 %>
-            <%= submit_tag %>
+
+        </div>
+
+
+          <div class="package-side-checkout">
+            <% if current_user %>
+              <%= form_tag order_payments_path(@order) do %>
+              <article>
+                <label class="amount">
+                  <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span>
+                </label>
+              </article>
+
+              <!-- Stripe form -->
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button cart-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-name="Zebrasclub"
+              data-email="<%= current_user.email %>"
+              data-description="Your Cart"
+              data-amount="<%= @order.amount_cents %>"
+              data-currency="<%= @order.amount.currency %>"></script>
+              <% end %>
+              <% else %>
+              <h1>Please Login.</h1>
             <% end %>
-            <%= link_to "Remove from cart", destroy_orderitem_path(i["item_id"]), method: :delete do %>
-            <div class="fa fa-trash-o btn cart-button"></div>
-            <% end %>
-            <br>
           </div>
-          <% end %>
-          <% end %>
-          <% end %>
+
         </div>
       </div>
-
-
-      <div class="package-side-checkout">
-        <% if current_user %>
-        <%= form_tag order_payments_path(@order) do %>
-        <article>
-          <label class="amount">
-            <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span>
-          </label>
-        </article>
-
-        <!-- Stripe form -->
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button cart-button"
-        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-        data-name="Zebrasclub"
-        data-email="<%= current_user.email %>"
-        data-description="Your cart."
-        data-amount="<%= @order.amount_cents %>"
-        data-currency="<%= @order.amount.currency %>"></script>
-        <% end %>
-        <% end %>
-      </div>
-
-    </div>
     </div>
   </div>
-</div>
