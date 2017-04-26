@@ -22,7 +22,7 @@ class Users::SessionsController < Devise::SessionsController
         )
       end
     end
-    current_user.orders.last.compute_price
+    current_user.orders.last.compute_price unless current_user.orders.length.zero?
   end
 
   # DELETE /resource/sign_out
