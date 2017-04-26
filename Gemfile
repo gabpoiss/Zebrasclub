@@ -21,6 +21,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+gem 'bootstrap-slider-rails'
+
 gem 'coffee-script'
 gem 'stripe'
 gem 'money-rails'

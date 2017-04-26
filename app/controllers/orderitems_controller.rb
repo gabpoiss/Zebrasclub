@@ -9,13 +9,6 @@ class OrderitemsController < ApplicationController
     end
   end
 
-  # def create
-  #   @item = Item.find(params[:item_id])
-  #   order  = Order.create!(item_id: @item.id, amount: @item.price_cents, paid_status: 'pending')
-
-  #   redirect_to new_order_payment_path(order)
-  # end
-
   def update
     if params[:quantity_update]
       quantity_update
@@ -65,7 +58,6 @@ class OrderitemsController < ApplicationController
     end
 
     @item_ids = params[:items]
-    # binding.pry
     item_index = @item_ids.find_index(@default_item.id.to_s)
     @prev = item_index.zero? ? nil : @item_ids[item_index - 1]
     @next = @item_ids[item_index + 1]
@@ -144,7 +136,6 @@ class OrderitemsController < ApplicationController
       order_item.save
       @item = Item.find(new_item_id)
       @category = Item.find(new_item_id).category.item_type
-      render "items/package_show"
     else
       new_item = Item.find(new_item_id)
       session[:package_items].delete_if do |i|
@@ -160,8 +151,16 @@ class OrderitemsController < ApplicationController
       }
       @item = new_item
       @category = new_item.category.item_type
-      render "items/package_show"
+
     end
+
+    @item_ids = params[:item_ids]
+    item_index = @item_ids.find_index(old_item_id.to_s)
+    @item_ids[item_index] = new_item_id.to_s
+    @prev = item_index.zero? ? nil : @item_ids[item_index - 1]
+    @next = @item_ids[item_index + 1]
+
+    render "items/package_show"
   end
 
   def show

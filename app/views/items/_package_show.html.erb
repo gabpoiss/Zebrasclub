@@ -53,7 +53,7 @@
               <%= link_to "I don't want this...", edit_orderitem_path(@item, { remove_from_package: true }), remote: true, method: :patch %>
             </div>
             <div class="edit-delete">
-              <%= link_to "Other #{@category.pluralize}", package_items_path(category: @category, item: @item), remote: true, method: :post %>
+              <%= link_to "Other #{@category.pluralize}", package_items_path(category: @category, item: @item, item_ids: @item_ids), remote: true, method: :post %>
             </div>
           <% end %>
         </div>
