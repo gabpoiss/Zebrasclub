@@ -14,13 +14,34 @@
   background-color: $cart-button;
   border-radius: 7px;
   color: white;
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
 
   &:hover{
     background-color: $cart-button-hover;
     color:white;
   }
+}
+
+.stripe-button-el {
+  background: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: $base-font !important;
+}
+
+
+.stripe-button-el span{
+  padding: 0 12px !important;
+  height: 30px !important;
+  line-height: 30px !important;
+  background: $cart-button !important;
+  font-size: 14px !important;
+  color: white !important;
+  font-weight: bold !important;
+  font-family: $base-font !important;
+  text-shadow: none !important;
+  border-radius: 7px !important;
+  border: none !important;
+  box-shadow: none !important;
 }
