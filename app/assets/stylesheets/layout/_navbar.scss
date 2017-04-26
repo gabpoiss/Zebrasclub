@@ -15,9 +15,10 @@
   background: transparent;
   color: white;
 }
-.nav-logo-font{
+.nav-logo{
   font-family: $logo-font;
 }
+
 .nav-bg-white{
   color: #8A8888;
   background-color: #F8F9F9;
@@ -34,12 +35,15 @@
     color: #e2e2e2;
   }
 }
+
 .nav-btn-grey a{
   color: #8A8888;
   &:hover{
     color: #e2e2e2;
   }
 }
+
+
 
 // .my-log-out {
 //   display: flex;
@@ -108,11 +112,16 @@
 }
 
 /* Navbar logo */
-.navbar-wagon-brand img {
+.navbar-wagon-brand {
   width: 270px;
   height: 90px;
-  margin-left: -40px;
+  margin-left: -20px;
   top: 5px;
+}
+
+.navbar-wagon-brand:hover{
+  color: white !important;
+  text-decoration: none;
 }
 
 /* Navbar right section (with form, links, button) */
