@@ -7,3 +7,13 @@
 #index-max {
   margin-left: 12px;
 }
+
+.form-control {
+  border: none;
+  border-bottom: solid 1px $input-border;
+  box-shadow: none;
+}
+
+label {
+  font-weight: normal;
+}

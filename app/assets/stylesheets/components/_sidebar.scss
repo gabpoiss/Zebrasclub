@@ -16,6 +16,13 @@
   background: white;
   z-index: 100;
   border-left: solid 1px #E5E5E5;
+
+  .cart-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .package-items {
