@@ -47,7 +47,6 @@ class OrderitemsController < ApplicationController
       order_item = OrderItem.joins(:order).where(item_id: params[:id], package: true).where("orders.user_id = ?", current_user.id)[0]
       order_item.update(item_id: @item.id, size: true)
       order_item.save
-
     else
       session[:package_items].each do |i|
         if i["item_id"] == @default_item.id && i["package"] == true
