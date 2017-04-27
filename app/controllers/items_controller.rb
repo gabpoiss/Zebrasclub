@@ -78,7 +78,7 @@ class ItemsController < ApplicationController
     @next = @item_ids[item_index + 1]
 
     if current_user
-      order_item = OrderItem.joins(:order).where(item_id: @item.id, package: true).where("orders.user_id = ?", current_user.id)[0]
+      order_item = OrderItem.joins(:order).where(item_id: @item.id, package: true).where("orders.id = ?", current_user.orders.last.id)[0]
       @in_cart = order_item.cart
       @has_size = order_item.size
     else

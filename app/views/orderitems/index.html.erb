@@ -96,18 +96,20 @@
             </div>
             <div class="pay-with-strip">
               <%= form_tag order_payments_path(@order) do %>
-                <%= label_tag "name", "Full Name" %>
-                <%= text_field_tag "name" %>
-                <%= label_tag "address_line_one", "Address Line 1" %>
-                <%= text_field_tag "address_line_one" %>
-                <%= label_tag "address_line_two", "Address Line 2" %>
-                <%= text_field_tag "address_line_two" %>
-                <%= label_tag "city", "City", class: "my-block" %>
-                <%= text_field_tag "city" %>
-                <%= label_tag "province", "Province" %>
-                <%= text_field_tag "province" %>
-                <%= label_tag "postal-code", "Postal Code" %>
-                <%= text_field_tag "postal-code" %>
+                <div class="address-form">
+                  <%= label_tag "name", "Full Name" %>
+                  <%= text_field_tag "name" %>
+                  <%= label_tag "address_line_one", "Address Line 1" %>
+                  <%= text_field_tag "address_line_one" %>
+                  <%= label_tag "address_line_two", "Address Line 2" %>
+                  <%= text_field_tag "address_line_two" %>
+                  <%= label_tag "city", "City", class: "my-block" %>
+                  <%= text_field_tag "city" %>
+                  <%= label_tag "province", "Province" %>
+                  <%= text_field_tag "province" %>
+                  <%= label_tag "postal_code", "Postal Code" %>
+                  <%= text_field_tag "postal-code" %>
+                </div>
               <script src="https://checkout.stripe.com/checkout.js" class="stripe-button cart-button"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
               data-name="Zebrasclub"
