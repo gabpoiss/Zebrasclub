@@ -46,7 +46,7 @@ class PagesController < ApplicationController
       # MAKE SURE TO WIPE ANY ORDERITEMS IF THEY HAVE ANY
       if order_items.any?
         if current_user
-          current_user.orders.first.order_items.destroy_all
+          current_user.orders.last.order_items.destroy_all
         else
           session[:package_items] = []
         end
