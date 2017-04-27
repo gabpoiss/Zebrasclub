@@ -100,8 +100,10 @@
 
 .package-index-item-content-section {
   display: flex;
+  flex: 1 0;
   flex-direction: column;
   justify-content: space-between;
+  margin-left: 10px;
 }
 
 .package-index-item-brand {
