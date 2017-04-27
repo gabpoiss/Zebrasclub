@@ -1,100 +1,47 @@
 puts "Cleaning database..."
-Item.destroy_all
-Category.destroy_all
+
+
 Order.destroy_all
 OrderItem.destroy_all
+Item.destroy_all
+Category.destroy_all
+
 puts "Creating categories..."
 # # New seed........
-Category.create(id: 1, item_type: "skate")
-Category.create(id: 2, item_type: "helmet")
-Category.create(id: 3, item_type: "jersey")
-Category.create(id: 4, item_type: "pants")
-Category.create(id: 5, item_type: "armband")
-# Skates
-category_id = [1, 2, 3, 4, 5]
-stock = (1..10).to_a
 
-size = ["extra small", "small", "medium", "large", "extra large"]
+categories = ["skate", "helmet", "jersey", "pants", "armband"]
+
+categories.each do  |category|
+  Category.create(item_type: category)
+end
+
+# Skates
+
+sizes = ["extra small", "small", "medium", "large", "extra large"]
 
 # 1
 puts "Creating Items...."
-#Skate
-size.each do |i|
-  Item.create(category_id: 1,
-    size: i,
-    stock: stock.sample,
-    price: 119.99,
-    brand: "Bauer Supreme Impact",
-    description: "Bauer Supreme Impact Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-    picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
-end
 
-size.each do |i|
-Item.create(category_id: 1,
-  size: i,
-  stock: stock.sample,
-  price: 74.99,
-  brand: "Bauer Vapor X200",
-  description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-  picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
-end
+require 'csv'
+csv_options = { col_sep: ';', quote_char: '"', headers: :first_row, row_sep: :auto }
+filepath    = 'db/items.csv'
 
-#Helmet
-size.each do |i|
-  Item.create(category_id: 2,
-    size: i,
-    stock: stock.sample,
-    price: 74.99,
-    brand: "Bauer Vapor X200",
-    description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-    picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
+CSV.foreach(filepath, csv_options) do |row|
+  sizes.each do |size|
+    Item.create(category_id: Category.where(item_type: row[4]).first.id,
+    size: size,
+    stock: rand(10..50),
+    price: row[0],
+    brand: row[1],
+    description: row[2],
+    picture: row[3])
+  end
 end
-# Jersey
-size.each do |i|
-  Item.create(category_id: 3,
-    size: i,
-    stock: stock.sample,
-    price: 74.99,
-    brand: "Bauer Vapor X200",
-    description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-    picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
-end
-  # pants
-size.each do |i|
-  Item.create(category_id: 4,
-  size: i,
-  stock: stock.sample,
-  price: 74.99,
-  brand: "Bauer Vapor X200",
-  description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-  picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
-end
-  # armbands
-size.each do |i|
-  Item.create(category_id: 5,
-  size: i,
-  stock: stock.sample,
-  price: 74.99,
-  brand: "Bauer Vapor X200",
-  description: "Bauer Vapour X200 Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-  picture: "http://res.cloudinary.com/dw8keir6d/image/upload/v1492796418/reebok-hockey-helmet-8k-inset3_y8hycr.jpg")
-end
-
-# 3
-size.each do |i|
-Item.create(category_id: 1,
-  size: i,
-  stock: stock.sample,
-  price: 119.99,
-  brand: "Bauer Supreme Impact",
-  description: "Bauer Supreme Impact Hockey Skates feature a patented integrated heel and ankle support that will keep you safe and comfortable on the ice",
-  picture: "skates/Bauer_Supreme_impact.png")
-end
-
 
 User.create(first_name: "Martin", last_name: "Giannakopoulos", email: "martingianna@gmail.com", password: "123456")
-Order.create(user_id: 1, shipping_address: "123 Fake Street", paid_status: false)
-OrderItem.create(order_id: 1, item_id: 1, shipping_status: "not yet ordered", quantity: 1, cart: true)
+Order.create(user_id: User.first.id, shipping_address: "123 Fake Street", paid_status: false)
+OrderItem.create(order_id: Order.first.id, item_id: Item.first.id, shipping_status: "not yet ordered", quantity: 1, cart: true)
+
 
 
 
