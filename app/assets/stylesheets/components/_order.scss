@@ -73,7 +73,7 @@
 }
 
 .address-form {
-  // margin: 0 auto;
+  margin-bottom: 30px;
   // width: 200px;
   label {
     font-weight: bold;
@@ -99,6 +99,7 @@
 
 .pay-with-strip {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
