@@ -2,6 +2,7 @@ class PaymentsController < ApplicationController
   before_action :set_order
 
   def create
+    binding.pry
     customer = Stripe::Customer.create(
       source: params[:stripeToken],
       email:  params[:stripeEmail]
@@ -15,9 +16,8 @@ class PaymentsController < ApplicationController
     )
 
     @order.update(payment: charge.to_json, paid_status: true)
-    current_user.orders.create(paid_status: false)
+    # current_user.orders.create(paid_status: false)
     redirect_to done_path(@order)
-
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_order_payment_path(@order)
@@ -26,6 +26,6 @@ class PaymentsController < ApplicationController
   private
 
   def set_order
-    @order = current_user.orders.where(paid_status: false).find(params[:order_id])
+    @order = current_user.orders.last
   end
 end

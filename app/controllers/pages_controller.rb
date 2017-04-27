@@ -30,7 +30,7 @@ class PagesController < ApplicationController
     # binding.pry
 
     order_items = if current_user
-      User.find(current_user.id).order_items.where(package: true)
+      User.find(current_user.id).order_items.where(package: true, order_id: current_user.orders.last)
     else
       session[:package_items] ? session[:package_items] : []
     end
