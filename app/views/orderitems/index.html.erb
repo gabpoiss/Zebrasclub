@@ -6,6 +6,7 @@
         <div class="package-main-checkout">
 
           <div class="package-items checkout-items">
+            <div>
             <% if current_user %>
               <% @order_items = @order_items.sort { |i, j| i.item.category_id <=> j.item.category_id } %>
               <% @order_items.each do |i| %>
@@ -75,6 +76,7 @@
                   <% end %>
                 <% end %>
               <% end %>
+              </div>
             <article>
             <div class="order-amount">
               <% if current_user %>
