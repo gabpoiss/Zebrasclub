@@ -9,6 +9,7 @@ var added = "<%= @category %>"
   $("#sidebar-" + category + " > .package-item-right > .package-item-in-cart-status").text("IN CART");
 <% end %>
 <% if @ready_to_order_package %>
+  console.log("AYYYYYYYYLMAO")
   $(".place-package-order").attr("href", "/orderitems");
   $(".place-package-order").text("Proceed to Checkout");
   $(".place-package-order").removeClass("cannot-place-order");

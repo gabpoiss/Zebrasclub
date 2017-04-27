@@ -47,11 +47,11 @@
   </div>
   <div>
     <% if current_user %>
-      <% order_items = current_user.order_items.where(package: true) %>
+      <% order_items = current_user.orders.last.order_items.where(package: true) %>
       <% if order_items.all? { |i| i.cart } %>
         <%= link_to "Proceed to Checkout", orderitems_path, class: "btn cart-button place-package-order" %>
       <% else %>
-        <%= link_to "Please Confirm All Items", "#", class: "btn cart-button cannot-place-order" %>
+        <%= link_to "Please Confirm All Items", "#", class: "btn cart-button place-package-order cannot-place-order" %>
       <% end %>
     <% else %>
       <% if session[:package_items].all? { |i| i["cart"] } %>
