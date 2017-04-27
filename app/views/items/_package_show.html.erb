@@ -16,6 +16,9 @@
         <div class="package-item-sub-header">
           <h3><%= humanized_money_with_symbol(item.price) %></h3>
         </div>
+        <div class="package-item-description">
+          <p><%= @item.description %></p>
+        </div>
         <div class="package-item-sizes">
           <% if !@in_cart %>
             <%= link_to "xs", edit_orderitem_path(@item, { size_update: true, size: "extra small", items: @item_ids }), remote: true, method: :patch, class: "size-circle xs" %>
@@ -49,12 +52,18 @@
             <h3><%= @item.size.capitalize %></h3>
           <% end %>
         </div>
-        <div class="package-item-description">
-          <p><%= @item.description %></p>
-        </div>
       </div>
       <div class="text-center">
         <% if !@in_cart %>
+          <div class="add-to-cart-container text-center">
+            <% if @has_size %>
+              <%= link_to edit_orderitem_path(@item), remote: true, method: :patch do %>
+                <button class="btn add-to-cart"><i class="fa fa-shopping-cart" style="margin-right: 10px;"></i> Add to Cart</button>
+              <% end %>
+            <% else %>
+              <button class="btn select-a-size">Select a size</button>
+            <% end %>
+          </div>
             <% if !@in_cart %>
               <div class="edit-delete">
                 <%= link_to edit_orderitem_path(@item, { remove_from_package: true }), remote: true, method: :patch do %>
@@ -67,15 +76,6 @@
                 <% end %>
               </div>
             <% end %>
-          <div class="add-to-cart-container text-center">
-            <% if @has_size %>
-              <%= link_to edit_orderitem_path(@item), remote: true, method: :patch do %>
-                <button class="btn add-to-cart"><i class="fa fa-shopping-cart" style="margin-right: 10px;"></i> Add to Cart</button>
-              <% end %>
-            <% else %>
-              <button class="btn select-a-size">Please select a size</button>
-            <% end %>
-          </div>
         <% else %>
           <h3>In Cart</h3>
         <% end %>

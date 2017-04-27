@@ -49,16 +49,14 @@
 }
 .clear-btn {
   display: inline-block;
-  background-color: transparent;
-  border-color: black;
-  color: black;
-  border: solid;
-  border-width: thin;
+  background-color: $size-base-grey;
+  color: white;
   border-radius: 30px;
   padding: 6px 30px;
   margin: 10px 0;
+  border: 0 !important;
   &:hover {
-    color: grey;
-    border-color: grey;
+    color: white;
+    background-color: $add-to-cart-button;
   }
 }
