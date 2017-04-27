@@ -162,6 +162,7 @@ class OrderitemsController < ApplicationController
 
     end
 
+    @swap = true
     @item_ids = params[:item_ids]
     item_index = @item_ids.find_index(old_item_id.to_s)
     @item_ids[item_index] = new_item_id.to_s

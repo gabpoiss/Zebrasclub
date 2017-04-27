@@ -46,12 +46,12 @@
       <div class="col-xs-12">
         <div class="done-pricing">
           <div class="total-price">
-            <div><h3>Total: <%= humanized_money_with_symbol @order.amount %></h3></div>
+            <div><h3>Total: <%= humanized_money_with_symbol (@order.amount * 1.09975) %></h3></div>
           </div>
           <div class="price-breakdown">
             <div class="price-breakdown-item">
               <p>Item total:</p>
-              <p><%= humanized_money_with_symbol (@order.amount * 1.09975) %></p>
+              <p><%= humanized_money_with_symbol @order.amount %></p>
             </div>
             <div class="price-breakdown-item">
               <p>Shipping:</p>
