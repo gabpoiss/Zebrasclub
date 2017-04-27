@@ -47,4 +47,11 @@ html {
     }
   }
 
+  @media (min-width: 450px) {
+    .home-banner {
+      h1 {
+        font-size: 7vw;
+      }
+    }
+  }
 }
