@@ -2,7 +2,6 @@ class PaymentsController < ApplicationController
   before_action :set_order
 
   def create
-    binding.pry
     customer = Stripe::Customer.create(
       source: params[:stripeToken],
       email:  params[:stripeEmail]
