@@ -14,7 +14,7 @@ class OrderitemsController < ApplicationController
       end
     end
     @order_items = if current_user
-       User.find(current_user.id).order_items.where(cart: true)
+       User.find(current_user.id).order_items.where(cart: true, order_id: current_user.orders.last)
     else
       session[:package_items].select { |i| i["cart"] }
     end
