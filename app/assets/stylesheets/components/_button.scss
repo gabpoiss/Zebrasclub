@@ -1,6 +1,8 @@
 .base-button {
   background-color: $base-button-color;
-  border-radius: 3px;
+
+  border-radius: 4  px;
+
   color:white;
 }
 
@@ -12,7 +14,9 @@
 
 .cart-button{
   background-color: $cart-button;
-  border-radius: 3px;
+
+  border-radius: 4px;
+
   color: white;
 
   &:hover{
@@ -29,6 +33,9 @@
   border-radius: 0 !important;
   box-shadow: none !important;
   font-family: $base-font !important;
+  width: 100%;
+  margin-top: 30px;
+
 }
 
 
@@ -37,15 +44,18 @@
   height: 30px !important;
   line-height: 30px !important;
   background: $cart-button !important;
-  font-size: 14px !important;
+  font-size: 20px !important;
   color: white !important;
   font-weight: bold !important;
   font-family: $base-font !important;
   text-shadow: none !important;
-  border-radius: 7px !important;
+  border-radius: 4px !important;
   border: none !important;
   box-shadow: none !important;
-
+  &:hover {
+    color: white !important;
+        background-color: #48D2AD !important;
+  }
 }
 .clear-btn {
   display: inline-block;

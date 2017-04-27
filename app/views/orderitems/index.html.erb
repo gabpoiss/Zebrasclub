@@ -1,16 +1,15 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-10 col-md-offset-1">
-      <div class="package-checkout">
-
+<div class="package-checkout">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-8">
         <div class="package-main-checkout">
-
           <div class="package-items checkout-items">
             <div>
             <% if current_user %>
               <% @order_items = @order_items.sort { |i, j| i.item.category_id <=> j.item.category_id } %>
               <% @order_items.each do |i| %>
                 <div class="package-item">
+                <div class="package-item-details">
                   <div class="package-item-picture">
                     <%= image_tag i.item.picture %>
                   </div>
@@ -19,6 +18,8 @@
                     <p class="package-item-brand"><%= i.item.brand %></p>
                     <p><%= i.item.size.capitalize %></p>
                   </div>
+                  </div>
+                  <div class="package-purchase-details">
                   <div class="package-item-right">
                     <p class="package-item-price"><%= humanized_money_with_symbol(i.item.price) %></p>
                   </div>
@@ -26,7 +27,7 @@
                     <%= form_tag edit_orderitem_path(i), class: "form-inline", method: :patch do |j| %>
                       <%= hidden_field_tag "quantity_update", "true" %>
                       <div class="form-group">
-                        <%= label_tag "quantity", "Qty:" %>
+                        <%# label_tag "quantity", "Qty:" %>
                         <%= number_field_tag "quantity", i.quantity, min: 0, class: "form-control" %>
                       </div>
                       <%= submit_tag "Update", class: "btn cart-button order-item-quantity-update-button" %>
@@ -34,8 +35,9 @@
                   </div>
                   <div class="package-item-remove">
                     <%= link_to destroy_orderitem_path(i), method: :delete, class: "btn cart-button" do %>
-                      <i class="fa fa-trash-o"></i> Remove
+                      <i class="fa fa-trash-o"></i>
                     <% end %>
+                  </div>
                   </div>
                 </div>
               <% end %>
@@ -61,7 +63,7 @@
                     <%= form_tag edit_orderitem_path(item), class: "form-inline", method: :patch do |j| %>
                     <%= hidden_field_tag "quantity_update", "true" %>
                     <div class="form-group">
-                      <%= label_tag "quantity", "Qty:" %>
+                      <%# label_tag "quantity", "Qty:" %>
                       <%= number_field_tag "quantity", i["quantity"], min: 0, class: "form-control" %>
                     </div>
                       <%= submit_tag "Update", class: "btn cart-button order-item-quantity-update-button" %>
@@ -69,7 +71,7 @@
                   </div>
                   <div class="package-item-remove">
                     <%= link_to destroy_orderitem_path(item), method: :delete, class: "btn cart-button" do %>
-                    <i class="fa fa-trash-o"></i> Remove
+                    <i class="fa fa-trash-o"></i>
                     <% end %>
                   </div>
                 </div>
@@ -86,9 +88,9 @@
               <% end %>
             </div>
           </div>
-
         </div>
-
+      </div>
+      <div class="col-xs-12 col-md-4">
         <div class="package-side-checkout">
           <% if current_user %>
             <div class="pay-with-strip">
@@ -123,8 +125,9 @@
             </div>
           <% end %>
           </div>
-
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>

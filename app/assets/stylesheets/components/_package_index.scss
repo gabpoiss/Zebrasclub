@@ -124,3 +124,34 @@
   margin-top: 80px;
   margin-bottom: 100px
 }
+
+.checkout-items .package-item  {
+  flex-wrap: wrap;
+  .package-purchase-details {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+        align-items: center;
+    @media (max-width: 800px) {
+      justify-content: space-between;
+      .package-item-right {padding: 0; margin: 0; flex: 0;}
+      .package-item-quantity form {
+        flex-direction: row;
+        input, label, .form-control {
+          display: inline;
+        }
+        .form-group {
+          display: inline-block;
+        }
+      }
+    }
+  }
+  .package-item-details{
+    flex-grow: 1;
+    flex-direction: row;
+    @media (max-width: 1090px) {
+      width: 100%;
+    }
+  }
+
+}
