@@ -1,6 +1,8 @@
 .base-button {
   background-color: $base-button-color;
+
   border-radius: 4  px;
+
   color:white;
 }
 
@@ -12,7 +14,9 @@
 
 .cart-button{
   background-color: $cart-button;
+
   border-radius: 4px;
+
   color: white;
 
   &:hover{

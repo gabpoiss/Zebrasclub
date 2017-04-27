@@ -9,9 +9,11 @@ var category = "<%= @category %>";
 <% if @ready_to_order_package %>
   $(".place-package-order").attr("href", "/orderitems");
   $(".place-package-order").text("Proceed to Checkout");
+  $(".place-package-order").removeClass("cannot-place-order");
 <% else %>
   $(".place-package-order").attr("href", "#");
   $(".place-package-order").text("Please Confirm All Items");
+  $(".place-package-order").addClass("cannot-place-order");
 <% end %>
 $(".card-row").empty();
 var container = "<%= j render 'items/package_show', item: @item %>";

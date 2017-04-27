@@ -19,7 +19,7 @@
 
   .cart-button {
     position: absolute;
-    bottom: 20px;
+    bottom: 45px;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -106,12 +106,26 @@
     }
   }
   margin-bottom: 0px;
+
 }
 .not-booked{
   opacity: 0.3;
 }
 
-
+.cannot-place-order {
+  background-color: lightgrey !important;
+  color: black !important;
+  cursor: default !important;
+  a {
+    cursor: default !important;
+    color: black !important;
+    &:hover {
+      cursor: default !important;
+      text-decoration: none;
+    }
+  }
+  margin-bottom: 0px;
+}
 
 
 

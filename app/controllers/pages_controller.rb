@@ -93,6 +93,7 @@ class PagesController < ApplicationController
   end
 
   def done
+    @shipping_address = params[:shipping_address]
     @orderitems = OrderItem.where(cart: true, order_id: current_user.orders.last.id)
     @order = current_user.orders.last
     Order.create(user_id: current_user.id)

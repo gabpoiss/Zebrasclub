@@ -24,4 +24,29 @@ html {
       padding-right: 0;
     }
   }
+
+  @media (max-width: 450px) {
+    .card-row {
+      padding: 0;
+    }
+
+    .size-circle {
+      margin: 0 5px;
+    }
+
+    .no-padding {
+      padding: 0;
+    }
+    .row {
+      margin: 0;
+    }
+  }
+
+  @media (min-width: 450px) {
+    .home-banner {
+      h1 {
+        font-size: 7vw;
+      }
+    }
+  }
 }

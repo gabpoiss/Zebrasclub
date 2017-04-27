@@ -46,12 +46,12 @@ class ItemsController < ApplicationController
       @items = Item.where(
         "price_cents > ? AND price_cents < ? AND category_id = ?",
         min_price, max_price, @category_id
-      )
+      ).order(price_cents: "DESC")
     else
       @min_price = 10
-      @max_price = 200
+      @max_price = 1000
       @category_id = Category.where(item_type: params[:category])[0].id
-      @items = Item.where(category_id: @category_id)
+      @items = Item.where(category_id: @category_id).order(price_cents: "DESC")
     end
     @item = params[:item]
 

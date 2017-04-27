@@ -15,6 +15,7 @@
 }
 
 .main-photo {
+  padding: 10px;
   width: 100%;
   margin-top: 40px;
   // height: 80%;
@@ -23,28 +24,6 @@
   // border-right: 2px solid black;
   // border-left: 2px solid black;
   // border-bottom: 1px solid black;
-}
-
-.bottom-photo-container {
-  height: 20%;
-  display: flex;
-}
-
-.bottom-photo {
-  flex: 1 0;
-  width: 110px;
-  padding: 10px 0;
-  // background-size: cover !important;
-  // border-top: 1px solid black;
-  // border-right: 1px solid black;
-  // border-left: 1px solid black;
-  // border-bottom: 2px solid black;
-  // &:first-child {
-  //   border-left: 2px solid black;
-  // }
-  // &:last-child {
-  //   border-right: 2px solid black;
-  // }
 }
 
 .package-item-details {

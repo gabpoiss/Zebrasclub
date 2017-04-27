@@ -113,7 +113,6 @@ class OrderitemsController < ApplicationController
     @items = all_items_in_package
 
     @ready_to_order_package = ready_to_order_package
-
     render "pages/package_main"
   end
 
