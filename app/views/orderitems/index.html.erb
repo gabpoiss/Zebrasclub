@@ -28,7 +28,7 @@
                         <%= label_tag "quantity", "Qty:" %>
                         <%= number_field_tag "quantity", i.quantity, min: 0, class: "form-control" %>
                       </div>
-                      <%#= submit_tag %>
+                      <%= submit_tag "Update", class: "btn cart-button order-item-quantity-update-button" %>
                     <% end %>
                   </div>
                   <div class="package-item-remove">
@@ -63,7 +63,7 @@
                       <%= label_tag "quantity", "Qty:" %>
                       <%= number_field_tag "quantity", i["quantity"], min: 0, class: "form-control" %>
                     </div>
-                    <%#= submit_tag %>
+                      <%= submit_tag "Update", class: "btn cart-button order-item-quantity-update-button" %>
                     <% end %>
                   </div>
                   <div class="package-item-remove">
@@ -75,20 +75,39 @@
                   <% end %>
                 <% end %>
               <% end %>
+            <article>
+            <div class="order-amount">
+              <% if current_user %>
+                <h2>Total: <%= humanized_money_with_symbol(@order.amount) %></h2>
+              <% else %>
+                <h2>Total: $<%= @logged_out_order_price %></h2>
+              <% end %>
+            </div>
           </div>
+
         </div>
 
-
-          <div class="package-side-checkout">
-            <% if current_user %>
+        <div class="package-side-checkout">
+          <% if current_user %>
+            <div>
+              <h2>Your Shipping Address</h2>
+              <%= form_tag "#", class: "address-form" do %>
+                <%= label_tag "name", "Full Name" %>
+                <%= text_field_tag "name" %>
+                <%= label_tag "address_line_one", "Address Line 1" %>
+                <%= text_field_tag "address_line_one" %>
+                <%= label_tag "address_line_two", "Address Line 2" %>
+                <%= text_field_tag "address_line_two" %>
+                <%= label_tag "city", "City", class: "my-block" %>
+                <%= text_field_tag "city" %>
+                <%= label_tag "province", "Province" %>
+                <%= text_field_tag "province" %>
+                <%= label_tag "postal-code", "Postal Code" %>
+                <%= text_field_tag "postal-code" %>
+              <% end %>
+            </div>
+            <div class="pay-with-strip">
               <%= form_tag order_payments_path(@order) do %>
-              <article>
-                <label class="amount">
-                  <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span>
-                </label>
-              </article>
-
-              <!-- Stripe form -->
               <script src="https://checkout.stripe.com/checkout.js" class="stripe-button cart-button"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
               data-name="Zebrasclub"
@@ -97,9 +116,12 @@
               data-amount="<%= @order.amount_cents %>"
               data-currency="<%= @order.amount.currency %>"></script>
               <% end %>
-              <% else %>
-              <h1>Please Login.</h1>
-            <% end %>
+            </div>
+          <% else %>
+            <div class="please-log-in">
+              <h1><em>Login in or sign up to place your order</em></h1>
+            </div>
+          <% end %>
           </div>
 
         </div>

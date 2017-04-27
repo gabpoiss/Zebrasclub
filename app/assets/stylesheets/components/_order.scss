@@ -7,20 +7,35 @@
 
 .package-main-checkout {
   flex: 1 0 auto;
+  min-width: 300px;
 }
 
 .package-side-checkout {
   flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: white;
   padding: 20px;
+  min-height: 80vh;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  h2 {
+    margin-top: 10px;
+    margin-bottom: 22px;
+  }
 }
 
 
 .checkout-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 80vh;
   background-color: white;
   margin-top: 0;
   margin-right: 20px;
   width: auto;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 
   .package-item {
 
@@ -54,5 +69,45 @@
 
   .package-item-remove {
     padding-left: 20px;
+  }
+}
+
+.address-form {
+  // margin: 0 auto;
+  // width: 200px;
+  label {
+    font-weight: bold;
+  }
+  input {
+    width: 100%;
+    margin-bottom: 6px;
+  }
+
+}
+
+.order-item-quantity-update-button {
+  margin-bottom: 15px;
+}
+
+.my-block {
+  display: block;
+}
+
+.order-amount {
+  padding: 20px;
+}
+
+.pay-with-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.please-log-in {
+  text-align: center;
+  h2 {
+    margin-top: 35px;
+    line-height: 1.2;
+    color: rgb(60, 60, 60);
   }
 }

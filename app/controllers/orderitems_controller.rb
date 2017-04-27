@@ -2,7 +2,17 @@ class OrderitemsController < ApplicationController
 
   def index
     store_current_location
-    @order = current_user.cart if current_user
+    if current_user
+      @order = Order.where(user_id: current_user.id).last
+      @order.compute_price
+    end
+      @logged_out_order_price = 0
+      session[:package_items].each do |i|
+        if i["cart"]
+          @logged_out_order_price += Item.find(i["item_id"]).price * i["quantity"].to_i
+        end
+      end
+    else
     @order_items = if current_user
        User.find(current_user.id).order_items.where(cart: true)
     else
