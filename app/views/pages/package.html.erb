@@ -25,13 +25,16 @@
     <% y = "<div class=\"package-item not-booked\" id=\"sidebar-#{i.category.item_type}\">" %>
     <%= y.html_safe %>
     <% end %>
-    <div class="package-item-picture">
-      <%= image_tag i.picture %>
+    <div class="package-item-details">
+      <div class="package-item-picture">
+        <%= image_tag i.picture %>
+      </div>
+      <div class="package-item-middle">
+        <p class="package-item-category"><%= i.category.item_type.upcase %></p>
+        <p class="package-item-brand"><%= i.brand %></p>
+      </div>
     </div>
-    <div class="package-item-middle">
-      <p class="package-item-category"><%= i.category.item_type.upcase %></p>
-      <p class="package-item-brand"><%= i.brand %></p>
-    </div>
+
     <div class="package-item-right">
       <% if in_cart %>
       <% x = "<p class=\"package-item-in-cart-status package-item-in-cart\" id=\"sidebar-#{i.category.item_type}\">" %>

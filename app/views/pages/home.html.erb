@@ -1,19 +1,26 @@
-<div class="banner">
 
-  <div class="banner-content">
-    <div class="home-banner">
-      <h1>The World's #1</h1>
-      <h1>Ref Store</h1>
+  <div class="banner">
+    <div class="banner-content">
+      <div class="home-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+              <h1>The World's #1 Ref Store</h1>
+          </div>
+          <div class="col-xs-12">
+            <div class="banner-sub-header">
+              <h2>Enter Your Budget and We'll Give You a Package of Everything You Need</h2>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <%= simple_form_for :search,  url: package_path , :method => :get, html: {class: 'form-inline'} do |f| %>
+
+              <%= f.input :price_upper, as: :integer, required: false, placeholder: "Enter Your budget", label: false %>
+              <%= f.input :new_package, as: :hidden, value: "true" %>
+              <%= f.submit "Get your package", class: "btn cart-button" %>
+            <% end %>
+        </div>
+  </div>
     </div>
-    <div class="banner-sub-header">
-      <h2>Enter Your Budget and We'll Give You a Package of Everything You Need</h2>
-    </div>
-
-
-    <%= simple_form_for :search,  url: package_path , :method => :get, html: {class: 'form-inline'} do |f| %>
-
-      <%= f.input :price_upper, as: :integer, required: false, placeholder: "Enter Your budget", label: false %>
-      <%= f.input :new_package, as: :hidden, value: "true" %>
-      <%= f.submit "Get your package", class: "btn cart-button" %>
-  <% end %>
+ </div>
 </div>
