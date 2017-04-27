@@ -10,7 +10,13 @@
           </div>
           <div class="done-middle">
             <div><h3>Order Details</h3></div>
-            <div>*SHIPPING ADDRESS DETAILS HERE*</div>
+            <div>
+              <p><%= @shipping_address["full_name"] %></p>
+              <p><%= @shipping_address["address_line_one"]%></p>
+              <p><%= @shipping_address["address_line_two"]%></p>
+              <p><%= @shipping_address["city"]%>, <%= @shipping_address["province"]%></p>
+              <p><%= @shipping_address["postal_code"] %></p>
+            </div>
           </div>
           <div class="order-recap">
           </div>

@@ -22,7 +22,7 @@ class PaymentsController < ApplicationController
       address_line_two: params[:address_line_two],
       city: params[:city],
       province: params[:province],
-      post_code: params[:postal_code]
+      postal_code: params[:postal_code]
     }
 
     redirect_to done_path(shipping_address: @shipping_address)
