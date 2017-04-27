@@ -3,7 +3,7 @@ class OrderitemsController < ApplicationController
   def index
     store_current_location
     if current_user
-      @order = Order.where(user_id: current_user.id).last
+      @order = current_user.orders.last
       @order.compute_price
     else
       @logged_out_order_price = 0
@@ -14,7 +14,7 @@ class OrderitemsController < ApplicationController
       end
     end
     @order_items = if current_user
-       User.find(current_user.id).order_items.where(cart: true)
+       User.find(current_user.id).order_items.where(cart: true, order_id: current_user.orders.last)
     else
       session[:package_items].select { |i| i["cart"] }
     end
@@ -37,7 +37,7 @@ class OrderitemsController < ApplicationController
       order_item = OrderItem.find(params[:id])
       order_item.quantity = params[:quantity]
       order_item.save
-      @order_items = OrderItem.joins(:order).where(cart: true).where("orders.user_id = ?", current_user.id)
+      @order_items = OrderItem.joins(:order).where(cart: true).where("orders.id = ?", current_user.orders.last.id)
     else
       session[:package_items].each do |i|
         if i["item_id"] == params[:id].to_i
@@ -55,7 +55,7 @@ class OrderitemsController < ApplicationController
     @has_size = true
     @in_cart = false
     if current_user
-      order_item = OrderItem.joins(:order).where(item_id: params[:id], package: true).where("orders.user_id = ?", current_user.id)[0]
+      order_item = OrderItem.joins(:order).where(item_id: params[:id], package: true).where("orders.id = ?", current_user.orders.last.id)[0]
       order_item.update(item_id: @item.id, size: true)
       order_item.save
     else
@@ -78,13 +78,12 @@ class OrderitemsController < ApplicationController
   def remove_from_package
     @criteria_for_elimination = Item.find(params[:id]).category.item_type
     if current_user
-      order_item = OrderItem.joins(:order).where(item_id: params[:id], package: true).where("orders.user_id = ?", current_user.id)[0]
+      order_item = OrderItem.joins(:order).where(item_id: params[:id], package: true).where("orders.id = ?", current_user.orders.last.id)[0]
       order_item.update(package: false)
       order_item.save
     else
       session[:package_items].delete_if { |i| i["item_id"] == params[:id].to_i }
     end
-    # binding.pry
     @categories = Category.all
 
     @items = all_items_in_package
@@ -96,7 +95,7 @@ class OrderitemsController < ApplicationController
 
   def add_to_cart
     if current_user
-      order_item = OrderItem.joins(:order).where(item_id: params[:id], package: true).where("orders.user_id = ?", current_user.id)
+      order_item = OrderItem.joins(:order).where(item_id: params[:id], package: true).where("orders.id = ?", current_user.orders.last.id)
       order_item[0].cart = true
       order_item[0].save
     else

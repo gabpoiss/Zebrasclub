@@ -27,8 +27,6 @@ class PagesController < ApplicationController
     @items = []
     @categories = Category.all
 
-    # binding.pry
-
     order_items = if current_user
       User.find(current_user.id).order_items.where(package: true, order_id: current_user.orders.last)
     else

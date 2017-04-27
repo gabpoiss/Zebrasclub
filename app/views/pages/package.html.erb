@@ -13,7 +13,7 @@
     <% end %>
     <% @items.reverse.each do |i| %>
     <% if current_user %>
-    <% order_item = OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id)[0] %>
+    <% order_item = OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.id = ?", current_user.orders.last.id)[0] %>
     <% in_cart = order_item.cart %>
     <% else %>
     <% session[:package_items].each { |j| in_cart = j["cart"] if j["item_id"] == i.id } %>

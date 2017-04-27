@@ -16,7 +16,16 @@ class PaymentsController < ApplicationController
 
     @order.update(payment: charge.to_json, paid_status: true)
     # current_user.orders.create(paid_status: false)
-    redirect_to done_path(@order)
+    @shipping_address = {
+      full_name: params[:name],
+      address_line_one: params[:address_line_one],
+      address_line_two: params[:address_line_two],
+      city: params[:city],
+      province: params[:province],
+      post_code: params[:postal_code]
+    }
+
+    redirect_to done_path(shipping_address: @shipping_address)
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_order_payment_path(@order)
