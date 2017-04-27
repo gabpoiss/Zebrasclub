@@ -110,8 +110,8 @@
 .size-circle {
   width: 40px;
   height: 40px;
-  border: solid 1px black;
-  color: black;
+  color: white;
+  background-color: $size-base-grey;
   // font-size: 20px;
   border-radius: 50%;
   display: flex;
@@ -123,13 +123,14 @@
     margin: 0;
   }
   &:hover {
-    background-color: $cart-button;
+    background-color: $add-to-cart-button;
+    color: white !important;
   }
 }
 
 .size-circle-on {
-  background-color: $cart-button;
-  color: black !important;
+  background-color: $add-to-cart-button;
+  color: white !important;
 }
 
 .package-item-buttons {
@@ -159,23 +160,26 @@
 }
 
 .add-to-cart {
-  background-color: $cart-button;
-  border-radius: 7px;
+  background-color: $add-to-cart-button;
+  border-radius: 25px;
   color: white;
   padding: 10px 40px;
-  a {
+  a &:hover {
     color: white;
-    &:hover {
-      text-decoration: none;
-    }
+
+    text-decoration: none;
+    color: white;
+    background-color: $add-to-cart-hover-button;
+
   }
 }
 
 .select-a-size {
-  background-color: lightgrey;
-  border-radius: 7px;
+  background-color: $add-to-cart-disable;
+  border-radius: 25px;
   padding: 10px 40px;
   cursor: auto;
+  color: white;
   a {
     &:hover {
       text-decoration: none;
