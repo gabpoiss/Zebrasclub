@@ -1,6 +1,6 @@
 <div class="row">
   <% @items.sort { |i, j| i.category_id <=> j.category_id }.each_with_index do |item, i| %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="col-xs-12 col-sm-6 col-md-4 no-padding">
       <%= link_to package_item_path(item: item.id, items: @items.map { |i| i.id }), method: :post, remote: true do %>
         <div class="card">
           <div class="card-content-container">
