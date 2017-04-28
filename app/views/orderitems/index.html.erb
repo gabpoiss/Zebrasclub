@@ -121,7 +121,14 @@
             </div>
           <% else %>
             <div class="please-log-in">
-              <h1><em>Login in or sign up to place your order</em></h1>
+              <p>Login or Sign Up to place your order</p>
+              <%= link_to new_user_session_path, class: "btn btn-primary" do %>
+                <i class="fa fa-sign-in"></i> Login
+              <% end %>
+              <p>OR</p>
+              <%= link_to new_user_registration_path, class: "btn btn-danger" do %>
+                <i class="fa fa-user-plus"></i> Sign Up
+              <% end %>
             </div>
           <% end %>
           </div>

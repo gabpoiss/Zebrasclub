@@ -1,21 +1,18 @@
 .banner {
   color: white;
   text-align: center;
-  flex-direction: column;
   height: 100vh;
-  // height: calc(100vh - 70px);
   background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding-top: 0px;
   background-image: linear-gradient(-225deg, rgba(17, 90, 140, 0.6) 0%, rgba(0, 0, 25, 0.7) 50%), image_url('banner-image.jpg');
 }
 .home-banner {
   h1 {
-    font-size: 15px;
+    font-size: 55px;
     margin: 0;
     margin-bottom: 40px;
+    font-family: "Open sans";
+    font-weight: bold;
   }
   margin-bottom: 30px;
 }
@@ -25,6 +22,7 @@
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
 }
+
 
 .index-banner{
   color: white;
@@ -47,13 +45,39 @@
 }
 
 .banner-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-top: 300px;
+}
+.search_price_upper {
+  .control-label{
+    font-size: 20px;
+    padding-right: 10px;
+    font-weight: bolder;
+  }
+
+}
+#search_price_upper {
+  font-size: 20px;
+  font-family: "Open Sans";
+  width: 100px;
+  text-align: center;
+  background: none;
+  padding: 0 15px;
+  color: white;
+  .control-label{
+    font-size: 20px;
+    font-weight: bolder;
+  }
+  @media(max-width: 768px){
+    width: 100% !important;
+  }
 }
 
-.search_price_upper {
-  input {
-    border-radius: 3px;
+#search_price_upper:focus {
+    border-color: 0 !important;
+    outline: 0;
+    box-shadow: none !important;
   }
+
+.btn-package{
+  margin-left: 10px;
 }

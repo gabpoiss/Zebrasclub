@@ -24,7 +24,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 body{
-font-family: $open-font, "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-family: $base-font, "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: lighter;
 }
 
 abbr {
