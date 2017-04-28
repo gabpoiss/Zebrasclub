@@ -97,9 +97,26 @@
 
 .please-log-in {
   text-align: center;
-  h2 {
-    margin-top: 35px;
-    line-height: 1.2;
-    color: rgb(60, 60, 60);
+  // h2 {
+  //   margin-top: 35px;
+  //   line-height: 1.2;
+  //   color: rgb(60, 60, 60);
+  // }
+  p{
+    font-weight: bolder;
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: #2073b9;
+    border-color: #2073b9;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .btn-danger {
+    color: #fff;
+    background-color: #57C1AD;
+    border-color: #57C1AD;
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
