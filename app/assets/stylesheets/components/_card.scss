@@ -7,6 +7,7 @@
   margin: 15px 0px;
   padding: 20px;
   position: relative;
+  max-height: 320px;
   &:hover{
     .card-title{
 
@@ -43,11 +44,9 @@
 
 .card-picture {
   margin-bottom: 45px;
+  text-align: center;
   img {
-    max-width: 270px;
-    width: 80%;
     max-height: 270px;
-    height: 80%;
   }
 }
 
