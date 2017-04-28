@@ -1,8 +1,8 @@
 puts "Cleaning database..."
 
 
-Order.destroy_all
 OrderItem.destroy_all
+Order.destroy_all
 Item.destroy_all
 Category.destroy_all
 
