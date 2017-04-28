@@ -37,8 +37,9 @@ class ItemsController < ApplicationController
   end
 
   def package_index
-    if params[:filter]
       @category_id = Category.where(item_type: params[:category])[0].id
+      @filter_max = ((Item.where(category_id: @category_id).order(price_cents: :desc)[0].price_cents / 100) + 10).round(-1)
+    if params[:filter]
       min_price = params[:min_max].split(",")[0].to_i * 100
       max_price = params[:min_max].split(",")[1].to_i * 100
       @min_price = params[:min_max].split(",")[0]
@@ -50,7 +51,6 @@ class ItemsController < ApplicationController
     else
       @min_price = 10
       @max_price = 1000
-      @category_id = Category.where(item_type: params[:category])[0].id
       @items = Item.where(category_id: @category_id).order(price_cents: "DESC")
     end
     @item = params[:item]

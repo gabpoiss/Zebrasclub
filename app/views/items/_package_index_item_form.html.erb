@@ -1,7 +1,7 @@
 <div class="package-index-items-container">
   <div class="package-index-form-container">
     <%= form_tag package_items_path(item: old_item_id, item_ids: @item_ids), method: :post, remote: true, class: "package-index-form" do |i| %>
-      <strong id="index-min">$10</strong><input id="ex2" type="text" class="span2" name="min_max" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[<%= @min_price %>,<%= @max_price %>]"/><strong id="index-max">$1000</strong>
+      <strong id="index-min">$10</strong><input id="ex2" type="text" class="span2" name="min_max" value="" data-slider-min="10" data-slider-max="<%= @filter_max %>" data-slider-step="1" data-slider-value="[<%= @min_price %>,<%= @max_price %>]"/><strong id="index-max">$<%= @filter_max %></strong>
       <%= hidden_field_tag "category", category %>
       <%= hidden_field_tag "filter", "true" %>
       <%= submit_tag "Filter", class: "clear-btn margin-left" %>
