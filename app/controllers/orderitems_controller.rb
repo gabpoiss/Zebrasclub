@@ -3,8 +3,12 @@ class OrderitemsController < ApplicationController
   def index
     store_current_location
     if current_user
-      @order = current_user.orders.last
-      @order.compute_price
+      if current_user.orders.last.nil?
+        redirect_to "/"
+      else
+        @order = current_user.orders.last
+        @order.compute_price
+      end
     else
       @logged_out_order_price = 0
       session[:package_items].each do |i|
