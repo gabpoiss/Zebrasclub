@@ -105,6 +105,27 @@
   // overflow-y: auto;
 }
 
-.no-padding {
+
+.sing-up-card{
+  background: white;
+  padding: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  h2{
+    text-align: center;
+  }
+  .btn-default {
+    width: 100%;
+    border-color:#57C1AD;
+  }
+  .base-button {
+    background-color: #57C1AD;
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: #2073b9;
+    border-color: #2073b9;
+    width: 100%;
+    margin-top: 10px;
+  }
 
 }
