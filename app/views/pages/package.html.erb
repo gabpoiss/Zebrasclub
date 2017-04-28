@@ -8,6 +8,8 @@
     <div class="package-items">
       <% if current_user %>
         <% @items = @items.sort { |i, j| OrderItem.joins(:order).where(item_id: i.id, package: true).where("orders.user_id = ?", current_user.id).first.cart ? 1 : 0<=> OrderItem.joins(:order).where(item_id: j.id, package: true).where("orders.user_id = ?", current_user.id).first.cart ? 1 : 0} %>
+      <% else %>
+        <% @items = @items.sort { |i, j| session[:package_items].find { |k| k["item_id"] == i.id }["cart"] ? 1 : 0 <=> session[:package_items].find { |k| k["item_id"] == j.id }["cart"] ? 1 : 0 } %>
       <% end %>
       <% @items.reverse.each do |i| %>
         <% if current_user %>
@@ -45,7 +47,7 @@
       </div>
     <% end %>
   </div>
-  <div>
+  <div class="sidebar-bottom">
     <% if current_user %>
       <h3 id="sidebar-total">Total: <%= humanized_money_with_symbol current_user.orders.last.amount %></h3>
       <% order_items = current_user.orders.last.order_items.where(package: true) %>
@@ -60,9 +62,8 @@
       <h3 id="sidebar-total">Total: <%= humanized_money_with_symbol sidebar_total %></h3>
       <% if session[:package_items].all? { |i| i["cart"] } %>
         <%= link_to "Proceed to Checkout", orderitems_path, class: "btn cart-button place-package-order" %>
-
       <% else %>
-        <%= link_to "Please Confirm All Items", "#", class: "btn cart-button place-package-order" %>
+        <%= link_to "Please Confirm All Items", "#", class: "btn cart-button place-package-order cannot-place-order" %>
       <% end %>
     <% end %>
   </div>

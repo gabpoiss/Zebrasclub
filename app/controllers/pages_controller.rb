@@ -14,6 +14,7 @@ class PagesController < ApplicationController
   def package
     store_current_location
     generate_package
+    @ready_to_order_package = ready_to_order_package
     redirect_to "/package" if params[:search]
   end
 

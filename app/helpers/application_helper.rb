@@ -13,9 +13,9 @@ module ApplicationHelper
   def ready_to_order_package
     if current_user
       order_items = current_user.order_items.where(package: true, order_id: current_user.orders.last)
-      order_items.all? { |i| i.cart }
+      order_items.all? { |i| i.cart } ? true : false
     else
-      session[:package_items].all? { |i| i["cart"]}
+      session[:package_items].all? { |i| i["cart"]} ? true : false
     end
   end
 
