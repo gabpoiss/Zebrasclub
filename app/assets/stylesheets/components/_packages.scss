@@ -159,10 +159,11 @@
   border-radius: 25px;
   padding: 10px 40px;
   cursor: auto;
-  color: white;
+  color: white !important;
   a {
     &:hover {
       text-decoration: none;
+      color: white !important;
     }
   }
 }

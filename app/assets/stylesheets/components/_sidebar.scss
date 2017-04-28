@@ -1,12 +1,7 @@
 .sidebar {
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: space-between;
-  // height: 85vh;
-  // padding: 0px;
-  // // background-color: rgb(245, 245, 245);
-  // box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: $base-font;
   position: fixed;
   top: 70px;
@@ -16,6 +11,7 @@
   background: white;
   z-index: 100;
   border-left: solid 1px #E5E5E5;
+  min-height: 66px;
 
   .cart-button {
     position: absolute;
@@ -79,6 +75,8 @@
 }
 
 .package-item-in-cart-status {
+  display: inline-block;
+  min-width: 62px;
   text-align: center;
   background-color: grey;
   color: white;
@@ -128,10 +126,12 @@
   margin-bottom: 0px;
 }
 
+#sidebar-total {
+  font-weight: bold;
+}
 
-
-
-
-
-
-
+.non-sidebar {
+  font-size: 20px;
+  margin-top: 30px;
+  padding: 4px 12px;
+}

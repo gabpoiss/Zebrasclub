@@ -11,7 +11,14 @@
           <% end %>
         </div>
         <div class="package-item-main-header">
-          <h1><%= @item.brand.upcase %></h1>
+          <div>
+            <h1><%= @item.brand.upcase %></h1>
+            <% if @in_cart %>
+              <div class="package-item-in-cart-status package-item-in-cart non-sidebar">
+                IN CART
+              </div>
+            <% end %>
+          </div>
         </div>
         <div class="package-item-sub-header">
           <h3><%= humanized_money_with_symbol(item.price) %></h3>
@@ -76,8 +83,6 @@
               <button class="btn select-a-size">Select a size</button>
             <% end %>
           </div>
-        <% else %>
-          <h3>In Cart</h3>
         <% end %>
       </div>
     </div>

@@ -6,7 +6,6 @@
   $("#sidebar-" + category + " > .package-item-picture > img").attr("src", pictureURL);
   $("#sidebar-" + category + " > .package-item-middle > .package-item-brand").text(itemName);
   $("#sidebar-" + category + " > .package-item-right > p").text(itemPrice);
-
 <% end %>
 <% if @criteria_for_elimination %>
   var category = "<%= @criteria_for_elimination %>";
@@ -28,3 +27,4 @@ var category = "<%= @category %>";
 $(".card-row").empty();
 var container = "<%= j render 'items/package_show', item: @item %>";
 $(".card-row").append($(container));
+

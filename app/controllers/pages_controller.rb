@@ -45,6 +45,8 @@ class PagesController < ApplicationController
       if order_items.any?
         if current_user
           current_user.orders.last.order_items.destroy_all
+          current_user.orders.last.update(amount_cents: 0)
+          current_user.orders.last.save
         else
           session[:package_items] = []
         end

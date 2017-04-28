@@ -41,8 +41,11 @@ var sidebarItems = [];
       }
     });
 <% end %>
-
-
-
-
-
+<% if current_user %>
+  var sidebarTotal = "<%= humanized_money_with_symbol current_user.orders.last.amount %>";
+<% else %>
+  <% sidebar_total = 0 %>
+  <% session[:package_items].each { |i| sidebar_total += Item.find(i["item_id"]).price if i["cart"] } %>
+  var sidebarTotal = "<%= humanized_money_with_symbol sidebar_total %>";
+<% end %>
+  $("#sidebar-total").text("Total: " + sidebarTotal);

@@ -44,7 +44,9 @@
 .card-picture {
   margin-bottom: 45px;
   img {
+    max-width: 270px;
     width: 80%;
+    max-height: 270px;
     height: 80%;
   }
 }

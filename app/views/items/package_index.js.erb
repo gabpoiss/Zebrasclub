@@ -2,5 +2,3 @@ $(".card-row").empty();
 var filter_form = "<%= j render 'items/package_index_item_form', items: @items, old_item_id: @item, category: Category.find(@category_id).item_type, min: @min_price, max: @max_price, size: @size %>";
 $(".card-row").append($(filter_form));
 
-
-
