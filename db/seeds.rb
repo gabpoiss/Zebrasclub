@@ -28,15 +28,15 @@ filepath    = 'db/items.csv'
 
 CSV.foreach(filepath, csv_options) do |row|
   sizes.each do |size|
-    item_brand = Item.create(category_id: Category.where(item_type: row[4]).first.id,
+    Item.create(category_id: Category.where(item_type: row[4]).first.id,
     size: size,
     stock: rand(10..50),
     price: row[0],
     brand: row[1],
     description: row[2],
     picture: row[3])
-    puts "Items - #{item_brand[:brand]}"
   end
+    puts "Equipment Type: #{row[4].upcase} - ItemsBrand: #{row[1]}"
 end
 
 User.create(first_name: "Martin", last_name: "Giannakopoulos", email: "martingianna@gmail.com", password: "123456")
