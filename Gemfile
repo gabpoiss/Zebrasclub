@@ -27,6 +27,8 @@ gem 'coffee-script'
 gem 'stripe'
 gem 'money-rails'
 
+gem "letter_opener", group: :development
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
