@@ -27,10 +27,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   def destroy
-    # LOL
-    # x = session[:package_items]
     super
-    # session[:package_items] = x
   end
 
   # protected

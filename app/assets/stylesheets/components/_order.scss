@@ -1,13 +1,6 @@
-
 .package-checkout {
   padding-top: 90px;
 }
-
-.package-main-checkout {
-  // flex: 1 0 auto;
-  // min-width: 300px;
-}
-
 .package-side-checkout {
   background-color: white;
   padding: 20px;
@@ -23,14 +16,8 @@
 
 
 .checkout-items {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
-  // min-height: 80vh;
   background-color: white;
   margin-top: 0;
-  // margin-right: 20px;
-  // width: auto;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 
   .package-item-middle {
@@ -76,10 +63,6 @@
 
 }
 
-.order-item-quantity-update-button {
-  // margin-bottom: 15px;
-}
-
 .my-block {
   display: block;
 }
@@ -97,11 +80,6 @@
 
 .please-log-in {
   text-align: center;
-  // h2 {
-  //   margin-top: 35px;
-  //   line-height: 1.2;
-  //   color: rgb(60, 60, 60);
-  // }
   p{
     font-weight: bolder;
   }

@@ -1,0 +1,11 @@
+Layout/CommentIndentation:
+  Description: 'Indentation of comments.'
+  Enabled: false
+Style/UnneededPercentQ:
+  Description: 'Checks for %q/%Q when single quotes or double quotes would do.'
+  StyleGuide: '#percent-q'
+  Enabled: false
+Lint/PercentStringArray:
+  Description: >-
+                 Checks for unwanted commas and quotes in %w/%W literals.
+  Enabled: false
