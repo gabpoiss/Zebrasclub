@@ -27,7 +27,11 @@ gem 'coffee-script'
 gem 'stripe'
 gem 'money-rails'
 
+
+gem "letter_opener", group: :development
+
 gem 'rubocop', require: false
+
 
 group :development, :test do
   gem 'binding_of_caller'

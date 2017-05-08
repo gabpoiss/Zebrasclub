@@ -39,6 +39,6 @@ CSV.foreach(filepath, csv_options) do |row|
     puts "Equipment Type: #{row[4].upcase} - ItemsBrand: #{row[1]}"
 end
 
-User.create(first_name: "Martin", last_name: "Giannakopoulos", email: "martingianna@gmail.com", password: "123456")
+User.create(first_name: "Gabriel", last_name: "Poissant", email: "gab_hockey_64@hotmail.com", password: "123456")
 Order.create(user_id: User.first.id, shipping_address: "123 Fake Street", paid_status: false)
 
