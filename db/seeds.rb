@@ -35,6 +35,7 @@ CSV.foreach(filepath, csv_options) do |row|
     brand: row[1],
     description: row[2],
     picture: row[3])
+    puts "Item Brand : #{row[1]}"
   end
 end
 
