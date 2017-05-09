@@ -12,7 +12,10 @@ gem 'redis'
 #Facebook
 gem 'omniauth-facebook'
 
+# Pictures manager
 gem 'cloudinary'
+
+# Front-end gems
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
@@ -20,11 +23,13 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
-
 gem 'bootstrap-slider-rails'
 
+# Gems used for stripe
 gem 'coffee-script'
 gem 'stripe'
+
+# Monetize the price
 gem 'money-rails'
 
 # MailChimp
