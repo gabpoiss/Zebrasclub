@@ -35,12 +35,14 @@ gem 'money-rails'
 # MailChimp
 gem 'gibbon'
 
+gem 'rubocop', require: false
 
 
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
   gem 'letter_opener'
+  gem 'rspec-rails'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
