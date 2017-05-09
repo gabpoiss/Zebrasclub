@@ -14,7 +14,8 @@ class SubscribeToNewsletterService
         #   FNAME: @user.first_name,
         #   LNAME: @user.last_name
         # }
-      }
+      },
+      "permission_reminder": "You're receiving this email because you signed up for updates about Freddie's newest hats.",
     )
   end
 end

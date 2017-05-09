@@ -22,17 +22,36 @@
  <!-- Begin MailChimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-  #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+
+  #mc_embed_signup{clear:left;
+   font:14px Helvetica,Arial,sans-serif;
+  }
+  #mc-embedded-subscribe{
+    color: black;
+    margin: 20px;
+    input{
+      color: black;
+      }
+  }
+  #mce-EMAIL{
+    color: white;
+    background-color: white;
+    background: none;
+    border: none;
+    border-bottom: solid 1px black;
+    text-align: center;
+  }
   /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
      We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 </style>
 <div id="mc_embed_signup">
-<form action="//zebrasclub.us15.list-manage.com/subscribe/post?u=c3f0bd81a6fc7bc5b51b4a1f7&amp;id=77537efd5a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<form action="//zebrasclub.us15.list-manage.com/subscribe/post?u=c3f0bd81a6fc7bc5b51b4a1f7&amp;id=<%= ENV['MAILCHIMP_LIST_ID'] %>" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<!-- <form action="/" method="post" class="validate" target="_blank" novalidate style=""> -->
     <div id="mc_embed_signup_scroll">
-  <h2>Subscribe to our mailing list</h2>
+  <h2>Entre ton fuckin email yo!</h2>
 <div class="mc-field-group">
-  <label for="mce-EMAIL">Email Address </label>
-  <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  <!-- <label for="mce-EMAIL">Email Address </label> -->
+  <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="example@gmail.com">
 </div>
   <div id="mce-responses" class="clear">
     <div class="response" id="mce-error-response" style="display:none"></div>
@@ -41,7 +60,10 @@
     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_c3f0bd81a6fc7bc5b51b4a1f7_77537efd5a" tabindex="-1" value=""></div>
     <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
     </div>
+    <!-- </form> -->
 </form>
 </div>
+
+
 
 <!--End mc_embed_signup-->

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   }
 
   root to: 'pages#home'
+  post "/", to: 'pages#home'
 
   # grid with package items
   get "/package", to: "pages#package", as: "package"
