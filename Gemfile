@@ -27,12 +27,15 @@ gem 'coffee-script'
 gem 'stripe'
 gem 'money-rails'
 
-gem "letter_opener", group: :development
+# MailChimp
+gem 'gibbon'
+
+
 
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
-
+  gem 'letter_opener'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
