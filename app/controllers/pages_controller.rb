@@ -9,7 +9,27 @@ class PagesController < ApplicationController
         @items = @items.where("price > ?", params[:search][:price_lower]).where("price < ?", params[:search][:price_upper])
       end
     end
+
+    @users_email = User.create
   end
+  #   def initialize(user)
+  #   @user = user
+  #   @gibbon = Gibbon::Request.new(api_key: ENV['MAILCHIMP_API_KEY'])
+  #   @list_id = ENV['MAILCHIMP_LIST_ID']
+  # end
+
+  # def call
+  #   @gibbon.lists(@list_id).members.create(
+  #     body: {
+  #       email_address: @user.email,
+  #       status: "subscribed",
+  #       # merge_fields: {
+  #       #   FNAME: @user.first_name,
+  #       #   LNAME: @user.last_name
+  #       # }
+  #     }
+  #   )
+  # end
 
   def package
     store_current_location
