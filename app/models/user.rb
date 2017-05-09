@@ -4,9 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
 
+  # Facebook with devise
   devise :omniauthable, omniauth_providers: [:facebook]
+
+  # letter_opener
   after_create :send_welcome_email
 
+  #gibbons, mailchimp api
+  after_create :subscribe_to_newsletter
 
 
   has_many :orders
@@ -41,5 +46,9 @@ class User < ApplicationRecord
 
   def send_welcome_email
     UserMailer.welcome(self).deliver_now
+  end
+
+  def subscribe_to_newsletter
+    SubscribeToNewsletterService.new(self).call
   end
 end

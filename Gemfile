@@ -12,7 +12,10 @@ gem 'redis'
 #Facebook
 gem 'omniauth-facebook'
 
+# Pictures manager
 gem 'cloudinary'
+
+# Front-end gems
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
@@ -20,15 +23,17 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
-
 gem 'bootstrap-slider-rails'
 
+# Gems used for stripe
 gem 'coffee-script'
 gem 'stripe'
+
+# Monetize the price
 gem 'money-rails'
 
-
-gem "letter_opener", group: :development
+# MailChimp
+gem 'gibbon'
 
 gem 'rubocop', require: false
 
@@ -36,9 +41,8 @@ gem 'rubocop', require: false
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
-
+  gem 'letter_opener'
   gem 'rspec-rails'
-
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
