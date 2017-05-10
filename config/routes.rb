@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   }
 
   root to: 'pages#home'
-
   # Might not work but I want to redirect_to home page when i make a post request in the MailChimp email form.
-  post "/", to: 'pages#home', as: "post_home"
+
+  # get "/", to: 'users/registrations#home', as: "new_user_registration_home"
 
   # grid with package items
   get "/package", to: "pages#package", as: "package"
