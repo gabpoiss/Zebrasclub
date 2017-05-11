@@ -17,13 +17,15 @@ gem 'cloudinary'
 
 # Front-end gems
 gem 'sass-rails'
+gem 'bootstrap-sass'
+gem 'bootstrap-slider-rails'
 gem 'jquery-rails'
 gem 'uglifier'
-gem 'bootstrap-sass'
+
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
-gem 'bootstrap-slider-rails'
+
 
 # Gems used for stripe
 gem 'coffee-script'
