@@ -1,7 +1,9 @@
 <%- if controller_name != 'sessions' %>
   <%= link_to "Log in", new_session_path(resource_name), class: "btn btn-primary"%><br />
+  <% link_to "Log In with facebook", user_facebook_omniauth_callback_path, class:"btn base-button" %>
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-primary" %><br />
+
 <% end -%>

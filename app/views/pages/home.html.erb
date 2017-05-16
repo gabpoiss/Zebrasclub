@@ -20,7 +20,10 @@
     </div>
   </div>
 
-
+  <%= simple_form_for @home_page_user, url: new_user_path(@home_page_user), :method => :post do |f| %>
+  <%= f.input :email, required: true, autofocus: true, label: false %>
+  <%= f.button :submit, "Enter" %>
+  <% end %>
  <!-- Begin MailChimp Signup Form -->
 <!-- <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 <style type="text/css">
