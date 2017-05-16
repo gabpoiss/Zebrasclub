@@ -16,6 +16,7 @@ class PagesController < ApplicationController
   def new_user
     @home_page_user = User.new(email: params[:user][:email], password: "password", password_confirmation: "password")
     @home_page_user.save
+    binding-pry
     redirect_to root_path
   end
 
