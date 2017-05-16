@@ -29,6 +29,10 @@ gem 'bootstrap-slider-rails'
 gem 'coffee-script'
 gem 'stripe'
 
+# Active Admin interface
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+
 # Monetize the price
 gem 'money-rails'
 
