@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  root to: 'pages#home'
+  root to: 'pages#landing_page'
   # Might not work but I want to redirect_to home page when i make a post request in the MailChimp email form.
 
   # get "/", to: 'users/registrations#home', as: "new_user_registration_home"

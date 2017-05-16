@@ -1,6 +1,11 @@
 class PagesController < ApplicationController
   # skip_before_action :authenticate_user!, only: [ :home ]
 
+
+
+  def landing_page
+
+  end
   def home
     store_current_location
     @items = Item.all
