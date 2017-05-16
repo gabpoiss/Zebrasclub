@@ -16,6 +16,29 @@
   }
 }
 
+.card-row-landing{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.card-landing{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  background-color: #fff;
+  font-family: $base-font;
+  margin: 15px 0px;
+  padding: 20px;
+  position: relative;
+  max-height: 320px;
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1),
+              0 5px 15px rgba(0,0,0,.07);
+  // img{
+  //   height: 300px;
+  //   margin-bottom: 20px;
+  // }
+}
+
 .sidebar-in-cart {
   color: lightgreen;
 }

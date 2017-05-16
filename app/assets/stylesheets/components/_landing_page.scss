@@ -1,0 +1,143 @@
+// header {
+//   background-color: #5098e8;
+//   position: relative;
+//   top: 0;
+//   bottom: 0;
+//   width: 100%;
+//   height: 100%;
+// }
+
+header {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    overflow-y: hidden;
+    background: #577BFF;
+    background: -webkit-linear-gradient(to left,#577BFF,#50e8e8);
+    background: linear-gradient(to left,#577BFF,#50e8e8);
+    color: #fff;
+}
+
+@media (min-width: 768px){
+  header {
+      min-height: 100%;
+  }
+}
+.navbar-default {
+  position: absolute;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+// .nav-a-droite {
+//     position: relative;
+//     float: right;
+//     padding: 9px 10px;
+//     margin-top: 8px;
+//     margin-right: 15px;
+//     margin-bottom: 8px;
+//     color: #fff;
+// }
+
+.container-header {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container-header > .navbar-header {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+@media (min-width: 768px) {
+    .container-header {
+      width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+    .container-header {
+      width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+    .container-header {
+        width: 1170px;
+  }
+}
+
+
+
+
+
+
+// .jumbotron {
+//   background-color: transparent;
+
+// }
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+  background-color: #577BFF;
+}
+
+header .header-content {
+  text-align: center;
+  padding: 60px 0 50px;
+  position: relative;
+}
+@media (min-width: 768px) {
+  header .header-content {
+      text-align: left;
+  }
+}
+
+.devise-container {
+    max-width: 300px;
+    margin: 0 auto 80px;
+}
+.content-section-a {
+  padding: 1px 0;
+  background-color: #f6f9fc;
+}
+
+.card {
+  border-radius: 5px;
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.container-landing {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #f6f9fc;
+}
+
+@media (min-width: 768px){
+  .container-landing {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px){
+  .container-landing {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px){
+  .container-landing {
+    width: 1170px;
+  }
+}
+
+

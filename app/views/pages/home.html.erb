@@ -1,5 +1,7 @@
 
-<div class="banner">
+
+
+<!-- <div class="banner">
   <div class="banner-content">
     <div class="home-banner">
       <div class="container">
@@ -10,19 +12,18 @@
             <%# end %>
 
             <h1>The World's #1 Ref Store</h1>
-            <!-- <h1><%#= t.hello %></h1> -->
-          </div>
-          <div class="col-xs-12">
-            <%= simple_form_for :search,  url: package_path , :method => :get, html: {class: 'form-inline'} do |f| %>
-            <%= f.input :price_upper, as: :integer, required: false, placeholder: "$500", label: "MY BUDGET IS   ", class: "budget-title" %>
-            <%= f.input :new_package, as: :hidden, value: "true" %>
-            <%= f.submit "GET YOUR PACKAGE", class: "btn cart-button btn-package" %>
-            <% end %>
+          </div>  -->
+<!--           <div class="col-xs-12">
+            <%#= simple_form_for :search,  url: package_path , :method => :get, html: {class: 'form-inline'} do |f| %>
+            <%#= f.input :price_upper, as: :integer, required: false, placeholder: "$500", label: "MY BUDGET IS   ", class: "budget-title" %>
+            <%#= f.input :new_package, as: :hidden, value: "true" %>
+            <%#= f.submit "GET YOUR PACKAGE", class: "btn cart-button btn-package" %>
+            <%# end %>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <%= simple_form_for @home_page_user, url: new_user_path(@home_page_user), :method => :post do |f| %>
   <%= f.input :email, required: true, autofocus: true, label: false %>
