@@ -21,7 +21,7 @@ gem 'bootstrap-sass'
 gem 'bootstrap-slider-rails'
 gem 'jquery-rails'
 gem 'uglifier'
-
+gem "font-awesome-rails"
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
