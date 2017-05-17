@@ -53,7 +53,7 @@
           <%= simple_form_for @home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: 'form-inline'} do |f| %>
           <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "courriel@gmail.com" %>
           <%= f.button :submit, "Dit-moi quand ça sort", class:"btn btn-success" %>
-          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"btn base-button" %>
+          <%#= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"btn base-button" %>
           <% end %>
         </div>
       </div>
