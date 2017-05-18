@@ -7,7 +7,11 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
-            <h1>The World's #1 Ref Store</h1>
+            <%# if user_signed_in? %>
+           <!--  <h1>Welcome to <%#= @home_page_user.first_name %> </h1> -->
+            <%# end %>
+
+        <!--     <h1>The World's #1 Ref Store</h1>
           </div>  -->
 <!--           <div class="col-xs-12">
             <%#= simple_form_for :search,  url: package_path , :method => :get, html: {class: 'form-inline'} do |f| %>
@@ -22,48 +26,117 @@
   </div> -->
 
 
- <!-- Begin MailChimp Signup Form -->
-<!-- <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-  #mc_embed_signup{clear:left;
-   font:14px Helvetica,Arial,sans-serif;
-  }
-  #mc-embedded-subscribe{
-    color: black;
-    margin: 20px;
-    input{
-      color: black;
-      }
-  }
-  #mce-EMAIL{
-    color: white;
-    background-color: white;
-    background: none;
-    border: none;
-    border-bottom: solid 1px black;
-    text-align: center;
-  }
-  /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-     We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-</style> -->
-<!-- <div id="mc_embed_signup"> -->
-<!-- <form action="//zebrasclub.us15.list-manage.com/subscribe/post?u=c3f0bd81a6fc7bc5b51b4a1f7&amp;id=<%= ENV['MAILCHIMP_LIST_ID'] %>" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> -->
-<!-- <form action="/" method="post" class="validate" target="_blank" novalidate style=""> -->
-    <!-- <div id="mc_embed_signup_scroll"> -->
-  <!-- <h2>Entre ton fuckin email yo!</h2> -->
-<!-- <div class="mc-field-group"> -->
-  <!-- <label for="mce-EMAIL">Email Address </label> -->
-  <!-- <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="example@gmail.com"> -->
-<!-- </div> -->
-  <!-- <div id="mce-responses" class="clear"> -->
-    <!-- <div class="response" id="mce-error-response" style="display:none"></div> -->
-    <!-- <div class="response" id="mce-success-response" style="display:none"></div> -->
-  <!-- </div>     real people should not fill this in and expect good things - do not remove this or risk form bot signups -->
-    <!-- <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_c3f0bd81a6fc7bc5b51b4a1f7_77537efd5a" tabindex="-1" value=""></div> -->
-    <!-- <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div> -->
-    <!-- </div> -->
-    <!-- </form> -->
-<!-- </form> -->
-<!-- </div> -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-header">
+      <div class="navbar-header">
 
-<!--End mc_embed_signup-->
+        <a class="navbar-brand" href="#">Zebrasclub.com
+          <!-- <img alt="Brand" src="..."> *** pour le logo ***-->
+        </a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><p><small><em>Bientôt en ligne</em></small></p></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<header>
+  <div class="container-header">
+    <div class="row">
+      <div class="col-sm-7">
+        <div class="header-content">
+          <h1>On veut vous faciliter la vie!</h1>
+          <p class="lead">Une boutique en ligne pour l'équipement d'arbitre de hockey.</p>
+<!--           <p><a class="btn btn-lg btn-success" href="#" role="button">Dit-moi quand ça sort</a></p> -->
+          <%= simple_form_for @home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: 'form-inline'} do |f| %>
+          <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "courriel@gmail.com" %>
+          <% if @home_page_user.nil? %>
+            <%= f.button :submit, "Dit-moi quand ça sort", class:"btn btn-success" %>
+          <% else %>
+            <%= button_tag type: :submit, class: "btn btn-success" do %>
+              <i class="fa fa-check" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+          <%#= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"btn base-button" %>
+          <% end %>
+        </div>
+      </div>
+        <div class="col-sm-5">
+          <div class="devise-container">
+          <%#= image_tag "devise_zebrasclub_page_lancement.png", class:"img-fluid img-responsive center-block" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div class="container-landing">
+  <div class="content-section-a">
+    <div class="row card-landing">
+      <div class="col-xs-8">
+        <h2 class="featurette-heading">Bas prix. <span class="text-muted">It'll blow your mind.</span></h2>
+        <p class="lead">Nous allons offrir les meilleurs prix sur le marché.</p>
+      </div>
+      <div class="col-xs-4">
+        <%#= image_tag "bas_prix_icon.png", class:"img-fluid img-responsive center-block" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section-a">
+
+    <div class="row card-landing">
+      <div class="col-xs-8 col-xs-push-4">
+        <h2 class="featurette-heading">Tout sous un même toit. <span class="text-muted">See for yourself.</span></h2>
+        <p class="lead">Peu importe ce que vous recherchez, on va l'avoir.</p>
+      </div>
+
+      <div class="col-xs-4 col-xs-pull-8">
+       <%#= image_tag "Tout_même_toit_bleu.png", class:"img-fluid img-responsive center-block" %>
+     </div>
+   </div>
+ </div>
+
+ <div class="content-section-a">
+
+  <div class="row card-landing">
+    <div class="col-xs-8">
+      <h2 class="featurette-heading">Achat en kit. <span class="text-muted">Checkmate.</span></h2>
+      <p class="lead">Vous allez pouvoir bénéficiez d'un rabais si vous achetez l'un de nos deux kit : Rookie ou Pro.</p>
+    </div>
+
+    <div class="col-xs-4">
+      <!-- <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image"> -->
+      <%#= image_tag "Achat_en_kit.png", class:"img-fluid img-responsive center-block" %>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Bas prix</h4>
+      <p>Nous allons offrir les meilleurs prix sur le marché.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Tout sous un même toit</h4>
+      <p>Peu importe ce que vous recherchez, on va l'avoir.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Achat en kit</h4>
+      <p>Vous allez pouvoir bénéficiez d'un rabais si vous achetez l'un de nos deux kit : Rookie ou Pro.</p>
+    </div>
+  </div>
+</div> -->
+
+

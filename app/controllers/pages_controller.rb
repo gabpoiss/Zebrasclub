@@ -1,12 +1,8 @@
 class PagesController < ApplicationController
   # skip_before_action :authenticate_user!, only: [ :home ]
 
-
-
-  def landing_page
-
-  end
   def home
+    @home_page_user = User.new
     store_current_location
     @items = Item.all
     if params[:search]
@@ -14,6 +10,13 @@ class PagesController < ApplicationController
         @items = @items.where("price > ?", params[:search][:price_lower]).where("price < ?", params[:search][:price_upper])
       end
     end
+  end
+
+
+  def new_user
+    @home_page_user = User.new(email: params[:user][:email], password: "password", password_confirmation: "password")
+    @home_page_user.save
+    redirect_to root_path
   end
 
   def package
@@ -106,6 +109,9 @@ class PagesController < ApplicationController
     @order = current_user.orders.last
     Order.create(user_id: current_user.id)
   end
+
+
+  private
 
   def category_params
     params.require(:category).permit(:item_type)

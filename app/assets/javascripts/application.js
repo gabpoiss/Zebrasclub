@@ -2,4 +2,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require bootstrap-slider
-//= require_tree .
+//= require_tree
+
+
