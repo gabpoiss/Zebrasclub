@@ -6,7 +6,7 @@ html, body {
 header {
     position: relative;
     width: 100%;
-    min-height: auto;
+    min-height: 100%;
     overflow: hidden;
     background: #577BFF;
     background: -webkit-linear-gradient(to left,#577BFF,#50e8e8);
@@ -14,27 +14,27 @@ header {
     color: #fff;
 }
 
-@media (min-width: 768px){
-  header {
-      min-height: 100%;
-  }
-}
+// @media (min-width: 768px){
+//   header {
+//       min-height: 100%;
+//   }
+// }
 
-@media (min-width: 992px){
-  header {
-      min-height: 100%;
-  }
-}
+// @media (min-width: 992px){
+//   header {
+//       min-height: 100%;
+//   }
+// }
 
-@media (min-width: 1200px){
-  header {
-      min-height: 100%;
-  }
-}
+// @media (min-width: 1200px){
+//   header {
+//       min-height: 100%;
+//   }
+// }
 
 
 .navbar-brand {
-   padding: 4px 4px;
+   padding: 4px 16px;
  }
 
 @media (min-width: 992px){
@@ -54,17 +54,18 @@ header {
 }
 
 .navbar-landing {
+  padding-top: 10px;
   background: transparent;
   z-index: 999;
   position: absolute;
   width: 100%;
 }
 
-@media (min-width: 768px) {
-    .navbar-landing {
-      padding-top: 10px;
-  }
-}
+// @media (min-width: 768px) {
+//     .navbar-landing {
+//       padding-top: 10px;
+//   }
+// }
 
 .container-header {
   padding-right: 15px;
@@ -76,6 +77,7 @@ header {
 .container-header > .navbar-header {
     margin-right: -15px;
     margin-left: -15px;
+    float: none;
 }
 @media (min-width: 768px) {
     .container-header {
@@ -95,6 +97,10 @@ header {
   }
 }
 
+.navbar-header .nav {
+  padding: 15px 20px 0 0;
+  color: white;
+}
 
 
 
@@ -214,4 +220,10 @@ header .device-container {
   }
 }
 
+
+@media (min-width: 992px) {
+  .padding-pastille {
+    padding: 50px;
+  }
+}
 
