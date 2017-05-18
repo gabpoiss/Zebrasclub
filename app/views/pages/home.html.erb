@@ -45,13 +45,13 @@
 <header>
   <div class="container-header">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-xs-12 col-sm-6">
         <div class="header-content">
           <div class="header-content-inner">
             <h1>On veut vous faciliter la vie!</h1>
               <p class="lead">Une boutique en ligne pour l'équipement d'arbitre de hockey.</p>
               <!-- <p><a class="btn btn-lg btn-success" href="#" role="button">Dit-moi quand ça sort</a></p> -->
-                <%= simple_form_for @home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: 'form-inline'} do |f| %>
+                <%= simple_form_for @home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: 'form-inline user_form_home'} do |f| %>
                   <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "courriel@gmail.com" %>
                   <%# if @home_page_user.nil? %>
                    <%= f.button :submit, "Dit-moi quand ça sort", class:"btn btn-success" %>
@@ -65,7 +65,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-xs-12 col-sm-6">
         <div class="device-container">
           <div class="device-container-inner">
             <%= image_tag "device_zebrasclub_page_lancement.png", class:"img-responsive center-block" %>

@@ -14,6 +14,10 @@ header {
     color: #fff;
 }
 
+.user_form_home{
+  display: flex;
+  // justify-content: space-around;
+}
 #user_email{
   background: none;
   border: none;
@@ -21,8 +25,34 @@ header {
   font-size: 20px;
   font-family: "Open Sans";
   width: 200px;
-  text-align: center;
+  text-align: left;
+  color: white;
 }
+
+@media (min-width: 768px){
+  #user_email{
+    // display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+    width: 187px;
+    text-align: left;
+  }
+}
+@media (min-width: 992px){
+  #user_email{
+
+  }
+
+}
+@media (min-width: 1200px){
+  #user_email{
+    margin-bottom: 0px;
+  }
+
+}
+
+
+
 // @media (min-width: 768px){
 //   header {
 //       min-height: 100%;
