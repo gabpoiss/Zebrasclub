@@ -52,7 +52,13 @@
 <!--           <p><a class="btn btn-lg btn-success" href="#" role="button">Dit-moi quand ça sort</a></p> -->
           <%= simple_form_for @home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: 'form-inline'} do |f| %>
           <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "courriel@gmail.com" %>
-          <%= f.button :submit, "Dit-moi quand ça sort", class:"btn btn-success" %>
+          <% if @home_page_user.nil? %>
+            <%= f.button :submit, "Dit-moi quand ça sort", class:"btn btn-success" %>
+          <% else %>
+            <%= button_tag type: :submit, class: "btn btn-success" do %>
+              <i class="fa fa-check" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
           <%#= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"btn base-button" %>
           <% end %>
         </div>
