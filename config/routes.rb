@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
 
+  ActiveAdmin.routes(self)
   devise_for :users, controllers: {
       sessions: 'users/sessions',
       registrations: 'users/registrations',
       omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  root to: 'pages#landing_page'
+  root to: 'pages#home'
   # Might not work but I want to redirect_to home page when i make a post request in the MailChimp email form.
-
-  # get "/", to: 'users/registrations#home', as: "new_user_registration_home"
-
+  post "/home_user", to: "pages#new_user", as: "new_user"
   # grid with package items
   get "/package", to: "pages#package", as: "package"
 
