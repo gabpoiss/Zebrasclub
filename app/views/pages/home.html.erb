@@ -1,19 +1,19 @@
 
 
-
-<!-- <div class="banner">
+<!--
+<div class="banner">
   <div class="banner-content">
     <div class="home-banner">
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
             <%# if user_signed_in? %>
-           <!--  <h1>Welcome to <%#= @home_page_user.first_name %> </h1> -->
+             <h1>Welcome to <%#= @home_page_user.first_name %> </h1>
             <%# end %>
 
-        <!--     <h1>The World's #1 Ref Store</h1>
-          </div>  -->
-<!--           <div class="col-xs-12">
+            <h1>The World's #1 Ref Store</h1>
+      </div>
+          <div class="col-xs-12">
             <%#= simple_form_for :search,  url: package_path , :method => :get, html: {class: 'form-inline'} do |f| %>
             <%#= f.input :price_upper, as: :integer, required: false, placeholder: "$500", label: "MY BUDGET IS   ", class: "budget-title" %>
             <%#= f.input :new_package, as: :hidden, value: "true" %>
@@ -26,53 +26,55 @@
   </div> -->
 
 
-  <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-header">
-      <div class="navbar-header">
+<!-- THIS IS THE LANDING PAGE ...................................... -->
 
-        <a class="navbar-brand" href="#">Zebrasclub.com
-          <!-- <img alt="Brand" src="..."> *** pour le logo ***-->
-        </a>
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><p><small><em>Bientôt en ligne</em></small></p></li>
-        </ul>
-      </div>
+  <nav class="navbar navbar-landing">
+    <div class="container-header">
+      <div class="navbar-header">
+      <!-- <a class="navbar-brand" href="#" style="padding:0px;">
+        <img src="logo_complet_final.png" style="height:100%;">
+      </a> -->
+      <%= image_tag "logo_complet_final_ajusté_blanc.png", class:"navbar-brand" %>
+      <ul class="nav pull-right">
+        <li><p><small><em>Bientôt en ligne</em></small></p></li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
 <header>
   <div class="container-header">
     <div class="row">
-      <div class="col-sm-7">
+      <div class="col-xs-12 col-sm-6">
         <div class="header-content">
-          <h1>On veut vous faciliter la vie!</h1>
-          <p class="lead">Une boutique en ligne pour l'équipement d'arbitre de hockey.</p>
-<!--           <p><a class="btn btn-lg btn-success" href="#" role="button">Dit-moi quand ça sort</a></p> -->
-          <%= simple_form_for @home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: 'form-inline'} do |f| %>
-          <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "courriel@gmail.com" %>
-          <% if @home_page_user.nil? %>
-            <%= f.button :submit, "Dit-moi quand ça sort", class:"btn btn-success" %>
-          <% else %>
-            <%= button_tag type: :submit, class: "btn btn-success" do %>
-              <i class="fa fa-check" aria-hidden="true"></i>
-            <% end %>
-          <% end %>
-          <%#= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"btn base-button" %>
-          <% end %>
+          <div class="header-content-inner">
+            <h1>On veut vous faciliter la vie!</h1>
+              <p class="lead">Une boutique en ligne pour l'équipement d'arbitre de hockey.</p>
+              <!-- <p><a class="btn btn-lg btn-success" href="#" role="button">Dit-moi quand ça sort</a></p> -->
+                <%= simple_form_for @home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: 'form-inline user_form_home'} do |f| %>
+                  <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "courriel@gmail.com" %>
+                  <%# if @home_page_user.nil? %>
+                   <%= f.button :submit, "Dit-moi quand ça sort", class:"btn btn-success" %>
+                  <%# else %>
+                   <%#= button_tag type: :submit, class: "btn btn-success" do %>
+                     <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
+                   <%# end %>
+                  <%# end %>
+                   <%#= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"btn base-button" %>
+                <% end %>
+          </div>
         </div>
       </div>
-        <div class="col-sm-5">
-          <div class="devise-container">
-          <%#= image_tag "devise_zebrasclub_page_lancement.png", class:"img-fluid img-responsive center-block" %>
+      <div class="col-xs-12 col-sm-6">
+        <div class="device-container">
+          <div class="device-container-inner">
+            <%= image_tag "device_zebrasclub_page_lancement.png", class:"img-responsive center-block" %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </header>
-
-
 <div class="container-landing">
   <div class="content-section-a">
     <div class="row card-landing">
@@ -80,8 +82,8 @@
         <h2 class="featurette-heading">Bas prix. <span class="text-muted">It'll blow your mind.</span></h2>
         <p class="lead">Nous allons offrir les meilleurs prix sur le marché.</p>
       </div>
-      <div class="col-xs-4">
-        <%#= image_tag "bas_prix_icon.png", class:"img-fluid img-responsive center-block" %>
+      <div class="col-xs-4 padding-pastille">
+        <%= image_tag "bas_prix_icon.png", class:"img-fluid img-responsive center-block " %>
       </div>
     </div>
   </div>
@@ -94,8 +96,8 @@
         <p class="lead">Peu importe ce que vous recherchez, on va l'avoir.</p>
       </div>
 
-      <div class="col-xs-4 col-xs-pull-8">
-       <%#= image_tag "Tout_même_toit_bleu.png", class:"img-fluid img-responsive center-block" %>
+      <div class="col-xs-4 col-xs-pull-8 padding-pastille">
+       <%= image_tag "Tout_même_toit_bleu.png", class:"img-fluid img-responsive center-block" %>
      </div>
    </div>
  </div>
@@ -108,9 +110,9 @@
       <p class="lead">Vous allez pouvoir bénéficiez d'un rabais si vous achetez l'un de nos deux kit : Rookie ou Pro.</p>
     </div>
 
-    <div class="col-xs-4">
+    <div class="col-xs-4 padding-pastille">
       <!-- <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image"> -->
-      <%#= image_tag "Achat_en_kit.png", class:"img-fluid img-responsive center-block" %>
+      <%= image_tag "Achat_en_kit.png", class:"img-fluid img-responsive center-block" %>
     </div>
   </div>
 </div>
