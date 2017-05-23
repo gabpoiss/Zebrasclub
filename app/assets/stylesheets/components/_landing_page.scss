@@ -112,6 +112,12 @@ header .header-content {
 
 .subscribe {
   margin-top : 30px;
+  .form-control {
+    background: none;
+    border: none;
+    border-bottom: solid 1px #8A8888;
+    color: white;
+  }
 }
 
 .animated {
@@ -127,12 +133,6 @@ header .header-content {
   }
 }
 
-.form-control {
-  background: none;
-  border: none;
-  border-bottom: solid 1px #8A8888;
-  color: white;
-}
 
 
 
