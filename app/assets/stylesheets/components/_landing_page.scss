@@ -16,7 +16,7 @@ header {
 
 .user_form_home{
   display: flex;
-  // justify-content: space-around;
+  justify-content: space-between;
 }
 #user_email{
   background: none;
@@ -34,7 +34,7 @@ header {
     // display: block;
     font-size: 18px;
     margin-bottom: 10px;
-    width: 187px;
+    // width: 187px;
     text-align: left;
   }
 }

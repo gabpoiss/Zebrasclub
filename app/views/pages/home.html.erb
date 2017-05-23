@@ -51,10 +51,10 @@
             <h1>On veut vous faciliter la vie!</h1>
               <p class="lead">Une boutique en ligne pour l'équipement d'arbitre de hockey.</p>
               <!-- <p><a class="btn btn-lg btn-success" href="#" role="button">Dit-moi quand ça sort</a></p> -->
-                <%= simple_form_for @home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: 'form-inline user_form_home'} do |f| %>
+                <%= simple_form_for @home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: 'form-inline user_form_home text-center'} do |f| %>
                   <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "courriel@gmail.com" %>
                   <%# if @home_page_user.nil? %>
-                   <%= f.button :submit, "Dit-moi quand ça sort", class:"btn btn-success" %>
+                   <%= f.button :submit, "Quand ça sort", class:"btn btn-success" %>
                   <%# else %>
                    <%#= button_tag type: :submit, class: "btn btn-success" do %>
                      <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
