@@ -26,119 +26,100 @@
   </div> -->
 
 
-<!-- THIS IS THE LANDING PAGE ...................................... -->
+  <!-- THIS IS THE LANDING PAGE ...................................... -->
 
   <nav class="navbar navbar-landing">
     <div class="container-header">
       <div class="navbar-header">
-      <!-- <a class="navbar-brand" href="#" style="padding:0px;">
-        <img src="logo_complet_final.png" style="height:100%;">
-      </a> -->
-      <%= image_tag "logo_complet_final_ajusté_blanc.png", class:"navbar-brand" %>
-      <ul class="nav pull-right">
-        <li><p><small><em>Bientôt en ligne</em></small></p></li>
-      </ul>
+        <%= image_tag "logo_complet_final_ajusté_blanc.png", class:"navbar-brand" %>
+        <ul class="nav pull-right">
+          <li><p><small><em>Bientôt en ligne</em></small></p></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<header>
-  <div class="container-header">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <div class="header-content">
-          <div class="header-content-inner">
-            <h1>On veut vous faciliter la vie!</h1>
+  <header>
+    <div class="container-header">
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-6">
+          <div class="header-content">
+            <div class="header-content-inner">
+              <h1>On veut vous faciliter la vie!</h1>
               <p class="lead">Une boutique en ligne pour l'équipement d'arbitre de hockey.</p>
-              <!-- <p><a class="btn btn-lg btn-success" href="#" role="button">Dit-moi quand ça sort</a></p> -->
-                <%= simple_form_for @home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: 'form-inline user_form_home'} do |f| %>
-                  <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "courriel@gmail.com" %>
-                  <%# if @home_page_user.nil? %>
-                   <%= f.button :submit, "Dit-moi quand ça sort", class:"btn btn-success" %>
-                  <%# else %>
-                   <%#= button_tag type: :submit, class: "btn btn-success" do %>
-                     <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
-                   <%# end %>
-                  <%# end %>
-                   <%#= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"btn base-button" %>
-                <% end %>
+              <div class="subscribe animated" >
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= form_for(@home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: "input-group input-group-lg", role: "form"}, remote: true) do |f| %>
+                    <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "example@gmail.com", class: "form-control" %>
+                    <div class="input-group-btn">
+                      <%= f.submit "Dis-moi", class:"btn-landing btn " %>
+                    </div>
+                    <% end %> <!-- end of form_for -->
+                  </div> <!-- col-md-12 -->
+                </div> <!-- row -->
+              </div> <!-- subscribe animated -->
+            </div> <!-- header-content-inner -->
+          </div> <!-- header-content -->
+        </div><!-- first col-xs-12 col-sm-6 -->
+        <div class="col-xs-12 col-sm-6">
+          <div class="device-container">
+            <div class="device-container-inner">
+              <%= image_tag "device_zebrasclub_page_lancement.png", class:"img-responsive center-block" %>
+            </div>
           </div>
+        </div> <!-- second col-xs-12 col-sm-6 -->
+
+      </div> <!-- row -->
+    </div> <!-- container header -->
+  </header>
+
+
+
+  <div class="container-landing">
+
+    <div class="content-section-a">
+      <div class="row card-landing">
+        <div class="col-xs-8">
+          <h2 class="featurette-heading">Bas prix. <span class="text-muted">It'll blow your mind.</span></h2>
+          <p class="lead">Nous allons offrir les meilleurs prix sur le marché.</p>
+        </div>
+
+        <div class="col-xs-4 padding-pastille">
+          <%= image_tag "bas_prix_icon.png", class:"img-fluid img-responsive center-block " %>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-6">
-        <div class="device-container">
-          <div class="device-container-inner">
-            <%= image_tag "device_zebrasclub_page_lancement.png", class:"img-responsive center-block" %>
-          </div>
+    </div>
+
+    <div class="content-section-a">
+
+      <div class="row card-landing">
+        <div class="col-xs-8 col-xs-push-4">
+          <h2 class="featurette-heading">Tout sous un même toit. <span class="text-muted">See for yourself.</span></h2>
+          <p class="lead">Peu importe ce que vous recherchez, on va l'avoir.</p>
+        </div>
+
+        <div class="col-xs-4 col-xs-pull-8 padding-pastille">
+          <%= image_tag "Tout_même_toit_bleu.png", class:"img-fluid img-responsive center-block" %>
         </div>
       </div>
     </div>
-  </div>
-</header>
-<div class="container-landing">
-  <div class="content-section-a">
-    <div class="row card-landing">
-      <div class="col-xs-8">
-        <h2 class="featurette-heading">Bas prix. <span class="text-muted">It'll blow your mind.</span></h2>
-        <p class="lead">Nous allons offrir les meilleurs prix sur le marché.</p>
+
+    <div class="content-section-a">
+      <div class="row card-landing">
+        <div class="col-xs-8">
+          <h2 class="featurette-heading">Achat en kit. <span class="text-muted">Checkmate.</span></h2>
+          <p class="lead">Vous allez pouvoir bénéficiez d'un rabais si vous achetez l'un de nos deux kit : Rookie ou Pro.</p>
+        </div>
+
+        <div class="col-xs-4 padding-pastille">
+          <%= image_tag "Achat_en_kit.png", class:"img-fluid img-responsive center-block" %>
+        </div>
       </div>
-      <div class="col-xs-4 padding-pastille">
-        <%= image_tag "bas_prix_icon.png", class:"img-fluid img-responsive center-block " %>
-      </div>
-    </div>
-  </div>
-
-  <div class="content-section-a">
-
-    <div class="row card-landing">
-      <div class="col-xs-8 col-xs-push-4">
-        <h2 class="featurette-heading">Tout sous un même toit. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Peu importe ce que vous recherchez, on va l'avoir.</p>
-      </div>
-
-      <div class="col-xs-4 col-xs-pull-8 padding-pastille">
-       <%= image_tag "Tout_même_toit_bleu.png", class:"img-fluid img-responsive center-block" %>
-     </div>
-   </div>
- </div>
-
- <div class="content-section-a">
-
-  <div class="row card-landing">
-    <div class="col-xs-8">
-      <h2 class="featurette-heading">Achat en kit. <span class="text-muted">Checkmate.</span></h2>
-      <p class="lead">Vous allez pouvoir bénéficiez d'un rabais si vous achetez l'un de nos deux kit : Rookie ou Pro.</p>
     </div>
 
-    <div class="col-xs-4 padding-pastille">
-      <!-- <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image"> -->
-      <%= image_tag "Achat_en_kit.png", class:"img-fluid img-responsive center-block" %>
-    </div>
-  </div>
-</div>
-</div>
+  </div> <!-- end of container-landing -->
 
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <h4>Bas prix</h4>
-      <p>Nous allons offrir les meilleurs prix sur le marché.</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <h4>Tout sous un même toit</h4>
-      <p>Peu importe ce que vous recherchez, on va l'avoir.</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <h4>Achat en kit</h4>
-      <p>Vous allez pouvoir bénéficiez d'un rabais si vous achetez l'un de nos deux kit : Rookie ou Pro.</p>
-    </div>
-  </div>
-</div> -->
-
+  <!-- END OF THE LANDING PAGE .........................................-->
 
