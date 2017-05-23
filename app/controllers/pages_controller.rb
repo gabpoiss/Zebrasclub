@@ -10,6 +10,8 @@ class PagesController < ApplicationController
         @items = @items.where("price > ?", params[:search][:price_lower]).where("price < ?", params[:search][:price_upper])
       end
     end
+    render "pages/home"
+
   end
 
 
