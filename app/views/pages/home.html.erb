@@ -48,10 +48,10 @@
             <div class="header-content-inner">
               <h1>On veut vous faciliter la vie!</h1>
               <p class="lead">Une boutique en ligne pour l'équipement d'arbitre de hockey.</p>
-              <div class="subscribe animated">
+              <div class="subscribe animated" >
                 <div class="row">
                   <div class="col-md-12">
-                    <%= form_for(@home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: "input-group input-group-lg", role: "form"}) do |f| %>
+                    <%= form_for(@home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: "input-group input-group-lg", role: "form"}, remote: true) do |f| %>
                     <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "example@gmail.com", class: "form-control" %>
                     <div class="input-group-btn">
                       <%= f.submit "Dis-moi", class:"btn-landing btn " %>
@@ -121,9 +121,5 @@
 
   </div> <!-- end of container-landing -->
 
-<<<<<<< HEAD
-
   <!-- END OF THE LANDING PAGE .........................................-->
-=======
-<!-- END OF THE LANDING PAGE .........................................-->
->>>>>>> 43bbf8e9bbabac42366e5cab29b50cbcf42cecf7
+

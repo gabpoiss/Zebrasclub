@@ -10,15 +10,23 @@ class PagesController < ApplicationController
         @items = @items.where("price > ?", params[:search][:price_lower]).where("price < ?", params[:search][:price_upper])
       end
     end
-    render "pages/home"
 
   end
 
 
   def new_user
     @home_page_user = User.new(email: params[:user][:email], password: "password", password_confirmation: "password")
-    @home_page_user.save
-    redirect_to root_path
+    if @home_page_user.save
+        respond_to do |format|
+          format.html {redirect_to root_path}
+          format.js
+        end
+      else
+        respond_to do |format|
+          format.html { render 'pages/home' }
+          format.js
+        end
+    end
   end
 
   def package
