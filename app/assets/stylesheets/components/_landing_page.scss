@@ -14,63 +14,6 @@ header {
     color: #fff;
 }
 
-.user_form_home{
-  display: flex;
-  justify-content: space-between;
-}
-#user_email{
-  background: none;
-  border: none;
-  border-bottom: solid 1px #8A8888;
-  font-size: 20px;
-  font-family: "Open Sans";
-  width: 200px;
-  text-align: left;
-  color: white;
-}
-
-@media (min-width: 768px){
-  #user_email{
-    // display: block;
-    font-size: 18px;
-    margin-bottom: 10px;
-    // width: 187px;
-    text-align: left;
-  }
-}
-@media (min-width: 992px){
-  #user_email{
-
-  }
-
-}
-@media (min-width: 1200px){
-  #user_email{
-    margin-bottom: 0px;
-  }
-
-}
-
-
-
-// @media (min-width: 768px){
-//   header {
-//       min-height: 100%;
-//   }
-// }
-
-// @media (min-width: 992px){
-//   header {
-//       min-height: 100%;
-//   }
-// }
-
-// @media (min-width: 1200px){
-//   header {
-//       min-height: 100%;
-//   }
-// }
-
 
 .navbar-brand {
    padding: 4px 16px;
@@ -143,18 +86,6 @@ header {
 
 
 
-
-
-// .jumbotron {
-//   background-color: transparent;
-
-// }
-.jumbotron .btn {
-  padding: 14px 24px;
-  font-size: 21px;
-  background-color: #577BFF;
-}
-
 header .header-content {
   text-align: center;
   padding: 60px 0 50px;
@@ -177,8 +108,81 @@ header .header-content {
   }
 }
 
+// <--************************ Form pour le email *************************-->
+
+.subscribe {
+  margin-top : 30px;
+}
+
+.animated {
+    visibility: visible;
+    animation-name: fadeInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@media (min-width: 992px) {
+  .input-group-btn {
+    padding-left: 10px !important;
+  }
+}
+
+.form-control {
+  background: none;
+  border: none;
+  border-bottom: solid 1px #8A8888;
+  color: white;
+}
 
 
+
+@media (max-width: 992px) {
+    .input-group .form-control {
+      margin-bottom: 15px !important;
+  }
+}
+
+// Rendre plat le coin en bas a gauche de l'input pour le courriel
+
+.input-group-lg .form-control {
+  border-radius: 0;
+}
+
+// Put the button under de email input below 992px
+
+@media (max-width: 992px) {
+    .input-group {
+      display: inline-block;
+  }
+}
+
+// full-width subscribe button below 992px
+
+@media (max-width: 992px) {
+    .subscribe .btn {
+      width: 100%;
+  }
+}
+
+.btn-landing {
+  color: #4AB0E8;
+  background: #fff;
+}
+
+.btn-landing:hover {
+  color: #fff;
+  background: #323332;
+  border-color: #323332;
+
+}
+
+// <-- ***************** end form_for pour email **************************-->
+
+
+
+
+
+// **************************************************************
 
 header .device-container {
     max-width: 300px;
