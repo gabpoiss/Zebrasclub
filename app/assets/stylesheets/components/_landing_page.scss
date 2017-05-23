@@ -159,7 +159,7 @@ header .header-content {
 // full-width subscribe button below 992px
 
 @media (max-width: 992px) {
-    .subscribe .btn {
+    .btn-landing {
       width: 100%;
   }
 }
@@ -171,8 +171,8 @@ header .header-content {
 
 .btn-landing:hover {
   color: #fff;
-  background: #323332;
-  border-color: #323332;
+  background: #8A8888;
+  border-color: #8A8888;
 
 }
 
@@ -180,9 +180,7 @@ header .header-content {
 
 
 
-
-
-// **************************************************************
+// <--************** Marketing content ********************-->
 
 header .device-container {
     max-width: 300px;
@@ -268,5 +266,49 @@ header .device-container {
   .padding-pastille {
     padding: 50px;
   }
+}
+
+// <--****************** Footer ********************-->
+
+.footer-landing {
+  background: #577BFF;
+  margin-top: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+}
+.container-easy {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px){
+  .container-easy {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px){
+  .container-easy {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px){
+  .container-easy {
+    width: 1170px;
+  }
+}
+
+
+footer p {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.email-footer {
+  margin-bottom: 20px;
 }
 
