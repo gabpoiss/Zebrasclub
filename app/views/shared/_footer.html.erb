@@ -1,4 +1,44 @@
-<div class="the-footer">
+<!-- ********** Footer for the landing page *********** -->
+
+<footer class="footer text-center footer-landing">
+  <div class="container-easy">
+    <p>Abonnez-vous à l'infolettre et courez la chance de gagner une visière CCM !</p>
+
+    <div class="email-footer row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <%= form_for(@home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: "input-group input-group-lg", role: "form"}) do |f| %>
+
+        <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "Email", class: "form-control" %>
+
+        <div class="input-group-btn">
+          <%= f.submit "Dis-moi", class:"btn-landing btn " %>
+        </div>
+                        <%# if @home_page_user.nil? %>
+                      <%# else %>
+                       <%#= button_tag type: :submit, class: "btn btn-success" do %>
+                         <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
+                       <%# end %>
+                      <%# end %>
+                       <%#= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"btn base-button" %>
+        <% end %> <!-- end of form_for -->
+      </div>
+    </div>
+
+    <div class="social-media-footer-box">
+      <ul class="list-inline">
+        <li><a href="https://twitter.com" class="fa fa-twitter"></a></li>
+        <li><a href="https://www.facebook.com" class="fa fa-facebook"></a></li>
+        <li><a href="https://youtube.com" class="fa fa-youtube"></a></li>
+      </ul>
+    </div>
+
+  </div> <!-- container-easy -->
+</footer> <!-- end of footer -->
+
+<!-- ************* End of footer landing page ************ -->
+
+
+<!-- <div class="the-footer">
   <div class="social-media-footer-box">
     <ul class="list-inline">
       <li><a href="https://twitter.com" class="fa fa-twitter"></a></li>
@@ -8,4 +48,4 @@
   </div class="the-other-box">
   <div>
   </div>
-</div>
+</div> -->
