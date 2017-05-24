@@ -39,43 +39,49 @@
     </div>
   </nav>
 
+<header>
+  <div class="container-header">
+    <div class="row">
 
-  <header>
-    <div class="container-header">
-      <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="header-content">
+          <div class="header-content-inner">
+            <h1>On peut vous faciliter la vie!</h1>
+            <p class="lead">Boutique en ligne pour équipement d'arbitre de hockey.</p>
+            <p><span>Inscrivez-vous et courez la chance de gagner une <strong>nouvelle visière CCM straight !</strong></span></p>
+            <div class="subscribe animated" >
+              <div class="row">
+                <div class="col-md-12">
+                    <% if @home_page_user.errors.any? %>
+                      <% @home_page_user.errors.messages.each do |msg| %>
+                        <div class="alert alert-warning"><%= msg %></div>
+                      <% end %>
+                    <% end %>
+                  <%= form_for(@home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: "input-group input-group-lg", role: "form"}, remote: true) do |f| %>
+                  <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "exemple@gmail.com", class: "form-control" %>
+                  <div class="input-group-btn">
+                    <%= f.submit "Dis-moi", class:"btn-landing btn " %>
 
+                  </div>
+                  <% end %> <!-- end of form_for -->
+                </div> <!-- col-md-12 -->
+              </div> <!-- row -->
+            </div> <!-- subscribe animated -->
+          </div> <!-- header-content-inner -->
+        </div> <!-- header-content -->
+      </div><!-- first col-xs-12 col-sm-6 -->
 
-        <div class="col-xs-12 col-sm-6">
-          <div class="header-content">
-            <div class="header-content-inner">
-              <h1>On veut vous faciliter la vie!</h1>
-              <p class="lead">Une boutique en ligne pour l'équipement d'arbitre de hockey.</p>
-              <div class="subscribe animated" >
-                <div class="row">
-                  <div class="col-md-12">
-                    <%= form_for(@home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: "input-group input-group-lg", role: "form"}, remote: true) do |f| %>
-                    <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "example@gmail.com", class: "form-control" %>
-                    <div class="input-group-btn">
-                      <%= f.submit "Dis-moi", class:"btn-landing btn " %>
-                    </div>
-                    <% end %> <!-- end of form_for -->
-                  </div> <!-- col-md-12 -->
-                </div> <!-- row -->
-              </div> <!-- subscribe animated -->
-            </div> <!-- header-content-inner -->
-          </div> <!-- header-content -->
-        </div><!-- first col-xs-12 col-sm-6 -->
-        <div class="col-xs-12 col-sm-6">
-          <div class="device-container">
-            <div class="device-container-inner">
-              <%= image_tag "device_zebrasclub_page_lancement.png", class:"img-responsive center-block" %>
-            </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="device-container">
+          <div class="device-container-inner">
+            <%= image_tag "device_zebrasclub_page_lancement.png", class:"img-responsive center-block" %>
           </div>
-        </div> <!-- second col-xs-12 col-sm-6 -->
+        </div>
+      </div> <!-- second col-xs-12 col-sm-6 -->
 
-      </div> <!-- row -->
-    </div> <!-- container header -->
-  </header>
+    </div> <!-- row -->
+  </div> <!-- container header -->
+</header>
 
 
 
