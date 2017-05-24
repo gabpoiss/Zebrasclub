@@ -4,9 +4,9 @@
   <div class="container-easy">
     <p>Abonnez-vous à l'infolettre et courez la chance de gagner une visière CCM !</p>
 
-    <div class="email-footer row">
+    <div class="email-footer row subscribe">
       <div class="col-sm-offset-3 col-sm-6">
-        <%= form_for(@home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: "input-group input-group-lg", role: "form"}) do |f| %>
+        <%= form_for(@home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: "input-group input-group-lg", role: "form"}, remote: true ) do |f| %>
 
         <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "Email", class: "form-control" %>
 
