@@ -4,11 +4,11 @@
   <div class="container-easy">
     <p>Abonnez-vous à l'infolettre et courez la chance de gagner une visière CCM !</p>
 
-    <div class="email-footer row subscribe">
+    <div class="email-footer row">
       <div class="col-sm-offset-3 col-sm-6">
         <%= form_for(@home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: "input-group input-group-lg", role: "form"}, remote: true ) do |f| %>
 
-        <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "Email", class: "form-control" %>
+        <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "exemple@gmail.com", class: "form-control" %>
 
         <div class="input-group-btn">
           <%= f.submit "Dis-moi", class:"btn-landing btn " %>
@@ -26,14 +26,14 @@
 
     <div class="social-media-footer-box">
       <ul class="list-inline">
-        <li><a href="https://twitter.com" class="fa fa-twitter"></a></li>
         <li><a href="https://www.facebook.com" class="fa fa-facebook"></a></li>
         <li><a href="https://youtube.com" class="fa fa-youtube"></a></li>
+        <li><a href="https://twitter.com" class="fa fa-twitter"></a></li>
       </ul>
     </div>
 
     <div class="padding-copyright container-easy">
-      <span>&copy; Copyright 2017 - Zebrasclub.com, Inc</span>
+      <span>&copy; Copyright 2017 - Zebrasclub.com, Inc.</span>
     </div>
 
   </div> <!-- container-easy -->

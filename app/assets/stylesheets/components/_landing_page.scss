@@ -116,7 +116,7 @@ header .header-content {
   .form-control {
     background: none;
     border: none;
-    border-bottom: solid 1px #8A8888;
+    border-bottom: solid 1px #fff;
     color: white;
   }
 }
@@ -172,8 +172,8 @@ header .header-content {
 
 .btn-landing:hover {
   color: #fff;
-  background: #8A8888;
-  border-color: #8A8888;
+  background: transparent;
+  border: solid 1px #fff;
 
 }
 
@@ -311,6 +311,23 @@ footer p {
 
 .email-footer {
   margin-bottom: 20px;
+}
+
+footer .form-control {
+    background: none;
+    border: none;
+    border-bottom: solid 1px #fff;
+    color: white;
+}
+
+footer .btn-landing {
+  color: #577BFF;
+}
+
+footer .btn-landing:hover {
+  color: #fff;
+  background: #577BFF;
+  border: solid 1px #fff;
 }
 
 

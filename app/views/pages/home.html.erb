@@ -52,10 +52,16 @@
             <div class="subscribe animated" >
               <div class="row">
                 <div class="col-md-12">
+                    <% if @home_page_user.errors.any? %>
+                      <% @home_page_user.errors.messages.each do |msg| %>
+                        <div class="alert alert-warning"><%= msg %></div>
+                      <% end %>
+                    <% end %>
                   <%= form_for(@home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: "input-group input-group-lg", role: "form"}, remote: true) do |f| %>
-                  <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "example@gmail.com", class: "form-control" %>
+                  <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "exemple@gmail.com", class: "form-control" %>
                   <div class="input-group-btn">
                     <%= f.submit "Dis-moi", class:"btn-landing btn " %>
+
                   </div>
                   <% end %> <!-- end of form_for -->
                 </div> <!-- col-md-12 -->
