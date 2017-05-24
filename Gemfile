@@ -15,6 +15,9 @@ gem 'omniauth-facebook'
 # Pictures manager
 gem 'cloudinary'
 
+# I18N.tasks
+gem 'i18n-tasks', '~> 0.9.15'
+
 # Front-end gems
 gem 'sass-rails'
 gem 'bootstrap-sass'
