@@ -27,122 +27,131 @@
 
 
   <!-- THIS IS THE LANDING PAGE ...................................... -->
-  <nav class="navbar navbar-landing">
-    <div class="container-header">
-      <div class="navbar-header">
-        <%= image_tag "logo_complet_final_ajusté_blanc.png", class:"navbar-brand" %>
-        <ul class="nav pull-right">
-          <li><p><small><em><%= t('.bientot_en_ligne') %>  <%= link_to "En", "/en", style: "color : white" %>  <%= link_to "Fr", "/fr", style: "color : white" %> </em></small></p></li>
-          <li><p><small><em>
-          </em></small></p></li>
 
-          <li><p><small><em></em></small></p></li>
-        </ul>
-      </div>
+<nav class="navbar navbar-landing">
+  <div class="container-header">
+    <div class="navbar-header">
+
+      <%= image_tag "logo_complet_final_ajusté_blanc.png", class:"navbar-brand" %>
+
+      <ul class="nav pull-right">
+        <li><p><small><em>
+          <%= t('.bientot_en_ligne') %></em>
+        <!-- Not sure if its the right way to do it but here i say:
+        if the localization of the file is :fr, display the link to "/en"
+        and if the localization of the file is :en, display the link to "/fr" -->
+        <% if I18n.locale == :fr %>
+        <%= link_to "En", "/en", class:"btn btn-landing-will-be-removed" %>
+        <% elsif I18n.locale == :en %>
+        <%= link_to "Fr", "/fr", class:"btn btn-landing-will-be-removed" %>
+        <% end %>
+        </small></p></li>
+      </ul>
     </div>
-  </nav>
-  <header>
-    <div class="container-header">
-      <div class="row">
+  </div>
+</nav>
+<header>
+  <div class="container-header">
+    <div class="row">
 
-        <div class="col-xs-12 col-sm-6">
-          <div class="header-content animated">
-            <div class="header-content-inner">
-              <h1><%= t('.header_content') %></h1>
-              <p class="lead"><%= t('.lead') %></p>
-              <p>
-                <span><%= t('.span') %>
-                  <strong><%= t('.span_strong') %></strong>
-                </span>
-              </p>
-              <div class="subscribe" >
-                <div class="row">
-                  <div class="col-md-12">
-                    <% if @home_page_user.errors.any? %>
-                    <% @home_page_user.errors.messages.each do |msg| %>
-                    <div class="alert alert-warning"><%= msg %></div>
-                    <% end %>
-                    <% end %>
-                    <%= form_for(@home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: "input-group input-group-lg", role: "form"}, remote: true) do |f| %>
-                    <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "exemple@gmail.com", class: "form-control" %>
-                    <div class="input-group-btn">
-                      <%= f.submit "Dis moi !", class:"btn-landing btn " %>
+      <div class="col-xs-12 col-sm-6">
+        <div class="header-content animated">
+          <div class="header-content-inner">
+            <h1><%= t('.header_content') %></h1>
+            <p class="lead"><%= t('.lead') %></p>
+            <p>
+              <span><%= t('.span') %>
+                <strong><%= t('.span_strong') %></strong>
+              </span>
+            </p>
+            <div class="subscribe" >
+              <div class="row">
+                <div class="col-md-12">
+                  <% if @home_page_user.errors.any? %>
+                  <% @home_page_user.errors.messages.each do |msg| %>
+                  <div class="alert alert-warning"><%= msg %></div>
+                  <% end %>
+                  <% end %>
+                  <%= form_for(@home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: "input-group input-group-lg", role: "form"}, remote: true) do |f| %>
+                  <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "exemple@gmail.com", class: "form-control" %>
+                  <div class="input-group-btn">
+                    <%= f.submit "Dis moi !", class:"btn-landing btn " %>
 
-                    </div>
-                    <% end %> <!-- end of form_for -->
-                  </div> <!-- col-md-12 -->
-                </div> <!-- row -->
-              </div> <!-- subscribe animated -->
-            </div> <!-- header-content-inner -->
-          </div> <!-- header-content -->
-        </div><!-- first col-xs-12 col-sm-6 -->
+                  </div>
+                  <% end %> <!-- end of form_for -->
+                </div> <!-- col-md-12 -->
+              </div> <!-- row -->
+            </div> <!-- subscribe animated -->
+          </div> <!-- header-content-inner -->
+        </div> <!-- header-content -->
+      </div><!-- first col-xs-12 col-sm-6 -->
 
-        <div class="col-xs-12 col-sm-6">
-          <div class="device-container">
-            <div class="device-container-inner">
-              <%= image_tag "device_zebrasclub_page_lancement.png", class:"img-responsive center-block animation-right-t-left" %>
-            </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="device-container">
+          <div class="device-container-inner">
+            <%= image_tag "device_zebrasclub_page_lancement.png", class:"img-responsive center-block animation-right-t-left" %>
           </div>
-        </div> <!-- second col-xs-12 col-sm-6 -->
+        </div>
+      </div> <!-- second col-xs-12 col-sm-6 -->
 
-      </div> <!-- principal row -->
-    </div> <!-- container header -->
-  </header>
+    </div> <!-- principal row -->
+  </div> <!-- container header -->
+</header>
 
 
 
-  <div class="container-landing">
+<div class="container-landing">
 
-    <div class="content-section-a">
-      <div class="row card-landing">
-        <div class="col-xs-8">
+  <div class="content-section-a">
+    <div class="row card-landing">
+      <div class="col-xs-8">
 
 
         <h2 class="featurette-heading"><%= t('.meilleur_prix') %>
-        <!-- <span class="text-muted"><%#= t('.blow_your_mind') %></span> -->
+          <!-- <span class="text-muted"><%#= t('.blow_your_mind') %></span> -->
         </h2>
-          <p class="lead"><%= t('.meilleur_prix_lead') %></p>
-        </div>
+        <p class="lead"><%= t('.meilleur_prix_lead') %></p>
+      </div>
 
-        <div class="col-xs-4 padding-pastille">
-          <%= image_tag "bas_prix_icon.png", class:"img-fluid img-responsive center-block " %>
-        </div>
+      <div class="col-xs-4 padding-pastille">
+        <%= image_tag "bas_prix_icon.png", class:"img-fluid img-responsive center-block " %>
       </div>
     </div>
+  </div>
 
-    <div class="content-section-a">
+  <div class="content-section-a">
 
-      <div class="row card-landing">
-        <div class="col-xs-8 col-xs-push-4">
-          <h2 class="featurette-heading"><%= t('.meme_toit') %>
+    <div class="row card-landing">
+      <div class="col-xs-8 col-xs-push-4">
+        <h2 class="featurette-heading"><%= t('.meme_toit') %>
           <!-- <span class="text-muted"><%#= t('.meme_toit_regarde') %></span> -->
-          </h2>
-          <p class="lead"><%= t('.meme_toit_lead') %></p>
-        </div>
+        </h2>
+        <p class="lead"><%= t('.meme_toit_lead') %></p>
+      </div>
 
-        <div class="col-xs-4 col-xs-pull-8 padding-pastille">
-          <%= image_tag "Tout_même_toit_bleu.png", class:"img-fluid img-responsive center-block" %>
-        </div>
+      <div class="col-xs-4 col-xs-pull-8 padding-pastille">
+        <%= image_tag "Tout_même_toit_bleu.png", class:"img-fluid img-responsive center-block" %>
       </div>
     </div>
+  </div>
 
-    <div class="content-section-a">
-      <div class="row card-landing">
+  <div class="content-section-a">
+    <div class="row card-landing">
 
-        <div class="col-xs-8">
-          <h2 class="featurette-heading"><%= t('.achat_en_kit') %>
+      <div class="col-xs-8">
+        <h2 class="featurette-heading"><%= t('.achat_en_kit') %>
           <!-- <span class="text-muted"><%#= t('.achat_en_kit_checkmate') %></span> -->
-          </h2>
-          <p class="lead"><%= t('.achat_en_kit_lead') %> <em>Rookie</em> <%= t('.achat_en_kit_lead_ou') %> <em>Pro.</em> </p>
-        </div>
+        </h2>
+        <p class="lead"><%= t('.achat_en_kit_lead') %> <em>Rookie</em> <%= t('.achat_en_kit_lead_ou') %> <em>Pro.</em> </p>
+      </div>
 
-        <div class="col-xs-4 padding-pastille">
-          <%= image_tag "Achat_en_kit.png", class:"img-fluid img-responsive center-block" %>
-        </div>
+      <div class="col-xs-4 padding-pastille">
+        <%= image_tag "Achat_en_kit.png", class:"img-fluid img-responsive center-block" %>
       </div>
     </div>
+  </div>
 
-  </div> <!-- end of container-landing -->
+</div> <!-- end of container-landing -->
 
-  <!-- END OF THE LANDING PAGE .........................................-->
+<!-- END OF THE LANDING PAGE .........................................-->
 
