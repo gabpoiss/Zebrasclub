@@ -2,7 +2,7 @@
 
 <footer class="footer text-center footer-landing">
   <div class="container-easy">
-    <p><%= t('.abonnez_vous') %></p>
+    <p><%= t('.abonnez_vous') %><strong><%= t('.abonnez_vous_strong') %></strong></p>
 
     <div class="email-footer row">
       <div class="col-sm-offset-3 col-sm-6">
@@ -11,7 +11,7 @@
         <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "exemple@gmail.com", class: "form-control" %>
 
         <div class="input-group-btn">
-          <%= f.submit "Dis-moi", class:"btn-landing btn " %>
+          <%= f.submit "GO", class:"btn-landing btn " %>
         </div>
         <%# if @home_page_user.nil? %>
         <%# else %>
