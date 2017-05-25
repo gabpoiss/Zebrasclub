@@ -121,14 +121,15 @@ header .header-content {
   }
 }
 
+// <-- Animations -->
+
 .animated {
 
-    animation: fadein 2.6s;
+    animation: fadein 2s;
     -moz-animation: fadein 2s; /* Firefox */
     -webkit-animation: fadein 2s; /* Safari and Chrome */
     -o-animation: fadein 2s; /* Opera */
 }
-
 
 @keyframes fadein {
     from {
@@ -163,22 +164,45 @@ header .header-content {
     }
 }
 
-// .animated {
-//     visibility: visible;
-//     animation-name: fadeInUp;
-//     -webkit-animation-duration: 5s;
-//     animation-duration: 5s;
-//     -webkit-animation-fill-mode: both;
-//     animation-fill-mode: both;
-// }
+.animation-right-t-left {
+  animation: slideIn 1.5s forwards;
+  -webkit-animation: slideIn 1.5s forwards;
+  -moz-animation: slideIn 1.5s forwards;
+  -o-animation: slideIn 1.5s forwards; /* Opera */
+
+}
+
+@-webkit-keyframes slideIn {
+  0% {
+    transform: translateX(400px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@-moz-keyframes slideIn {
+  0% {
+    transform: translateX(400px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideIn {
+  0% {
+    transform: translateX(400px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+// <-- End of Animations -->
 
 @media (min-width: 992px) {
   .input-group-btn {
     padding-left: 10px !important;
   }
 }
-
-
 
 
 @media (max-width: 992px) {
@@ -204,8 +228,9 @@ header .header-content {
 .btn-landing-will-be-removed{
   font-size: 13px;
   margin-left: 29px;
+  padding: 3px 6px !important;
   border-radius: 0px !important;
-  color: #4AB0E8;
+  color: #577BFF;
   background: #fff;
   &:hover{
     color: #fff;
@@ -216,8 +241,13 @@ header .header-content {
 
 @media (max-width: 992px) {
     .btn-landing-will-be-removed {
-      width: 100%;
-      margin-left: 0px;
+      margin-left: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+    .btn-landing-will-be-removed {
+      margin-left: 8px;
   }
 }
 // ----------------------------------------------
