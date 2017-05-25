@@ -24,19 +24,23 @@
       </div>
     </div>
   </div> -->
-
-
   <!-- THIS IS THE LANDING PAGE ...................................... -->
   <nav class="navbar navbar-landing">
     <div class="container-header">
       <div class="navbar-header">
         <%= image_tag "logo_complet_final_ajusté_blanc.png", class:"navbar-brand" %>
         <ul class="nav pull-right">
-          <li><p><small><em><%= t('.bientot_en_ligne') %>  <%= link_to "En", "/en", style: "color : white" %>  <%= link_to "Fr", "/fr", style: "color : white" %> </em></small></p></li>
           <li><p><small><em>
+            <%= t('.bientot_en_ligne') %>
+              <!-- Not sure if the right way to do it but here i say:
+              if the localization of the file is :fr, display the link to "/en"
+              and if the localization of the file is :en, display the link to "/fr" -->
+              <% if I18n.locale == :fr %>
+                <%= link_to "En", "/en", style: "color : white" %>
+              <% elsif I18n.locale == :en %>
+                <%= link_to "Fr", "/fr", style: "color : white" %>
+              <% end %>
           </em></small></p></li>
-
-          <li><p><small><em></em></small></p></li>
         </ul>
       </div>
     </div>
