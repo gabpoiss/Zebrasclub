@@ -7,9 +7,12 @@ Rails.application.routes.draw do
       omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  root to: 'pages#home'
-  # Might not work but I want to redirect_to home page when i make a post request in the MailChimp email form.
-  post "/home_user", to: "pages#new_user", as: "new_user"
+  scope '(:locale)', locale: /fr|en|es/ do
+    root to: 'pages#home'
+    # Might not work but I want to redirect_to home page when i make a post request in the MailChimp email form.
+    post "/home_user", to: "pages#new_user", as: "new_user"
+  end
+
   # grid with package items
   get "/package", to: "pages#package", as: "package"
 

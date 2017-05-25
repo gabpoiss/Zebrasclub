@@ -20,4 +20,26 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "salut Salut"
+  pages:
+    home:
+      bientot_en_ligne: "Soon online"
+      header_content: "We making your life easier!"
+      lead: "Online store for hockey referee equipment."
+      span: "Subscribe for a chance to win a "
+      span_strong: "brand new CCM visor !"
+      meilleur_prix: "Best price. "
+      blow_your_mind: "It'll blow your mind."
+      meilleur_prix_lead: "We will offer you the best price in the market."
+      meme_toit: "All in one place. "
+      meme_toit_regarde: "See for yourself."
+      meme_toit_lead: "No matter what your looking for, WE got it."
+      achat_en_kit: "Buy in packages. "
+      achat_en_kit_checkmate: "Checkmate."
+      achat_en_kit_lead: "You will get discounts if you buy one of our two packages: "
+      achat_en_kit_rookie: "Rookie"
+      achat_en_kit_pro: "Pro."
+      achat_en_kit_ou: "or"
+
+      # email_placeholder: "example@gmail.com"
+      # email_submit_btn: "Averti moi !"
+

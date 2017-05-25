@@ -1,0 +1,22 @@
+fr:
+  pages:
+    home:
+      bientot_en_ligne: "Bientôt en ligne"
+      header_content: "On peut vous faciliter la vie!"
+      lead: "Boutique en ligne pour équipement d'arbitre de hockey."
+      span: "Inscrivez-vous et courez la chance de gagner une "
+      span_strong: "nouvelle visière CCM straight !"
+      meilleur_prix: "Bas prix. "
+      blow_your_mind: "Quelques chose: Blow your mind."
+      meilleur_prix_lead: "Vous ne trouverez pas de meilleur prix ailleurs."
+      meme_toit: "Tout sous un même toit. "
+      meme_toit_regarde: "Vois par toi même."
+      meme_toit_lead: "Peu importe ce que vous recherchez, on va l'avoir."
+      achat_en_kit: "Achat en kit. "
+      achat_en_kit_checkmate: "Échec et mat."
+      achat_en_kit_lead: "Bénéficier d'un rabais en achetant l'un de nos deux kit :"
+      achat_en_kit_rookie: "Rookie"
+      achat_en_kit_pro: "Pro."
+      achat_en_kit_ou: "ou"
+      # email_placeholder: "exemple@gmail.com"
+      # email_submit_btn: "Averti moi !"
