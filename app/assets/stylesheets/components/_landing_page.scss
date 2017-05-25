@@ -194,12 +194,32 @@ header .header-content {
 }
 
 // Put the button under de email input below 992px
-
 @media (max-width: 992px) {
     .input-group {
       display: inline-block;
   }
 }
+
+// Be REMOVED SOONISH ----------------------------
+.btn-landing-will-be-removed{
+  font-size: 13px;
+  margin-left: 29px;
+  border-radius: 0px !important;
+  color: #4AB0E8;
+  background: #fff;
+  &:hover{
+    color: #fff;
+    background: transparent;
+    border: solid 1px #fff;
+  }
+}
+
+@media (max-width: 992px) {
+    .btn-landing-will-be-removed {
+      width: 100%;
+  }
+}
+// ----------------------------------------------
 
 // full-width subscribe button below 992px
 
