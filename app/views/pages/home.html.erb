@@ -76,7 +76,7 @@
                   <%= form_for(@home_page_user, url: new_user_path(@home_page_user), :method => :post, html: {class: "input-group input-group-lg", role: "form"}, remote: true) do |f| %>
                   <%= f.email_field :email, required: true, autofocus: true, label: false, placeholder: "exemple@gmail.com", class: "form-control" %>
                   <div class="input-group-btn">
-                    <%= f.submit "Dis moi !", class:"btn-landing btn " %>
+                    <%= f.submit "GO", class:"btn-landing btn " %>
 
                   </div>
                   <% end %> <!-- end of form_for -->
