@@ -121,9 +121,16 @@ header .header-content {
 
   }
 }
+.form-control:focus {
+     box-shadow: none !important;
+     border-color: white !important;
+}
+.input-group-btn:focus {
+    outline: none  !important;
+}
 
   #user_email::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-      color:    #586E75 ;
+      color:    #323332 ;
       font-weight: lighter;
     }
     // :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
