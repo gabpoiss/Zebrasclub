@@ -18,6 +18,9 @@ gem 'cloudinary'
 # I18N.tasks
 gem 'i18n-tasks', '~> 0.9.15'
 
+# I18n with javascript
+gem "i18n-js"
+
 # Front-end gems
 gem 'sass-rails'
 gem 'bootstrap-sass'

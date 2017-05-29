@@ -37,6 +37,8 @@ en:
       achat_en_kit_checkmate: "Checkmate."
       achat_en_kit_lead: "Get a discount if you buy one of our two packages : "
       achat_en_kit_lead_ou: "or"
+    new_user:
+      testing: "this is a test"
       # email_placeholder: "example@gmail.com"
       # email_submit_btn: "Averti moi !"
 

@@ -1,6 +1,12 @@
 
 
-$(".subscribe").html("<strong>GOOD CALL REF !</strong> Tu as été ajouté à notre liste.");
+<% if I18n.locale == :fr %>
+  $(".subscribe").html("<strong>GOOD CALL REF !</strong> Tu as été ajouté à notre liste.");
+<% elsif I18n.locale == :en %>
+  $(".subscribe").html("<strong>GOOD CALL REF !</strong> You've been added to the list.");
+<% end %>
+
+
 // $(".btn-landing").addClass('btn-landing-js');
 // $(".btn-landing").removeClass();
 // $(".input-group-btn > .btn-landing").removeClass().addClass("btn btn-landing-js");
