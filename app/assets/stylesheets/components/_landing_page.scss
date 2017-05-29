@@ -118,9 +118,35 @@ header .header-content {
     border: none;
     border-bottom: solid 1px #fff;
     color: white;
+
   }
 }
+.form-control:focus {
+     box-shadow: none !important;
+     border-color: white !important;
+}
+.input-group-btn:focus {
+    outline: none  !important;
+}
 
+  #user_email::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+      color:    #323332 ;
+      font-weight: lighter;
+    }
+    // :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    //    color:    #909;
+    //    opacity:  1;
+    // }
+    // ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    //    color:    #909;
+    //    opacity:  1;
+    // }
+    // :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    //    color:    #909;
+    // }
+    // ::-ms-input-placeholder { /* Microsoft Edge */
+    //    color:    #909;
+    // }
 // <-- Animations -->
 
 .animated {
