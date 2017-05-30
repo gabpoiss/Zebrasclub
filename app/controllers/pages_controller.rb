@@ -15,7 +15,7 @@ class PagesController < ApplicationController
 
 
   def new_user
-    @home_page_user = User.new(email: params[:user][:email], password: "password", password_confirmation: "password")
+    @home_page_user = User.new(email: params[:user][:email], password: ENV['HOME_PAGE_USER_PW'], password_confirmation: ENV['HOME_PAGE_USER_PW'])
     if @home_page_user.save
         respond_to do |format|
           format.html {redirect_to root_path}
