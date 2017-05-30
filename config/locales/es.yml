@@ -1,2 +1,18 @@
 es:
-  hello: "Holà todo el mundo!"
+  pages:
+    home:
+      bientot_en_ligne: "Coming soon"
+      header_content: "We can make your life easier!"
+      lead: "Online store for hockey referee equipment."
+      span: "Subscribe for a chance to win a brand new "
+      span_strong: "CCM visor straight !"
+      meilleur_prix: "Best price. "
+      blow_your_mind: "It'll blow your mind."
+      meilleur_prix_lead: "You'll find the best prices on the market. That's it."
+      meme_toit: "All in one place. "
+      meme_toit_regarde: "See for yourself."
+      meme_toit_lead: "No matter what you are looking for, WE got it."
+      achat_en_kit: "Buy in packages. "
+      achat_en_kit_checkmate: "Checkmate."
+      achat_en_kit_lead: "Get a discount if you buy one of our two packages : "
+      achat_en_kit_lead_ou: "or"
