@@ -1,10 +1,22 @@
 
 
-<% if I18n.locale == :fr %>
-  $(".subscribe").html("<strong>GOOD CALL REF !</strong> Tu as été ajouté à notre liste.");
-<% elsif I18n.locale == :en %>
-  $(".subscribe").html("<strong>GOOD CALL REF !</strong> You've been added to the list.");
-<% end %>
+// <%# if I18n.locale == :fr %>
+//   $(".subscribe").html("<strong>GOOD CALL REF !</strong> Tu as été ajouté à notre liste.");
+// <%# elsif I18n.locale == :en %>
+//   $(".subscribe").html("<strong>GOOD CALL REF !</strong> You've been added to the list.");
+// <%# end %>
+
+// if I18n.locale == "fr" {
+//   $(".subscribe").html("<strong>GOOD CALL REF !</strong> Tu as été ajouté à notre liste.");
+// } else if I18n.locale == "en" {
+  $(".subscribe").text("<%= I18n.t('.js.new_user.something') %>");
+// }
+
+
+console.log("<%= I18n.t('.js.new_user.something') %>");
+
+
+
 
 
 // $(".btn-landing").addClass('btn-landing-js');
@@ -22,7 +34,7 @@
 // }
 
 
-console.log("This is a test");
+// console.log("This is a test");
 
 
 // var id = document.getElementById("user_email")
