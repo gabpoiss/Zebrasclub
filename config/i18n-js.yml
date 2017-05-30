@@ -16,8 +16,15 @@
 # the following configuration to something like this:
 #
 # translations:
-#   - file: "app/assets/javascripts/i18n/translations.js"
+# - file: 'public/javascripts/fr.js'
+#   only: 'fr.*'
+# - file: 'public/javascripts/en.js'
+#   only: 'en.*'
 #
+translations:
+- file: "app/assets/javascripts/application/i18n/translations.js"
+  only: '*.js.*'
+
 # If you're running an old version, you can use something
 # like this:
 #
