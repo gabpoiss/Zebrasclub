@@ -16,7 +16,5 @@ fr:
       achat_en_kit_checkmate: "Échec et mat."
       achat_en_kit_lead: "Bénéficier d'un rabais en achetant l'un de nos deux kits : "
       achat_en_kit_lead_ou: "ou"
-    new_user:
-      testing: "this is a test too."
       # email_placeholder: "exemple@gmail.com"
       # email_submit_btn: "Averti moi !"
