@@ -6,14 +6,9 @@
 //   $(".subscribe").html("<strong>GOOD CALL REF !</strong> You've been added to the list.");
 // <%# end %>
 
-// if I18n.locale == "fr" {
-//   $(".subscribe").html("<strong>GOOD CALL REF !</strong> Tu as été ajouté à notre liste.");
-// } else if I18n.locale == "en" {
-  $(".subscribe").text("<%= I18n.t('.js.new_user.something') %>");
-// }
+// Colis, I18n avec javascript ne fonctionne pas. Fuck that.
 
-
-console.log("<%= I18n.t('.js.new_user.something') %>");
+  $(".subscribe").html("<strong>GOOD CALL REF !</strong> Tu as été ajouté à notre liste.");
 
 
 
