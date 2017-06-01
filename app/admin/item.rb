@@ -12,5 +12,5 @@ ActiveAdmin.register Item do
 #   permitted
 # end
 
-  permit_params :size, :brand, :picture, :stock, :price_cents # etc...
+  permit_params :size, :brand, :picture, :category_id, :description, :stock, :price_cents # etc...
 end
