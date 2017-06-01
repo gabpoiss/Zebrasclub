@@ -10,10 +10,11 @@
   <!-- Facebook Open Graph data -->
   <meta property="og:title" content="<%= I18n.locale == :fr ? meta_title : "Zebrasclub.com - The worlds number one hockey referee store" %>"/>
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="<%= request.original_url %>" />
-  <meta property="og:image" content="<%= meta_image %>" />
-  <meta property="og:description" content="<%= I18n.locale == :fr ? meta_description : "Online store: pants, shirts, whistles, helmets, shin tights, armbands, ..." %>" />
+  <meta prooerty="og:url" content="https://Zebrasclub.com" >
+  <!-- <meta property="og:url" content="<%#= request.original_url %>" /> -->
+  <meta property="og:description" content="<%= I18n.locale == :fr ? DEFAULT_META["meta_description"] : "Online store: pants, shirts, whistles, helmets, shin tights, armbands, ..." %>" />
   <meta property="og:site_name" content="<%= meta_title %>" />
+  <meta property="og:image" content="<%= meta_image %>" />
 
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="summary_large_image">
