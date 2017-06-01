@@ -1,42 +1,32 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
+---
 en:
+  active_admin:
+    dashboard: Dashboard
+    dashboard_welcome:
+      call_to_action: Call to action
+      welcome: Welcome
   pages:
     home:
-      bientot_en_ligne: "Coming soon"
-      header_content: "We can make your life easier!"
-      lead: "Online store for hockey referee equipment."
-      span: "Subscribe for a chance to win a brand new "
-      span_strong: "CCM visor straight !"
-      meilleur_prix: "Best price. "
-      blow_your_mind: "It'll blow your mind."
-      meilleur_prix_lead: "You'll find the best prices on the market. That's it."
-      meme_toit: "All in one place. "
-      meme_toit_regarde: "See for yourself."
-      meme_toit_lead: "No matter what you are looking for, WE got it."
-      achat_en_kit: "Buy in packages. "
-      achat_en_kit_checkmate: "Checkmate."
-      achat_en_kit_lead: "Get a discount if you buy one of our two packages : "
-      achat_en_kit_lead_ou: "or"
-      # email_placeholder: "example@gmail.com"
-      # email_submit_btn: "Averti moi !"
-
+      achat_en_kit: 'Buy in packages. '
+      achat_en_kit_checkmate: Checkmate.
+      achat_en_kit_lead: 'Get a discount if you buy one of our two packages : '
+      achat_en_kit_lead_ou: or
+      bientot_en_ligne: Coming soon
+      blow_your_mind: It'll blow your mind.
+      header_content: We can make your life easier!
+      lead: Online store for hockey referee equipment.
+      meilleur_prix: 'Best price. '
+      meilleur_prix_lead: You'll find the best prices on the market. That's it.
+      meme_toit: 'All in one place. '
+      meme_toit_lead: No matter what you are looking for, WE got it.
+      meme_toit_regarde: See for yourself.
+      span: 'Subscribe for a chance to win a brand new '
+      span_strong: CCM visor straight !
+    new_user:
+      js:
+        new_user:
+          something: Something
+  shared:
+    footer:
+      abonnez_vous: Abonnez vous
+      abonnez_vous_strong: Abonnez vous strong
