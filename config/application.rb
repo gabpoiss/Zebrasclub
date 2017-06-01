@@ -32,5 +32,10 @@ module Zebrasclub
 
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.middleware.use I18n::JS::Middleware
+
+    config.after_initialize do
+      I18n.reload!
+    end
+
   end
 end

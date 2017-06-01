@@ -21,6 +21,8 @@ gem 'i18n-tasks', '~> 0.9.15'
 # I18n with javascript
 gem "i18n-js"
 
+gem 'rails-i18n'
+
 # Front-end gems
 gem 'sass-rails'
 gem 'bootstrap-sass'
