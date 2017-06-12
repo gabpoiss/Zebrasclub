@@ -23,11 +23,13 @@
       <%= link_to package_item_path(item: item.id), method: :post, remote: true do %>
       <div class="card">
         <div class="card-user">
-          <h1><%= Category.find(item.category_id).item_type %></h1>
+        <%= image_tag item.picture, height: 20, width: 20 %>
+          <h1><%#= Category.find(item.category_id).item_type %></h1>
+          <h1> <%#= item.item_type %> </h1>
           <p><%= item.brand %></p>
         </div>
         <div class="card-category">
-          <!-- <p><%= item.size %></p> -->
+          <p><%= item.size %></p>
           <p><%= "#{item.price}" + "$" %></p>
         </div>
         <!-- <p><%= item.stock %></p> -->
