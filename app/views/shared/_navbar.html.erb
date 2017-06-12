@@ -17,6 +17,7 @@
       <%= link_to orderitems_path, class: "btn navbar-button" do %>
         <i class="fa fa-shopping-cart"></i> My Cart
       <% end %>
+      <%= link_to "Individual Items", items_path, class:"btn navbar-button" %>
     <% end %>
 
     <% if user_signed_in? %>
@@ -24,6 +25,7 @@
      <%= link_to destroy_user_session_path, method: :delete, class: "btn navbar-button" do %>
      <i class="fa fa-sign-out"></i> Sign Out
      <% end %>
+     <%= link_to "Individual Items", items_path, class:"btn navbar-button" %>
    </div>
    <% else %>
    <%= link_to "Login", new_user_session_path, class: "btn navbar-button navbar-wagon-item" %>
@@ -42,6 +44,9 @@
         <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-logout" do %>
         <i class="fa fa-sign-out"></i>Sign Out
         <% end %>
+      </li>
+      <li>
+        <%= link_to "Individual Items", items_path, class:"btn navbar-button" %>
       </li>
       <% else %>
       <li>
