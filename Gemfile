@@ -51,6 +51,8 @@ gem 'gibbon'
 
 gem 'rubocop', require: false
 
+# Need more cookie to be able to display all or more items when your not logged in.
+gem 'activerecord-session_store'
 
 group :development, :test do
   gem 'binding_of_caller'

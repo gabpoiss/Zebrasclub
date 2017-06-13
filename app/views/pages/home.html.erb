@@ -1,29 +1,29 @@
 <!-- TO DISPLAY A CLOUDINARY IMAGE USE THIS HELPER -->
 <%#= cl_image_tag("ccm-hockey-referee-jersey-pro-150-ab-sr_tun3wa.jpg", height: 500, crop: "scale") %>
 
-<!-- <div class="banner">
+<div class="banner">
   <div class="banner-content">
     <div class="home-banner">
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
-            <%# if user_signed_in? %>
-             <h1>Welcome to <%#= @home_page_user.first_name %> </h1>
-            <%# end %>
+            <% if user_signed_in? %>
+             <h1>Welcome to <%= @home_page_user.first_name %> </h1>
+            <% end %>
 
             <h1>The World's #1 Ref Store</h1>
       </div>
           <div class="col-xs-12">
-            <%#= simple_form_for :search,  url: package_path , :method => :get, html: {class: 'form-inline'} do |f| %>
-            <%#= f.input :price_upper, as: :integer, required: false, placeholder: "$500", label: "MY BUDGET IS   ", class: "budget-title" %>
-            <%#= f.input :new_package, as: :hidden, value: "true" %>
-            <%#= f.submit "GET YOUR PACKAGE", class: "btn cart-button btn-package" %>
-            <%# end %>
+            <%= simple_form_for :search,  url: package_path , :method => :get, html: {class: 'form-inline'} do |f| %>
+            <%= f.input :price_upper, as: :integer, required: false, placeholder: "$500", label: "MY BUDGET IS   ", class: "budget-title" %>
+            <%= f.input :new_package, as: :hidden, value: "true" %>
+            <%= f.submit "GET YOUR PACKAGE", class: "btn cart-button btn-package" %>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
 
   <!-- THIS IS THE LANDING PAGE ...................................... -->

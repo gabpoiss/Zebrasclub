@@ -1,8 +1,11 @@
 class ItemsController < ApplicationController
 
   def index
-    @categories = Category.all
-    @items = Item.all
+    store_current_location
+    generate_individual_items
+    # @ready_to_order_package = ready_to_order_package
+    # @categories = Category.all
+    # @items = Item.all
     @item_list_by_brand = []
     @list_of_categories = []
 
@@ -20,7 +23,7 @@ class ItemsController < ApplicationController
       max_price = params[:max_price].to_i * 100
 
       item_list = Item.where(
-        "price > ? AND price < ? AND category_id = ?",
+        "price_cents > ? AND price_cents < ? AND category_id = ?",
         min_price, max_price, category_id)
 
       item_list.each do |i|
@@ -30,10 +33,10 @@ class ItemsController < ApplicationController
         end
       end
     end
-
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def package_index
@@ -91,4 +94,70 @@ class ItemsController < ApplicationController
 
     @ready_to_order_package = ready_to_order_package
   end
+
+  def generate_individual_items
+
+    @individual_items = []
+    @categories = Category.all
+    # @items = Item.all
+
+    order_items = if current_user
+      User.find(current_user.id).order_items.where(package: true, order_id: current_user.orders.last)
+    else
+      session[:package_items] ? session[:package_items] : []
+    end
+
+      # MAKE SURE TO WIPE ANY ORDERITEMS IF THEY HAVE ANY
+      if order_items.any?
+        if current_user
+          current_user.orders.last.order_items.destroy_all
+          current_user.orders.last.update(amount_cents: 0)
+          current_user.orders.last.save
+        else
+          session[:package_items] = []
+        end
+      end
+      @categories.each do |i|
+
+        # max_item_price = ITEM_PRICE_WEIGTHS[i.item_type.to_sym] * params[:search][:price_upper].to_i
+        selected_item = Item.where("category_id = ? AND price_cents = price_cents", i.id ).order("price_cents DESC").first
+        if selected_item.nil?
+          selected_item = Item.where(category_id: i.id).order("price_cents ASC").first
+        end
+        @individual_items << selected_item
+        # @individual_items << Item.where("category_id = ? AND price_cents = price_cents", i.id)
+
+      end
+
+      if current_user
+        unless User.find(current_user.id).orders.any?
+          Order.create(user_id: current_user.id, paid_status: false)
+        end
+        @individual_items.each do |i|
+          OrderItem.create(
+            order_id: current_user.orders.last.id,
+            item_id: i.id,
+            quantity: 1,
+            shipping_status: "not yet ordered",
+            package: true,
+            size: false,
+            cart: false
+          )
+        end
+      else
+        session[:package_items] = []
+        @individual_items.each do |i|
+            session[:package_items] << {
+              item_id: i.id,
+              quantity: 1,
+              shipping_status: "not yet ordered",
+              package: true,
+              size: false,
+              cart: false
+            }
+        end
+      end
+    # end
+  end
+
 end
