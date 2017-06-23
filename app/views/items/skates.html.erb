@@ -1,0 +1,31 @@
+<div class="card-row">
+<div class="col-xs-12 col-sm-6 col-md-4">
+  <% @skates.each do |skate| %>
+  <%= link_to package_item_path(item: skate.id, items: @skates.map { |i| i.id }), method: :post, remote: true do %>
+    <div class="card">
+      <div class="card-content-container">
+          <div class="card-title">
+            <h2><%= skate.brand.upcase %></h2>
+          </div>
+          <div class="card-picture">
+            <%= image_tag skate.picture %>
+          </div>
+          <div class="card-lower">
+            <% if current_user %>
+              <% order_skate = OrderItem.joins(:order).where(item_id: skate.id, package: true).where("orders.id = ?", current_user.orders.last.id)[0] %>
+              <% in_cart = order_skate.cart %>
+            <% else %>
+              <% session[:package_items].each { |j| in_cart = j["cart"] if j["item_id"] == skate.id } %>
+              <% end %>
+              <% y = in_cart ? "<div class=\"price in-cart\">" : "<div class=\"price\">"%>
+              <% z = "<i class=\"fa fa-check\" aria-hidden=\"true\"></i>" %>
+              <%= y.html_safe %>
+              <%= z.html_safe if in_cart %>
+            <p><%= humanized_money_with_symbol(skate.price) %></p>
+          </div>
+      </div>
+    </div>
+</div>
+  <% end %>
+  <% end %>
+</div>

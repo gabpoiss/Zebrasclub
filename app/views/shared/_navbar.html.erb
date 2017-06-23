@@ -8,60 +8,57 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-
     <% unless (current_user && (current_user.orders.empty? || current_user.orders.last.order_items.where(package: true).length.zero?)) || (!current_user && session[:package_items].nil?) %>
-      <%= link_to package_path, class: "btn navbar-button" do %>
-        <i class="fa fa-cube"></i> My Package
-      <% end %>
+      <%#= link_to package_path, class: "btn navbar-button" do %>
+        <!-- <i class="fa fa-cube"></i> My Package -->
+      <%# end %>
+      <div class="dropdown navbar-button">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li>
+          <%= link_to helmets_path, class:"btn navbar-button" do %>
+            <i class="fa fa-star"></i> Helmets
+          <% end %>
+          </li>
+          <li>
+          <%= link_to skates_path, class:"btn navbar-button" do %>
+            <i class="fa fa-star"></i> Skates
+          <% end %>
+          </li>
+          <li>
+          <%= link_to jerseys_path, class:"btn navbar-button" do %>
+            <i class="fa fa-star"></i> Jerseys
+          <% end %>
+          </li>
+          <li>
+          <%= link_to pants_path, class:"btn navbar-button" do %>
+            <i class="fa fa-star"></i> Pants
+          <% end %>
+          </li>
+          <li>
+          <%= link_to armbands_path, class:"btn navbar-button" do %>
+            <i class="fa fa-star"></i> Armbands
+          <% end %>
+          </li>
+        </ul>
+     </div>
       <%= link_to orderitems_path, class: "btn navbar-button" do %>
         <i class="fa fa-shopping-cart"></i> My Cart
       <% end %>
-      <%= link_to "Individual Items", items_path, class:"btn navbar-button" %>
     <% end %>
 
     <% if user_signed_in? %>
-    <div>
      <%= link_to destroy_user_session_path, method: :delete, class: "btn navbar-button" do %>
      <i class="fa fa-sign-out"></i> Sign Out
-     <% end %>
-     <%= link_to "Individual Items", items_path, class:"btn navbar-button" %>
-   </div>
+    <% end %>
+
+
+
    <% else %>
    <%= link_to "Login", new_user_session_path, class: "btn navbar-button navbar-wagon-item" %>
    <%= link_to "Sign Up", new_user_registration_path, class: "btn navbar-button navbar-wagon-item" %>
-   <%= link_to "Individual Items", items_path, class:"btn navbar-button" %>
    <% end %>
  </div>
- <div class="navbar-wagon-item hidden-md hidden-lg">
-  <div class="dropdown">
-    <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-    <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-      <li><a href="/package"><i class="fa fa-cube"></i>My Package</a></li>
-      <li><a href="/orderitems"><i class="fa fa-shopping-cart"></i>My Cart</a></li>
-      <% if current_user %>
-      <li>
-        <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-logout" do %>
-        <i class="fa fa-sign-out"></i>Sign Out
-        <% end %>
-      </li>
-      <li>
-        <%= link_to "Individual Items", items_path, class:"btn navbar-button" %>
-      </li>
-      <% else %>
-      <li>
-        <%= link_to new_user_session_path, class: "dropdown-logout" do %>
-        <i class="fa fa-sign-in"></i>Sign In
-        <% end %>
-      </li>
-      <li>
-        <%= link_to new_user_registration_path, class: "dropdown-logout" do %>
-        <i class="fa fa-user-plus"></i>Sign Up
-        <% end %>
-      </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+
 </div>
 
