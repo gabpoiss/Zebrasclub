@@ -9,9 +9,15 @@ Rails.application.routes.draw do
 
   scope '(:locale)', locale: /fr|en|es/ do
     root to: 'pages#home'
-    # Might not work but I want to redirect_to home page when i make a post request in the MailChimp email form.
     post "/home_user", to: "pages#new_user", as: "new_user"
   end
+    # list of individual items
+    get "/items", to: "items#index", as: "items"
+    get "/items/helmets", to: "items#helmets", as: "helmets"
+    get "/items/skates", to: "items#skates", as: "skates"
+    get "/items/pants", to: "items#pants", as: "pants"
+    get "/items/jerseys", to: "items#jerseys", as: "jerseys"
+    get "/items/armbands", to: "items#armbands", as: "armbands"
 
   # grid with package items
   get "/package", to: "pages#package", as: "package"
@@ -27,8 +33,7 @@ Rails.application.routes.draw do
   # replaces package item of same category as new package item
   post "/replace", to: "orderitems#package_replace", as: "package_replace"
 
-  # list of individual items
-  get "/items", to: "items#index", as: "items"
+
 
   # individual item/brand details (not inside package view)
   get "/items/:id", to: "items#show", as: "item"

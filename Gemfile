@@ -23,6 +23,12 @@ gem "i18n-js"
 
 gem 'rails-i18n'
 
+
+# AWS fullfilment inbound service, ...
+gem 'aws-sdk', '~> 2'
+
+
+
 # Front-end gems
 gem 'sass-rails'
 gem 'bootstrap-sass'
