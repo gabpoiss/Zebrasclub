@@ -35,7 +35,8 @@ class ItemsController < ApplicationController
 
   def show
       # if @list_of_categories = "helmet"
-        @item = Item.find(params[:item])
+        @item = Item.find(params[:id])
+
       # end
   end
 
@@ -207,6 +208,8 @@ class ItemsController < ApplicationController
             }
         end
       end
+        render json: {status: 'SUCCESS', message: 'Loaded successfully', data: @helmets}, status: :ok
+
 
   end
 
